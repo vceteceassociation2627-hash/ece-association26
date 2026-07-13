@@ -30,6 +30,7 @@
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     border-bottom: 1px solid rgba(0,0,0,0.08);
   }
+
   .nav-inner {
     max-width: 1180px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
@@ -44,7 +45,19 @@
   .social-icons img { width: 26px; height: 26px; border-radius: 6px; opacity: 0.85; transition: opacity 0.25s ease, transform 0.25s ease; }
   .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
   .menu-toggle { font-size: 26px; cursor: pointer; background: none; border: none; color: #1a1a1a; padding: 4px 8px; }
-  #mobileMenu { display: none; list-style: none; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-top: 1px solid rgba(0,0,0,0.08); }
+  #mobileMenu {
+    display: none;
+    list-style: none;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    box-shadow: 0 16px 30px rgba(0,0,0,0.15);
+  }
   #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
   #mobileMenu li a { display: block; padding: 14px 24px; color: #1a1a1a; font-weight: 500; font-size: 0.95rem; transition: background 0.2s ease, padding-left 0.2s ease; }
   #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
@@ -254,6 +267,47 @@
     .image-wrapper { width: 100%; max-width: 280px; }
     .modal-content { padding: 34px 22px 28px; }
   }
+
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+
+  @media (max-width: 480px) {
+    .modal-content { padding: 26px 16px 22px; }
+    .caption { font-size: 1.1rem; }
+    .close { width: 30px; height: 30px; top: 12px; right: 12px; }
+  }
+
 </style>
  </head>
  <body>

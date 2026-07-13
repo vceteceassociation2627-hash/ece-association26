@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ECE ASSOCIATION — Magazine</title>
-<link rel="icon" href="images/title_logo1.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECE ASSOCIATION — Magazine</title>
+  <link rel="icon" href="images/title_logo1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
   body {
     font-family: 'Inter', sans-serif;
     color: #1a1a1a;
@@ -19,19 +19,20 @@
     background-attachment: fixed;
     line-height: 1.7;
   }
-
+ 
   a { color: inherit; text-decoration: none; }
-
+ 
   /* ===== Navbar (matches index) ===== */
   .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; /* add this line if not merging into sticky above */
+}
   .nav-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -69,11 +70,20 @@
     color: #1a1a1a; padding: 4px 8px;
   }
   #mobileMenu {
-    display: none; list-style: none;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(0,0,0,0.08);
-  }
+  display: none;
+  list-style: none;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
   #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
   #mobileMenu li a {
     display: block; padding: 14px 24px; color: #1a1a1a;
@@ -82,7 +92,7 @@
   }
   #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
   #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
-
+ 
   /* ===== Marquee strip (matches index) ===== */
   .marquee-strip {
     background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
@@ -103,7 +113,7 @@
     from { transform: translateX(0); }
     to { transform: translateX(-100%); }
   }
-
+ 
   /* ===== Hero ===== */
   .hero { padding: 90px 24px 60px; text-align: center; }
   .hero-card {
@@ -129,7 +139,7 @@
   .hero-card p.sub {
     font-size: 1rem; color: #444; max-width: 560px; margin: 0 auto;
   }
-
+ 
   /* ===== Sections ===== */
   .section { padding: 30px 24px 70px; }
   .section-card {
@@ -157,7 +167,7 @@
     font-size: 0.95rem; color: #444; margin: -4px 0 40px;
     max-width: 640px;
   }
-
+ 
   /* ===== Signature element: 3D shelf of books ===== */
   .shelf {
     display: grid;
@@ -166,7 +176,7 @@
     padding: 20px 10px 40px;
     perspective: 1400px;
   }
-
+ 
   .book {
     position: relative;
     display: flex;
@@ -174,7 +184,7 @@
     align-items: center;
     cursor: pointer;
   }
-
+ 
   .book-cover {
     position: relative;
     width: 100%;
@@ -191,14 +201,14 @@
     background-position: center;
     overflow: hidden;
   }
-
+ 
   .book:hover .book-cover {
     transform: rotateY(0deg) translateY(-6px);
     box-shadow:
       -6px 0 0 -1px rgba(0,0,0,0.15),
       0 28px 46px rgba(0,0,0,0.34);
   }
-
+ 
   /* spine effect */
   .book-cover::before {
     content: "";
@@ -208,7 +218,7 @@
     background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0));
     z-index: 2;
   }
-
+ 
   /* page edges on the right */
   .book-cover::after {
     content: "";
@@ -221,7 +231,7 @@
     border-radius: 0 3px 3px 0;
     z-index: 1;
   }
-
+ 
   .book-overlay {
     position: absolute;
     inset: 0;
@@ -233,7 +243,7 @@
     color: #fff;
     z-index: 3;
   }
-
+ 
   .book-year {
     font-size: 0.68rem;
     font-weight: 700;
@@ -242,21 +252,21 @@
     color: #f0c8a0;
     margin-bottom: 4px;
   }
-
+ 
   .book-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     font-weight: 600;
     line-height: 1.25;
   }
-
+ 
   .book-label {
     margin-top: 18px;
     font-size: 0.85rem;
     color: #333;
     text-align: center;
   }
-
+ 
   .book-cta {
     margin-top: 10px;
     display: inline-flex;
@@ -274,7 +284,7 @@
   .book:hover .book-cta { background: #5e1018; transform: translateY(-2px); gap: 9px; }
   .book-cta .arrow { transition: transform 0.25s ease; }
   .book:hover .book-cta .arrow { transform: translateX(2px); }
-
+ 
   /* ===== Footer ===== */
   .site-footer { text-align: center; padding: 30px 24px 50px; }
   .footer-card {
@@ -286,35 +296,74 @@
     border: 1px solid rgba(255,255,255,0.5);
   }
   .footer-card a { color: #7a1620; font-weight: 600; }
-
+ 
   @media (max-width: 860px) {
     .section-card { padding: 32px 22px; }
     .shelf { grid-template-columns: 1fr; gap: 44px; perspective: none; }
     .book-cover { transform: none; max-width: 240px; }
     .book:hover .book-cover { transform: translateY(-6px); }
   }
+ 
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+ 
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+ 
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .shelf { gap: 32px; }
+  }
+  @media (max-width: 480px) {
+    .book-cover { max-width: 200px; }
+  }
+ 
 </style>
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="nav-inner">
+ </head>
+ <body>
+  <nav class="navbar">
+   <div class="nav-inner">
     <div class="nav-logos">
-      <img src="images/templatemo_logo.png" alt="VCET">
-      <img src="images/title_logo1.png" alt="ECE Association">
-      <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+     <img src="images/templatemo_logo.png" alt="VCET"> <img src="images/title_logo1.png" alt="ECE Association">
+     <div class="nav-brand">
+      ECE Association<span>VCET MADURAI</span>
+     </div>
     </div>
     <div class="nav-right">
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a>
-        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
-      </div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
-  </div>
-  <ul id="mobileMenu">
+   </div>
+   <ul id="mobileMenu">
     <li><a href="index.html">Home</a></li>
     <li><a href="achivements/Achievement.html">Achievements</a></li>
     <li><a href="event list/index.html">Event List</a></li>
@@ -325,83 +374,78 @@
     <li><a href="lab.html">Laboratories</a></li>
     <li><a href="magazine.html" class="current">Magazine</a></li>
     <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-</nav>
-
-
-
-<header class="hero">
-  <div class="hero-card">
+   </ul>
+  </nav>
+  <header class="hero">
+   <div class="hero-card">
     <div class="eyebrow">Department Publication</div>
     <h1>The Window</h1>
     <p class="sub">Our department magazine — a shelf of stories, ideas, and moments from every batch. Pick a year and open the cover.</p>
-  </div>
-</header>
-
-<main class="section">
-  <div class="section-card">
+   </div>
+  </header>
+  <main class="section">
+   <div class="section-card">
     <div class="section-label">Archive</div>
     <h2>Magazine Shelf</h2>
     <p class="intro">Four editions, four years of the ECE Association captured in print. Hover a cover to see it straighten on the shelf, then open it to read.</p>
-
     <div class="shelf">
-      
-      <div class="book" onclick="window.open('magzine/Magazine 2026-2027_.pdf', '_blank')">
-        <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
-          <div class="book-overlay">
-            <div class="book-year">2026 – 27</div>
-            <div class="book-title">The Window</div>
-          </div>
-        </div>
-        <div class="book-cta">Read Now <span class="arrow">→</span></div>
+     <div class="book" onclick="window.open('magzine/Magazine 2026-2027_.pdf', '_blank')">
+      <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
+       <div class="book-overlay">
+        <div class="book-year">2026 – 27</div>
+        <div class="book-title">The Window</div>
+       </div>
       </div>
-
-      <div class="book" onclick="window.open('magzine/Magazine.pdf', '_blank')">
-        <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
-          <div class="book-overlay">
-            <div class="book-year">2025 – 26</div>
-            <div class="book-title">The Window</div>
-          </div>
-        </div>
-        <div class="book-cta">Read Now <span class="arrow">→</span></div>
+      <div class="book-cta">
+       Read Now <span class="arrow">→</span>
       </div>
-
-      <div class="book" onclick="window.open('magzine/magazine new .pdf', '_blank')">
-        <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
-          <div class="book-overlay">
-            <div class="book-year">2024 – 25</div>
-            <div class="book-title">The Window</div>
-          </div>
-        </div>
-        <div class="book-cta">Read Now <span class="arrow">→</span></div>
+     </div>
+     <div class="book" onclick="window.open('magzine/Magazine.pdf', '_blank')">
+      <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
+       <div class="book-overlay">
+        <div class="book-year">2025 – 26</div>
+        <div class="book-title">The Window</div>
+       </div>
       </div>
-
-      <div class="book" onclick="window.open('magzine/MAGAZINNE (2).pdf', '_blank')">
-        <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
-          <div class="book-overlay">
-            <div class="book-year">2022 – 23</div>
-            <div class="book-title">The Window</div>
-          </div>
-        </div>
-        <div class="book-cta">Read Now <span class="arrow">→</span></div>
+      <div class="book-cta">
+       Read Now <span class="arrow">→</span>
       </div>
-
+     </div>
+     <div class="book" onclick="window.open('magzine/magazine new .pdf', '_blank')">
+      <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
+       <div class="book-overlay">
+        <div class="book-year">2024 – 25</div>
+        <div class="book-title">The Window</div>
+       </div>
+      </div>
+      <div class="book-cta">
+       Read Now <span class="arrow">→</span>
+      </div>
+     </div>
+     <div class="book" onclick="window.open('magzine/MAGAZINNE (2).pdf', '_blank')">
+      <div class="book-cover" style="background-image:url('magzine/Screenshot 2025-07-13 162842.png')">
+       <div class="book-overlay">
+        <div class="book-year">2022 – 23</div>
+        <div class="book-title">The Window</div>
+       </div>
+      </div>
+      <div class="book-cta">
+       Read Now <span class="arrow">→</span>
+      </div>
+     </div>
     </div>
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="footer-card">
+   </div>
+  </main>
+  <footer class="site-footer">
+   <div class="footer-card">
     Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
-  </div>
-</footer>
-
-<script>
+   </div>
+  </footer>
+  <script>
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 </script>
-
-</body>
+ </body>
 </html>

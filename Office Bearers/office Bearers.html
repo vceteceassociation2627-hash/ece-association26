@@ -6,11 +6,11 @@
   <link href="../images/title_logo1.png" rel="icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="templatemo_style.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
-
+ 
 body {
   font-family: 'Inter', sans-serif;
   color: #1a1a1a;
@@ -18,14 +18,17 @@ body {
   background: url('../images/templatemo_body.jpeg') center center / cover no-repeat fixed;
   line-height: 1.7;
 }
-
+ 
 /* ── NAVBAR ── */
 .navbar {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: rgba(255,255,255,0.65);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; /* add this line if not merging into sticky above */
 }
 .nav-inner {
   max-width: 1180px; margin: 0 auto;
@@ -41,12 +44,26 @@ body {
 .social-icons img { width: 26px; height: 26px; border-radius: 6px; opacity: 0.85; transition: opacity 0.25s, transform 0.25s; }
 .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
 .menu-toggle { font-size: 26px; cursor: pointer; background: none; border: none; color: #1a1a1a; padding: 4px 8px; }
-#mobileMenu { display: none; list-style: none; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-top: 1px solid rgba(0,0,0,0.08); }
+#mobileMenu {
+  display: none;
+  list-style: none;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
 #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
 #mobileMenu li a { display: block; padding: 16px 24px; color: #1a1a1a; font-weight: 500; font-size: 0.95rem; }
 #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
 #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
-
+ 
 /* ── MARQUEE STRIP (matches Contact page) ── */
 .marquee-strip {
   background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
@@ -67,16 +84,16 @@ body {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
 }
-
+ 
 /* ── SLIDES WRAPPER ── */
 .slides-outer { width: 100vw; height: calc(100vh - 73px - 41px); overflow: hidden; position: relative; }
-
+ 
 .slides-track {
   display: flex; height: 100%;
   transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
   will-change: transform;
 }
-
+ 
 .slide {
   width: 100vw; min-width: 100vw; max-width: 100vw;
   height: 100%; flex-shrink: 0;
@@ -86,9 +103,9 @@ body {
   position: relative; overflow: hidden;
   background: transparent;
 }
-
+ 
 .slide-header, .cards-row { position: relative; z-index: 1; }
-
+ 
 /* ── SLIDE HEADER ── */
 .slide-header { text-align: center; margin-bottom: 20px; }
 .slide-header .eyebrow {
@@ -101,7 +118,7 @@ body {
   font-size: clamp(1.3rem, 2.5vw, 2rem);
   color: #1a1a1a; font-weight: 700;
 }
-
+ 
 /* ── CARDS ROW ── */
 .cards-row {
   display: flex; gap: 22px;
@@ -109,7 +126,7 @@ body {
   max-width: 95vw;
   align-items: flex-start;
 }
-
+ 
 /* ── SINGLE CARD ── */
 .staff-card {
   width: 220px;
@@ -120,12 +137,12 @@ body {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   box-shadow: 0 16px 40px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5);
 }
-
+ 
 .staff-card:hover {
   transform: translateY(-6px) scale(1.03);
   box-shadow: 0 24px 55px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
 }
-
+ 
 /* ── GLASS CARD FRONT – matches Contact page's frosted panels ── */
 .card-front {
   padding: 18px 14px 16px;
@@ -138,14 +155,32 @@ body {
   -webkit-backdrop-filter: blur(14px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
-
-.card-photo {
-  width: 90px; height: 75px;
-  min-height: 75px;
-  border-radius: 50%; object-fit: cover;
-  object-position: top center; /* FIX: keeps faces centered instead of cropping the top of the head */
+ 
+/* FRAME: a plain div, not an <img>, so no external stylesheet's generic
+   "img{...}" rule can ever resize or unclip it. This is the element that
+   is actually round and actually clips. */
+.photo-frame {
+  width: 90px !important; height: 90px !important;
+  min-width: 90px !important; min-height: 90px !important;
+  max-width: 90px !important; max-height: 90px !important;
+  flex-shrink: 0;
+  border-radius: 50% !important;
+  overflow: hidden !important;
   border: 3px solid rgba(122,22,32,0.25);
   margin-bottom: 10px; background: #ddd;
+  display: block;
+}
+.card-photo {
+  width: 100% !important; height: 100% !important;
+  min-width: 0 !important; min-height: 0 !important;
+  max-width: none !important;
+  display: block;
+  border-radius: 0 !important; /* the frame does the clipping now */
+  border: none !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: top center; /* keeps faces centered instead of cropping the top of the head */
+  background: #ddd;
 }
 .card-name {
   font-family: 'Playfair Display', serif;
@@ -155,7 +190,7 @@ body {
 .card-role { font-size: 0.66rem; color: #7a1620; font-weight: 600; margin-bottom: 3px; }
 .card-spec { font-size: 0.62rem; color: #555; margin-bottom: 5px; }
 .card-email { font-size: 0.6rem; color: #777; word-break: break-all; }
-
+ 
 /* ── CARD BACK (hover) ── */
 .card-info {
   position: absolute; inset: 0;
@@ -175,12 +210,16 @@ body {
 .card-info strong { display: block; font-size: 0.78rem; margin-bottom: 8px; color: #7a1620; }
 .staff-card:hover .card-front { opacity: 0; }
 .staff-card:hover .card-info  { opacity: 1; pointer-events: auto; }
-
+ 
 /* Convener card bigger */
 .hod-card { width: 260px; }
-.hod-card .card-photo { width: 100px; height: 100px; min-height: 100px; }
+.hod-card .photo-frame {
+  width: 100px !important; height: 100px !important;
+  min-width: 100px !important; min-height: 100px !important;
+  max-width: 100px !important; max-height: 100px !important;
+}
 .hod-card .card-name  { font-size: 1rem; }
-
+ 
 /* ── NAV ARROWS – light glass, matches Contact page palette ── */
 .arrow-btn {
   position: fixed; top: 50%; transform: translateY(-50%);
@@ -197,7 +236,7 @@ body {
 .arrow-btn:hover { background: rgba(255,255,255,0.9); transform: translateY(-50%) scale(1.1); }
 .arrow-left  { left: 16px; }
 .arrow-right { right: 16px; }
-
+ 
 /* ── DOTS ── */
 .dots {
   position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
@@ -210,7 +249,7 @@ body {
   cursor: pointer; transition: background 0.3s, transform 0.3s;
 }
 .dot.active { background: #7a1620; transform: scale(1.35); }
-
+ 
 /* ── SLIDE COUNTER ── */
 .slide-counter {
   position: fixed; top: 128px; right: 20px;
@@ -222,13 +261,66 @@ body {
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.6);
 }
-
+ 
 @media (max-width: 600px) {
-  .staff-card { width: 80vw; max-width: 240px; }
+  .slide {
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
+    padding-bottom: 90px;
+  }
+  .cards-row  { align-items: flex-start; gap: 14px; }
+  .staff-card {
+    width: 80vw; max-width: 240px;
+    height: auto; max-height: none;
+  }
   .hod-card   { width: 80vw; max-width: 260px; }
-  .cards-row  { gap: 14px; }
+  .card-front { min-height: 100%; height: auto; }
   .slide-counter { top: 116px; }
 }
+ 
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+ 
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+ 
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .arrow-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+    .arrow-left { left: 8px; }
+    .arrow-right { right: 8px; }
+    .slide-counter { top: 100px; right: 12px; }
+  }
+ 
 </style>
  </head>
  <body>
@@ -261,10 +353,7 @@ body {
     <li><a href="../contact.html">Contact Us</a></li>
    </ul>
   </nav>
-
- 
   <div class="slide-counter" id="counter">1 / 6</div>
-
   <!-- ═══ SLIDES ═══ -->
   <div class="slides-outer">
    <div class="slides-track" id="track">
@@ -277,7 +366,9 @@ body {
      <div class="cards-row">
       <div class="staff-card hod-card">
        <div class="card-front">
-        <img class="card-photo" src="hod.png" alt="Dr. S. Vasuki">
+        <div class="photo-frame">
+         <img class="card-photo" src="hod.png" alt="Dr. S. Vasuki">
+        </div>
         <div class="card-name">Dr. S. Vasuki</div>
         <div class="card-role">Convener</div>
         <div class="card-spec">Dean (Research &amp; Development), Head/ECE</div>
@@ -297,7 +388,9 @@ body {
      <div class="cards-row">
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="suban.jpg" alt="Mr. A. Suban">
+        <div class="photo-frame">
+         <img class="card-photo" src="suban.jpg" alt="Mr. A. Suban">
+        </div>
         <div class="card-name">Mr. A. Suban</div>
         <div class="card-role">Staff Advisor</div>
        </div>
@@ -307,7 +400,9 @@ body {
       </div>
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="alaimahal.jpg" alt="Ms. A. Alaimahal">
+        <div class="photo-frame">
+         <img class="card-photo" src="alaimahal.jpg" alt="Ms. A. Alaimahal">
+        </div>
         <div class="card-name">Ms. A. Alaimahal</div>
         <div class="card-role">Staff Advisor</div>
        </div>
@@ -326,7 +421,9 @@ body {
      <div class="cards-row">
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="subin.jpeg" alt="Subin Raj R">
+        <div class="photo-frame">
+         <img class="card-photo" src="subin.jpeg" alt="Subin Raj R">
+        </div>
         <div class="card-name">Subin Raj R</div>
         <div class="card-role">Secretary</div>
         <div class="card-spec">III Year ECE A</div>
@@ -335,10 +432,11 @@ body {
         <strong>Subin Raj R</strong> Secretary, ECE Association. III Year ECE A.
        </div>
       </div>
-      
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="siva.jpeg" alt="Sivaraman S">
+        <div class="photo-frame">
+         <img class="card-photo" src="siva.jpeg" alt="Sivaraman S">
+        </div>
         <div class="card-name">Sivaraman S</div>
         <div class="card-role">Secretary</div>
         <div class="card-spec">III Year ECE C</div>
@@ -358,7 +456,9 @@ body {
      <div class="cards-row">
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="josh.png" alt="Joshva Daniel">
+        <div class="photo-frame">
+         <img class="card-photo" src="josh.png" alt="Joshva Daniel">
+        </div>
         <div class="card-name">Joshva Daniel</div>
         <div class="card-role">Joint Secretary</div>
         <div class="card-spec">III Year ECE A</div>
@@ -369,7 +469,9 @@ body {
       </div>
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="bhagath.png" alt="Bhagath Singh">
+        <div class="photo-frame">
+         <img class="card-photo" src="bhagath.png" alt="Bhagath Singh">
+        </div>
         <div class="card-name">Bhagath Singh</div>
         <div class="card-role">Joint Secretary</div>
         <div class="card-spec">III Year ECE A</div>
@@ -378,9 +480,11 @@ body {
         <strong>Bhagath Singh</strong> Joint Secretary, ECE Association. III Year ECE A.
        </div>
       </div>
-       <div class="staff-card">
+      <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="rohini.PNG" alt="Rohini D">
+        <div class="photo-frame">
+         <img class="card-photo" src="rohini.PNG" alt="Rohini D">
+        </div>
         <div class="card-name">Rohini D</div>
         <div class="card-role">Joint Secretary</div>
         <div class="card-spec">III Year ECE A</div>
@@ -389,10 +493,11 @@ body {
         <strong>Rohini D</strong> Joint Secretary, ECE Association. III Year ECE A.
        </div>
       </div>
-      
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="beula1.png" alt="Nikila S">
+        <div class="photo-frame">
+         <img class="card-photo" src="beula1.png" alt="Nikila S">
+        </div>
         <div class="card-name">Nikila S</div>
         <div class="card-role">Joint Secretary</div>
         <div class="card-spec">III Year ECE C</div>
@@ -403,7 +508,9 @@ body {
       </div>
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="sivarajan.png" alt="Sivaranjan S">
+        <div class="photo-frame">
+         <img class="card-photo" src="sivarajan.png" alt="Sivaranjan S">
+        </div>
         <div class="card-name">Sivaranjan S</div>
         <div class="card-role">Joint Secretary</div>
         <div class="card-spec">III Year ECE C</div>
@@ -423,7 +530,9 @@ body {
      <div class="cards-row">
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="jeevitha.png" alt="Jeevitha K">
+        <div class="photo-frame">
+         <img class="card-photo" src="jeevitha.png" alt="Jeevitha K">
+        </div>
         <div class="card-name">Jeevitha K</div>
         <div class="card-role">Steering Committee</div>
         <div class="card-spec">III Year ECE A</div>
@@ -434,7 +543,9 @@ body {
       </div>
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="ajees.png" alt="Abdul Ajees M">
+        <div class="photo-frame">
+         <img class="card-photo" src="ajees.png" alt="Abdul Ajees M">
+        </div>
         <div class="card-name">Abdul Ajees M</div>
         <div class="card-role">Steering Committee</div>
         <div class="card-spec">III Year ECE A</div>
@@ -443,10 +554,11 @@ body {
         <strong>Abdul Ajees M</strong> Steering Committee, ECE Association. III Year ECE A.
        </div>
       </div>
-      
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="sivaram.png" alt="Sivaram M">
+        <div class="photo-frame">
+         <img class="card-photo" src="sivaram.png" alt="Sivaram M">
+        </div>
         <div class="card-name">Sivaram M</div>
         <div class="card-role">Steering Committee</div>
         <div class="card-spec">III Year ECE C</div>
@@ -457,7 +569,9 @@ body {
       </div>
       <div class="staff-card">
        <div class="card-front">
-        <img class="card-photo" src="nikila.png" alt="Jayani S">
+        <div class="photo-frame">
+         <img class="card-photo" src="nikila.png" alt="Jayani S">
+        </div>
         <div class="card-name">Jayani S</div>
         <div class="card-role">Steering Committee</div>
         <div class="card-spec">III Year ECE C</div>
@@ -472,13 +586,11 @@ body {
    <!-- /slides-track -->
   </div>
   <!-- /slides-outer -->
-
   <!-- ARROWS -->
   <button class="arrow-btn arrow-left" onclick="move(-1)">←</button>
   <button class="arrow-btn arrow-right" onclick="move(+1)">→</button>
   <!-- DOTS -->
   <div class="dots" id="dots"></div>
-
   <script>
   function toggleMenu() {
     const m = document.getElementById('mobileMenu');
@@ -487,23 +599,23 @@ body {
     m.style.display = isOpen ? 'none' : 'block';
     arrows.forEach(a => a.style.display = isOpen ? 'flex' : 'none');
   }
-
+ 
   const track   = document.getElementById('track');
   const slides  = track.querySelectorAll('.slide');
   const dotsEl  = document.getElementById('dots');
   const counter = document.getElementById('counter');
   let current   = 0;
   const total   = slides.length;
-
+ 
   track.style.width = (total * 100) + 'vw';
-
+ 
   slides.forEach((_, i) => {
     const d = document.createElement('div');
     d.className = 'dot' + (i === 0 ? ' active' : '');
     d.onclick = () => goTo(i);
     dotsEl.appendChild(d);
   });
-
+ 
   function goTo(n) {
     current = (n + total) % total;
     track.style.transform = `translateX(-${current * 100}vw)`;
@@ -512,19 +624,39 @@ body {
     );
     counter.textContent = `${current + 1} / ${total}`;
   }
-
+ 
   function move(dir) { goTo(current + dir); }
-
+ 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') move(+1);
     if (e.key === 'ArrowLeft')  move(-1);
   });
-
+ 
   let startX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - startX;
     if (Math.abs(dx) > 50) move(dx < 0 ? +1 : -1);
+  });
+ 
+  /* ── PHOTO FALLBACK ──
+     If a photo file is missing/broken, browsers show the alt text
+     stacked inside the circle. Replace it with a clean initials avatar instead. */
+  function initialsAvatar(name) {
+    const initials = name.split(/\s+/).filter(Boolean).slice(0, 2)
+      .map(w => w[0].toUpperCase()).join('');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" fill="#e6d3d5"/>
+      <text x="50" y="58" font-family="Arial, sans-serif" font-size="34"
+        font-weight="600" fill="#7a1620" text-anchor="middle">${initials}</text>
+    </svg>`;
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  }
+  document.querySelectorAll('img.card-photo').forEach(img => {
+    img.addEventListener('error', function handler() {
+      this.removeEventListener('error', handler);
+      this.src = initialsAvatar(this.alt || '?');
+    });
   });
 </script>
  </body>

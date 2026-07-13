@@ -1,31 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ECE ASSOCIATION – Staff Members</title>
-<link href="images/title_logo1.png" rel="icon">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>ECE ASSOCIATION – Staff Members</title>
+  <link href="images/title_logo1.png" rel="icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="templatemo_style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 a { text-decoration: none; }
-
+ 
 body {
   font-family: 'Inter', sans-serif;
   color: #fff;
   overflow-x: hidden;
   background: url('images/templatemo_body.jpeg') center center / cover no-repeat fixed;
 }
-
+ 
 /* ── NAVBAR ── */
 .navbar {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: rgba(255,255,255,0.65);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; /* add this line if not merging into sticky above */
 }
 .nav-inner {
   max-width: 1180px; margin: 0 auto;
@@ -41,21 +43,35 @@ body {
 .social-icons img { width: 26px; height: 26px; border-radius: 6px; opacity: 0.85; transition: opacity 0.25s, transform 0.25s; }
 .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
 .menu-toggle { font-size: 26px; cursor: pointer; background: none; border: none; color: #1a1a1a; padding: 4px 8px; }
-#mobileMenu { display: none; list-style: none; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-top: 1px solid rgba(0,0,0,0.08); }
+#mobileMenu {
+  display: none;
+  list-style: none;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
 #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
 #mobileMenu li a { display: block; padding: 16px 24px; color: #1a1a1a; font-weight: 500; font-size: 0.95rem; }
 #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
-
+ 
 /* ── SLIDES WRAPPER ── */
 .slides-outer { width: 100vw; height: calc(100vh - 73px); overflow: hidden; position: relative; }
-
+ 
 .slides-track {
   display: flex; height: 100%;
   width: 600vw; /* 6 slides */
   transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
   will-change: transform;
 }
-
+ 
 .slide {
   width: 100vw; min-width: 100vw; max-width: 100vw;
   height: 100%; flex-shrink: 0;
@@ -65,7 +81,7 @@ body {
   position: relative; overflow: hidden;
   background: transparent;
 }
-
+ 
 /* dark overlay on each slide */
 .slide::before {
   content: '';
@@ -74,7 +90,7 @@ body {
   z-index: 0;
 }
 .slide-header, .cards-row { position: relative; z-index: 1; }
-
+ 
 /* ── SLIDE HEADER ── */
 .slide-header { text-align: center; margin-bottom: 18px; }
 .slide-header .eyebrow {
@@ -88,14 +104,14 @@ body {
   font-size: clamp(1.3rem, 2.5vw, 2rem);
   color: #fff; font-weight: 700;
 }
-
+ 
 /* ── CARDS ROW ── */
 .cards-row {
   display: flex; gap: 20px;
   justify-content: center; flex-wrap: wrap;
   max-width: 95vw;
 }
-
+ 
 /* ── SINGLE CARD ── */
 .staff-card {
   width: 190px;
@@ -105,12 +121,12 @@ body {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12);
 }
-
+ 
 .staff-card:hover {
   transform: translateY(-6px) scale(1.03);
   box-shadow: 0 24px 60px rgba(242, 241, 241, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
 }
-
+ 
 /* ── RED GLASS – all cards same ── */
 .card-front {
   padding: 18px 14px 16px;
@@ -123,13 +139,31 @@ body {
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   border: 1px solid rgba(255, 80, 80, 0.30);
 }
-
-.card-photo {
-  width: 75px; height: 75px;
-  min-height: 75px;
-  border-radius: 50%; object-fit: cover;
+ 
+/* FRAME: a plain div, not an <img>, so no external stylesheet's generic
+   "img{...}" rule can ever resize or unclip it. This is the element that
+   is actually round and actually clips. */
+.photo-frame {
+  width: 75px !important; height: 75px !important;
+  min-width: 75px !important; min-height: 75px !important;
+  max-width: 75px !important; max-height: 75px !important;
+  flex-shrink: 0;
+  border-radius: 50% !important;
+  overflow: hidden !important;
   border: 3px solid rgba(255,120,120,0.45);
   margin-bottom: 10px; background: #b1afaf;
+  display: block;
+}
+.card-photo {
+  width: 100% !important; height: 100% !important;
+  min-width: 0 !important; min-height: 0 !important;
+  max-width: none !important;
+  display: block;
+  border-radius: 0 !important;
+  border: none !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  background: #b1afaf;
 }
 .card-name {
   font-family: 'Playfair Display', serif;
@@ -139,7 +173,7 @@ body {
 .card-role { font-size: 0.66rem; color: rgba(224, 21, 21, 0.8); margin-bottom: 3px; }
 .card-spec { font-size: 0.62rem; color: rgba(224, 21, 21, 0.8); margin-bottom: 5px; }
 .card-email { font-size: 0.6rem; color: rgba(224, 21, 21, 0.8); word-break: break-all; }
-
+ 
 /* ── CARD BACK (hover) ── */
 .card-info {
   position: absolute; inset: 0;
@@ -159,13 +193,17 @@ body {
 .card-info strong { display: block; font-size: 0.78rem; margin-bottom: 8px; color: #ffaaaa; }
 .staff-card:hover .card-front { opacity: 0; }
 .staff-card:hover .card-info  { opacity: 1; pointer-events: auto; }
-
+ 
 /* HoD card bigger */
 .hod-card { width: 260px; height: 280px; }
-.hod-card .card-photo { width: 100px; height: 100px; min-height: 100px; }
+.hod-card .photo-frame {
+  width: 100px !important; height: 100px !important;
+  min-width: 100px !important; min-height: 100px !important;
+  max-width: 100px !important; max-height: 100px !important;
+}
 .hod-card .card-name  { font-size: 1rem; }
 .hod-card .card-front { height: 280px; }
-
+ 
 /* ── NAV ARROWS ── */
 .arrow-btn {
   position: fixed; top: 50%; transform: translateY(-50%);
@@ -182,7 +220,7 @@ body {
 .arrow-btn:hover { background: rgba(200,30,30,0.45); transform: translateY(-50%) scale(1.1); }
 .arrow-left  { left: 16px; }
 .arrow-right { right: 16px; }
-
+ 
 /* ── DOTS ── */
 .dots {
   position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
@@ -195,54 +233,93 @@ body {
   cursor: pointer; transition: background 0.3s, transform 0.3s;
 }
 .dot.active { background: #ff4444; transform: scale(1.35); }
-
+ 
 /* ── SLIDE COUNTER ── */
 .slide-counter {
   position: fixed; top: 86px; right: 20px;
   font-size: 0.68rem; letter-spacing: 2px;
   color: rgba(255,180,180,0.6); z-index: 9999;
 }
-
+ 
 @media (max-width: 600px) {
-  .staff-card { width: 80vw; max-width: 240px; }
-  .hod-card   { width: 80vw; max-width: 260px; }
-  .cards-row  { gap: 14px; }
+  .slide {
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
+    padding-bottom: 90px;
+  }
+  .cards-row  { align-items: flex-start; gap: 14px; }
+  .staff-card {
+    width: 80vw; max-width: 240px;
+    height: auto; max-height: calc(100vh - 200px);
+  }
+  .hod-card   { width: 80vw; max-width: 260px; height: auto; }
+  .card-front { height: auto; min-height: 100%; }
+  .hod-card .card-front { height: auto; }
 }
-.cards-row {
-  align-items: flex-start;  /* add this line */
-}
-
-.staff-card {
-  height: auto;             /* add this line */
-  max-height: calc(100vh - 200px);  /* add this line */
-}
-
-.card-front {
-  min-height: 100%;         /* add this line */
-}
+ 
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+ 
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+ 
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .arrow-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+    .arrow-left { left: 8px; }
+    .arrow-right { right: 8px; }
+    .slide-counter { top: 68px; right: 12px; }
+  }
+ 
 </style>
-</head>
-<body>
-
-<!-- ═══ NAVBAR ═══ -->
-<nav class="navbar">
-  <div class="nav-inner">
+ </head>
+ <body>
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+   <div class="nav-inner">
     <div class="nav-logos">
-      <img src="images/templatemo_logo.png" alt="VCET">
-      <img src="images/title_logo1.png" alt="ECE">
-      <div class="nav-brand">ECE Association <span>VCET MADURAI</span></div>
+     <img src="images/templatemo_logo.png" alt="VCET"> <img src="images/title_logo1.png" alt="ECE">
+     <div class="nav-brand">
+      ECE Association <span>VCET MADURAI</span>
+     </div>
     </div>
     <div class="nav-right">
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a>
-        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
-      </div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
-  </div>
-  <ul id="mobileMenu">
+   </div>
+   <ul id="mobileMenu">
     <li><a href="index.html">Home</a></li>
     <li><a href="achivements/Achievement.html">Achievements</a></li>
     <li><a href="event list/index.html">Event List</a></li>
@@ -253,546 +330,577 @@ body {
     <li><a href="lab.html">Laboratories</a></li>
     <li><a href="magazine.html">Magazine</a></li>
     <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-</nav>
-
-<div class="slide-counter" id="counter">1 / 6</div>
-
-<!-- ═══ SLIDES ═══ -->
-<div class="slides-outer">
-  <div class="slides-track" id="track">
-
+   </ul>
+  </nav>
+  <div class="slide-counter" id="counter">1 / 6</div>
+  <!-- ═══ SLIDES ═══ -->
+  <div class="slides-outer">
+   <div class="slides-track" id="track">
     <!-- ══ SLIDE 1 – HEAD OF DEPARTMENT ══ -->
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow" style="font-family: Arial, Helvetica, sans-serif;">ECE Department</div>
-        <h1 style="font-family: papaya; color: #131212;">Head of Department</h1>
-      </div>
-      <div class="cards-row">
-        <div class="staff-card hod-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/hod.png" alt="Dr. Vasuki">
-            <div class="card-name">Dr. S. Vasuki</div>
-            <div class="card-role">Head of Department &amp; Dean – R&amp;D</div>
-            <div class="card-spec">Image Processing · Machine Learning</div>
-            <div class="card-email">vasuki@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. S. Vasuki</strong>
-            Ph.D. in Image Processing, Anna University. 35+ years of teaching &amp; research. Recipient of the Dr. A.P.J. Abdul Kalam Award for Scientific Excellence (2016). Led funded projects from AICTE, DRDO &amp; DST. 60+ international journal papers, 100+ conference papers, multiple patents and textbooks.
-            <br><br><em>Experience: 35+ years</em>
-          </div>
+     <div class="slide-header">
+      <div class="eyebrow" style="font-family: Arial, Helvetica, sans-serif;">ECE Department</div>
+      <h1 style="font-family: papaya; color: #131212;">Head of Department</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card hod-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/hod.png" alt="Dr. Vasuki">
         </div>
+        <div class="card-name">Dr. S. Vasuki</div>
+        <div class="card-role">Head of Department &amp; Dean – R&amp;D</div>
+        <div class="card-spec">Image Processing · Machine Learning</div>
+        <div class="card-email">vasuki@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. S. Vasuki</strong> Ph.D. in Image Processing, Anna University. 35+ years of teaching &amp; research. Recipient of the Dr. A.P.J. Abdul Kalam Award for Scientific Excellence (2016). Led funded projects from AICTE, DRDO &amp; DST. 60+ international journal papers, 100+ conference papers, multiple patents and textbooks.
+        <br>
+        <br>
+        <em>Experience: 35+ years</em>
+       </div>
       </div>
+     </div>
     </div>
-
     <!-- ══ SLIDE 2 – PROFESSORS ══ -->
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow">ECE Department</div>
-        <h1 style="color: #131212;">Professors</h1>
+     <div class="slide-header">
+      <div class="eyebrow">ECE Department</div>
+      <h1 style="color: #131212;">Professors</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/suveetha.jpg" alt="Dr. Suveetha">
+        </div>
+        <div class="card-name">Dr. P. Suveetha</div>
+        <div class="card-role">Professor</div>
+        <div class="card-spec">VLSI</div>
+        <div class="card-email">psd@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. P. Suveetha</strong> 17 journal articles, 42 conference papers. Authored books on VLSI Design. Patent for MOSFET innovations. Led funded projects worth ₹48+ lakhs. Honored with the TARE award by SERB-DST.
+        <br>
+        <br>
+        <em>Experience: 21 years</em>
+       </div>
       </div>
-      <div class="cards-row">
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/suveetha.jpg" alt="Dr. Suveetha">
-            <div class="card-name">Dr. P. Suveetha</div>
-            <div class="card-role">Professor</div>
-            <div class="card-spec">VLSI</div>
-            <div class="card-email">psd@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. P. Suveetha</strong>
-            17 journal articles, 42 conference papers. Authored books on VLSI Design. Patent for MOSFET innovations. Led funded projects worth ₹48+ lakhs. Honored with the TARE award by SERB-DST.
-            <br><br><em>Experience: 21 years</em>
-          </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/rajeswari.jpg" alt="Dr. Rajeswari">
         </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/rajeswari.jpg" alt="Dr. Rajeswari">
-            <div class="card-name">Dr. P. Rajeswari</div>
-            <div class="card-role">Professor</div>
-            <div class="card-spec">EMI · RF · Antenna</div>
-            <div class="card-email">pra@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. P. Rajeswari</strong>
-            Research in EMI, antennas and RF systems. Authored books on antenna &amp; interconnect technologies. Australian patent for UV-based kitchen device. Funded projects worth ₹64+ lakhs from DRDO, DST, AICTE, MSME.
-            <br><br><em>Experience: 19 years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/p.karthikeyan.jpg" alt="Dr. Karthikeyan">
-            <div class="card-name">Dr. P. Karthikeyan</div>
-            <div class="card-role">Professor</div>
-            <div class="card-spec">Embedded Systems · AI · Data Science</div>
-            <div class="card-email">pkn@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. P. Karthikeyan</strong>
-            Specialises in FPGA-based image denoising and smart IoT systems. Funded projects totalling ₹75+ lakhs (DST, DRDO, AICTE). Patents on IoT-based smart health devices and ML applications.
-            <br><br><em>Experience: 18 years</em>
-          </div>
-        </div>
-
-        
+        <div class="card-name">Dr. P. Rajeswari</div>
+        <div class="card-role">Professor</div>
+        <div class="card-spec">EMI · RF · Antenna</div>
+        <div class="card-email">pra@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. P. Rajeswari</strong> Research in EMI, antennas and RF systems. Authored books on antenna &amp; interconnect technologies. Australian patent for UV-based kitchen device. Funded projects worth ₹64+ lakhs from DRDO, DST, AICTE, MSME.
+        <br>
+        <br>
+        <em>Experience: 19 years</em>
+       </div>
       </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/p.karthikeyan.jpg" alt="Dr. Karthikeyan">
+        </div>
+        <div class="card-name">Dr. P. Karthikeyan</div>
+        <div class="card-role">Professor</div>
+        <div class="card-spec">Embedded Systems · AI · Data Science</div>
+        <div class="card-email">pkn@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. P. Karthikeyan</strong> Specialises in FPGA-based image denoising and smart IoT systems. Funded projects totalling ₹75+ lakhs (DST, DRDO, AICTE). Patents on IoT-based smart health devices and ML applications.
+        <br>
+        <br>
+        <em>Experience: 18 years</em>
+       </div>
+      </div>
+     </div>
     </div>
-
     <!-- ══ SLIDE 3 – ASSOCIATE PROFESSORS ══ -->
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow">ECE Department</div>
-        <h1 style="color: #131212;">Associate Professors</h1>
+     <div class="slide-header">
+      <div class="eyebrow">ECE Department</div>
+      <h1 style="color: #131212;">Associate Professors</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/kavitha.jpg" alt="Dr. Kavitha">
+        </div>
+        <div class="card-name">Dr. K. Kavitha</div>
+        <div class="card-role">Associate Professor</div>
+        <div class="card-spec">Signal Processing</div>
+        <div class="card-email">kkavi@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. K. Kavitha</strong> Active researcher publishing in national and international journals. Involved in significant research projects bridging emerging trends and interdisciplinary collaboration. Passionate about nurturing inquiry and critical thinking in students.
+        <br>
+        <br>
+        <em>Experience: 17.6 years</em>
+       </div>
       </div>
-      <div class="cards-row">
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/kavitha.jpg" alt="Dr. Kavitha">
-            <div class="card-name">Dr. K. Kavitha</div>
-            <div class="card-role">Associate Professor</div>
-            <div class="card-spec">Signal Processing</div>
-            <div class="card-email">kkavi@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. K. Kavitha</strong>
-            Active researcher publishing in national and international journals. Involved in significant research projects bridging emerging trends and interdisciplinary collaboration. Passionate about nurturing inquiry and critical thinking in students.
-            <br><br><em>Experience: 17.6 years</em>
-          </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/usha.jpg" alt="Dr. Gandhimathi">
         </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/usha.jpg" alt="Dr. Gandhimathi">
-            <div class="card-name">Dr. S. Gandhimathi@Usha</div>
-            <div class="card-role">Associate Professor</div>
-            <div class="card-spec">Image Processing</div>
-            <div class="card-email">gmi@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. S. Gandhimathi@Usha</strong>
-            Research in IoT, Digital Image Processing and Medical field. Patent for a device monitoring color &amp; texture of samples. Active conference participant, bridges theoretical concepts with real-world applications.
-            <br><br><em>Experience: 23 years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/murugan.jpg" alt="Dr. Murugan">
-            <div class="card-name">Dr. S. Murugan</div>
-            <div class="card-role">Associate Professor</div>
-            <div class="card-spec">RF Systems · Communication</div>
-            <div class="card-email">smk@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. S. Murugan</strong>
-            Research contributions in antenna design, RF systems, IoT, optical communication and microwave engineering. Published books. Dedicated to mentoring students with critical thinking and practical experimentation.
-            <br><br><em>Experience: 23 years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="images/imran.jpeg" alt="Dr. Imran Hussain">
-            <div class="card-name">Dr.Imran Hussain</div>
-            <div class="card-role">Associate Professor</div>
-            <div class="card-spec">Nanoelectronics</div>
-            <div class="card-email">ihs@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr.Imran Hussain</strong>
-            Nano electronics,Energy Storage Systems, Semiconductors Materials,10 years of research experience.
-            <br><br><em>Experience: 10 years</em>
-          </div>
-        </div>
-
-
-
-        
-
+        <div class="card-name">Dr. S. Gandhimathi@Usha</div>
+        <div class="card-role">Associate Professor</div>
+        <div class="card-spec">Image Processing</div>
+        <div class="card-email">gmi@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. S. Gandhimathi@Usha</strong> Research in IoT, Digital Image Processing and Medical field. Patent for a device monitoring color &amp; texture of samples. Active conference participant, bridges theoretical concepts with real-world applications.
+        <br>
+        <br>
+        <em>Experience: 23 years</em>
+       </div>
       </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/murugan.jpg" alt="Dr. Murugan">
+        </div>
+        <div class="card-name">Dr. S. Murugan</div>
+        <div class="card-role">Associate Professor</div>
+        <div class="card-spec">RF Systems · Communication</div>
+        <div class="card-email">smk@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. S. Murugan</strong> Research contributions in antenna design, RF systems, IoT, optical communication and microwave engineering. Published books. Dedicated to mentoring students with critical thinking and practical experimentation.
+        <br>
+        <br>
+        <em>Experience: 23 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="images/imran.jpeg" alt="Dr. Imran Hussain">
+        </div>
+        <div class="card-name">Dr.Imran Hussain</div>
+        <div class="card-role">Associate Professor</div>
+        <div class="card-spec">Nanoelectronics</div>
+        <div class="card-email">ihs@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr.Imran Hussain</strong> Nano electronics,Energy Storage Systems, Semiconductors Materials,10 years of research experience.
+        <br>
+        <br>
+        <em>Experience: 10 years</em>
+       </div>
+      </div>
+     </div>
     </div>
-
     <!-- ══ SLIDE 4 – ASSISTANT PROFESSORS I ══ -->
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow">ECE Department</div>
-        <h1 style="color: #131212;">Assistant Professors – Grade I</h1>
-      </div>
-      <div class="cards-row">
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/pradeep.jpg" alt="Mr. Pradeep Kumar">
-            <div class="card-name">Mr. G. Pradeep Kumar</div>
-            <div class="card-role">Assistant Professor I</div>
-            <div class="card-spec">Networking · 3D Modeling</div>
-            <div class="card-email">gpk@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mr. G. Pradeep Kumar</strong>
-            13+ years of academic &amp; industry experience. Research in unmanned systems, networking and underwater imaging. Best paper award recipient. Book chapter author. Active in UAV-based innovations. Also serves as Placement Co-ordinator.
-            <br><br><em>Experience: 13+ years</em>
-          </div>
+     <div class="slide-header">
+      <div class="eyebrow">ECE Department</div>
+      <h1 style="color: #131212;">Assistant Professors – Grade I</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/pradeep.jpg" alt="Mr. Pradeep Kumar">
         </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/thenmoZhi.jpg" alt="Dr. Thenmozhi">
-            <div class="card-name">Dr. T. Thenmozhi</div>
-            <div class="card-role">Assistant Professor I</div>
-            <div class="card-spec">Biomedical Instrumentation · AI &amp; ML</div>
-            <div class="card-email">tth@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. T. Thenmozhi</strong>
-            Ph.D. in Control &amp; Instrumentation. Prior industry experience at TCS. Research in DSP, AI, ML, Deep Learning &amp; Biomedical Instrumentation. Patent holder. Reviewer for Elsevier journals. 55 citations, H-index 2. Published in Q2 indexed journals.
-            <br><br><em>Experience: 3.6+ years (incl. TCS)</em>
-          </div>
-        </div>
-
+        <div class="card-name">Mr. G. Pradeep Kumar</div>
+        <div class="card-role">Assistant Professor I</div>
+        <div class="card-spec">Networking · 3D Modeling</div>
+        <div class="card-email">gpk@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. G. Pradeep Kumar</strong> 13+ years of academic &amp; industry experience. Research in unmanned systems, networking and underwater imaging. Best paper award recipient. Book chapter author. Active in UAV-based innovations. Also serves as Placement Co-ordinator.
+        <br>
+        <br>
+        <em>Experience: 13+ years</em>
+       </div>
       </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/thenmoZhi.jpg" alt="Dr. Thenmozhi">
+        </div>
+        <div class="card-name">Dr. T. Thenmozhi</div>
+        <div class="card-role">Assistant Professor I</div>
+        <div class="card-spec">Biomedical Instrumentation · AI &amp; ML</div>
+        <div class="card-email">tth@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. T. Thenmozhi</strong> Ph.D. in Control &amp; Instrumentation. Prior industry experience at TCS. Research in DSP, AI, ML, Deep Learning &amp; Biomedical Instrumentation. Patent holder. Reviewer for Elsevier journals. 55 citations, H-index 2. Published in Q2 indexed journals.
+        <br>
+        <br>
+        <em>Experience: 3.6+ years (incl. TCS)</em>
+       </div>
+      </div>
+     </div>
     </div>
-
     <!-- ══ SLIDE 5 – ASSISTANT PROFESSORS II ══ -->
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow">ECE Department</div>
-        <h1 style="color: #131212;">Assistant Professors – Grade II</h1>
+     <div class="slide-header">
+      <div class="eyebrow">ECE Department</div>
+      <h1 style="color: #131212;">Assistant Professors – Grade II</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/suban.jpg" alt="Mr. Suban">
+        </div>
+        <div class="card-name">Mr. A. Suban</div>
+        <div class="card-role">Assistant Professor II</div>
+        <div class="card-spec">DSP</div>
+        <div class="card-email">sbn@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. A. Suban</strong> 11+ years of teaching. Pursuing Ph.D. at Anna University. ISSS Best Mentor Award &amp; IEEE R10 Humanitarian Challenge Award. Multiple patents. Established sponsored COMRAD R&amp;D lab worth ₹15 lakhs.
+        <br>
+        <br>
+        <em>Experience: 11+ years</em>
+       </div>
       </div>
-      <div class="cards-row">
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/suban.jpg" alt="Mr. Suban">
-            <div class="card-name">Mr. A. Suban</div>
-            <div class="card-role">Assistant Professor II</div>
-            <div class="card-spec">DSP</div>
-            <div class="card-email">sbn@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mr. A. Suban</strong>
-            11+ years of teaching. Pursuing Ph.D. at Anna University. ISSS Best Mentor Award &amp; IEEE R10 Humanitarian Challenge Award. Multiple patents. Established sponsored COMRAD R&amp;D lab worth ₹15 lakhs.
-            <br><br><em>Experience: 11+ years</em>
-          </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/venkateshkanna.jpg" alt="Dr. Venkatesh Kanna">
         </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/venkateshkanna.jpg" alt="Dr. Venkatesh Kanna">
-            <div class="card-name">Dr. T. Venkatesh Kanna</div>
-            <div class="card-role">Assistant Professor II</div>
-            <div class="card-spec">Signal Processing · Embedded IoT</div>
-            <div class="card-email">-</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. T. Venkatesh Kanna</strong>
-            Ph.D. in Epileptic Seizure Detection using SVM. 15 years teaching, 2.5 years industry. Research in Medical Electronics, Biomedical Instrumentation &amp; Signal Processing. Patent on AI-based lifetime prediction for wireless sensor networks. Member of IETE.
-            <br><br><em>Experience: 15+ years (2.5 industry)</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/regina.jpg" alt="Dr. Regina">
-            <div class="card-name">Dr. S. Regina</div>
-            <div class="card-role">Assistant Professor II</div>
-            <div class="card-spec">RF · Antenna</div>
-            <div class="card-email">reg@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. S. Regina</strong>
-            Ph.D. in Antenna Designs. Research in metamaterial antennas, embedded systems, textile antennas &amp; ML. 11 international journal papers. 5 patents filed. Certified Innovation Ambassador. Life member of IEI.
-            <br><br><em>Experience: 8 years 9 months</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/muneeshwari.png" alt="Dr. Muneeswari">
-            <div class="card-name">Dr. B. Muneeswari</div>
-            <div class="card-role">Assistant Professor II</div>
-            <div class="card-spec">Wireless Networks · DIP</div>
-            <div class="card-email">bes@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. B. Muneeswari</strong>
-            Ph.D. from Anna University. 13+ years teaching experience. SCI-indexed publications in Soft Computing and IET Communications. Research expertise in secure routing and optimization in wireless networks.
-            <br><br><em>Experience: 13 years 8 months</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/nagarani.png" alt="Dr. Nagarani">
-            <div class="card-name">Dr. N. Nagarani</div>
-            <div class="card-role">Assistant Professor II</div>
-            <div class="card-spec">DIP · Integrated Circuits</div>
-            <div class="card-email">rani@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. N. Nagarani</strong>
-            Ph.D. from Anna University (2020). 16 years academic experience. Patent on intelligent sensor-based EB billing system. Organized DST-sponsored FDP (₹67,000 funded). Authored Basic Electrical and Electronics Engineering (2013).
-            <br><br><em>Experience: 16 years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/uma maheswari.jpg" alt="Dr. Uma Maheswari">
-            <div class="card-name">Dr. P. Uma Maheswari</div>
-            <div class="card-role">Assistant Professor II</div>
-            <div class="card-spec">Medical Image Processing · AI</div>
-            <div class="card-email">umamahes.p@gmail.com</div>
-          </div>
-          <div class="card-info">
-            <strong>Dr. P. Uma Maheswari</strong>
-            Ph.D. in Medical Imaging. Research in dental image analysis &amp; nerve canal detection. Published in Springer, IET and IOP. CSIR Senior Research Fellowship. Best Paper Award at NCAIEV'21. Industry experience at CSS Corporation.
-            <br><br><em>Experience: 12 yrs (incl. industry &amp; fellowship) + 3 yrs faculty</em>
-          </div>
-        </div>
-
+        <div class="card-name">Dr. T. Venkatesh Kanna</div>
+        <div class="card-role">Assistant Professor II</div>
+        <div class="card-spec">Signal Processing · Embedded IoT</div>
+        <div class="card-email">-</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. T. Venkatesh Kanna</strong> Ph.D. in Epileptic Seizure Detection using SVM. 15 years teaching, 2.5 years industry. Research in Medical Electronics, Biomedical Instrumentation &amp; Signal Processing. Patent on AI-based lifetime prediction for wireless sensor networks. Member of IETE.
+        <br>
+        <br>
+        <em>Experience: 15+ years (2.5 industry)</em>
+       </div>
       </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/regina.jpg" alt="Dr. Regina">
+        </div>
+        <div class="card-name">Dr. S. Regina</div>
+        <div class="card-role">Assistant Professor II</div>
+        <div class="card-spec">RF · Antenna</div>
+        <div class="card-email">reg@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. S. Regina</strong> Ph.D. in Antenna Designs. Research in metamaterial antennas, embedded systems, textile antennas &amp; ML. 11 international journal papers. 5 patents filed. Certified Innovation Ambassador. Life member of IEI.
+        <br>
+        <br>
+        <em>Experience: 8 years 9 months</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/muneeshwari.png" alt="Dr. Muneeswari">
+        </div>
+        <div class="card-name">Dr. B. Muneeswari</div>
+        <div class="card-role">Assistant Professor II</div>
+        <div class="card-spec">Wireless Networks · DIP</div>
+        <div class="card-email">bes@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. B. Muneeswari</strong> Ph.D. from Anna University. 13+ years teaching experience. SCI-indexed publications in Soft Computing and IET Communications. Research expertise in secure routing and optimization in wireless networks.
+        <br>
+        <br>
+        <em>Experience: 13 years 8 months</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/nagarani.png" alt="Dr. Nagarani">
+        </div>
+        <div class="card-name">Dr. N. Nagarani</div>
+        <div class="card-role">Assistant Professor II</div>
+        <div class="card-spec">DIP · Integrated Circuits</div>
+        <div class="card-email">rani@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. N. Nagarani</strong> Ph.D. from Anna University (2020). 16 years academic experience. Patent on intelligent sensor-based EB billing system. Organized DST-sponsored FDP (₹67,000 funded). Authored Basic Electrical and Electronics Engineering (2013).
+        <br>
+        <br>
+        <em>Experience: 16 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/uma maheswari.jpg" alt="Dr. Uma Maheswari">
+        </div>
+        <div class="card-name">Dr. P. Uma Maheswari</div>
+        <div class="card-role">Assistant Professor II</div>
+        <div class="card-spec">Medical Image Processing · AI</div>
+        <div class="card-email">umamahes.p@gmail.com</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. P. Uma Maheswari</strong> Ph.D. in Medical Imaging. Research in dental image analysis &amp; nerve canal detection. Published in Springer, IET and IOP. CSIR Senior Research Fellowship. Best Paper Award at NCAIEV'21. Industry experience at CSS Corporation.
+        <br>
+        <br>
+        <em>Experience: 12 yrs (incl. industry &amp; fellowship) + 3 yrs faculty</em>
+       </div>
+      </div>
+     </div>
     </div>
-
     <!-- ══ SLIDE 6 – ASSISTANT PROFESSORS III ══ -->
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow">ECE Department</div>
-        <h1 style="color: #131212;">Assistant Professors – Grade III</h1>
+     <div class="slide-header">
+      <div class="eyebrow">ECE Department</div>
+      <h1 style="color: #131212;">Assistant Professors – Grade III</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/gobinath.png" alt="Mr. Gobinath">
+        </div>
+        <div class="card-name">Mr. A. Gobinath</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">RF · Antenna · Digital Electronics</div>
+        <div class="card-email">agn@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. A. Gobinath</strong> Research in EMI/EMC, RF, microwaves and antennas. Funded projects from DST, DRDO &amp; MSME. Scopus-indexed publications. Book chapters in Taylor &amp; Francis and IGI Global. Patent on Battery Management System for EVs.
+        <br>
+        <br>
+        <em>Experience: 15+ years (3.2 industry)</em>
+       </div>
       </div>
-      <div class="cards-row">
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/gobinath.png" alt="Mr. Gobinath">
-            <div class="card-name">Mr. A. Gobinath</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">RF · Antenna · Digital Electronics</div>
-            <div class="card-email">agn@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mr. A. Gobinath</strong>
-            Research in EMI/EMC, RF, microwaves and antennas. Funded projects from DST, DRDO &amp; MSME. Scopus-indexed publications. Book chapters in Taylor &amp; Francis and IGI Global. Patent on Battery Management System for EVs.
-            <br><br><em>Experience: 15+ years (3.2 industry)</em>
-          </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/sakthivel.jpg" alt="Mr. Sakthivel">
         </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/sakthivel.jpg" alt="Mr. Sakthivel">
-            <div class="card-name">Mr. M. Sakthivel</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">VLSI</div>
-            <div class="card-email">msv@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mr. M. Sakthivel</strong>
-            M.E. in VLSI. 15+ years teaching, 3 years industry as Business Analyst. Guided students in Innovate FPGA and Tensilica Xtensa DSP Design contests. Published in Journal of Xidian University. Coordinated NCVT-funded projects.
-            <br><br><em>Experience: 15+ years</em>
-          </div>
-        </div>
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/alaimahal.jpg" alt="Ms. Alaimahal">
-            <div class="card-name">Ms. A. Alaimahal</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">DIP · AI &amp; ML</div>
-            <div class="card-email">aal@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Ms. A. Alaimahal</strong>
-            M.E. in Communication Systems, pursuing Ph.D. in Medical Image Processing. Research in diabetic retinopathy, COVID-19 detection and fish freshness detection. Patent on metamaterial-based triple-band antenna (under examination).
-            <br><br><em>Experience: 9 years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/karthik.jpg" alt="Mr. Karthik">
-            <div class="card-name">Mr. K. Karthik</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">Communication &amp; Networks</div>
-            <div class="card-email">kk@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mr. K. Karthik</strong>
-            M.E. in Communication and Networking. Published on image denoising and content-based video retrieval. Book chapters with Springer and IGI Global. Mentored students through NPTEL and TI India embedded programs.
-            <br><br><em>Experience: 15 years (incl. industry)</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/bkn.jpg" alt="Mr. B. Karthikeyan">
-            <div class="card-name">Mr. B. Karthikeyan</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">VLSI &amp; Nano Electronics</div>
-            <div class="card-email">bkk@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mr. B. Karthikeyan</strong>
-            M.Tech in Control and Instrumentation. Research in IoT, AI, control systems, optimization and fault tolerance. Published in IEEE on sensor fault detection, smart systems and deep learning.
-            <br><br><em>Experience: 14 years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/janani.jpg" alt="Mrs. Janani">
-            <div class="card-name">Mrs. V. G. Janani</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">Machine Learning &amp; Image Processing</div>
-            <div class="card-email">vgj@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs. V. G. Janani</strong>
-            Research in suspicious activity detection, pedestrian tracking and vehicle recognition. 4 journal papers, 8 conference papers. Best Paper Award at international conference. Cash award for high academic pass percentage.
-            <br><br><em>Experience: 13+ years</em>
-          </div>
-        </div>
-
+        <div class="card-name">Mr. M. Sakthivel</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">VLSI</div>
+        <div class="card-email">msv@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. M. Sakthivel</strong> M.E. in VLSI. 15+ years teaching, 3 years industry as Business Analyst. Guided students in Innovate FPGA and Tensilica Xtensa DSP Design contests. Published in Journal of Xidian University. Coordinated NCVT-funded projects.
+        <br>
+        <br>
+        <em>Experience: 15+ years</em>
+       </div>
       </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/alaimahal.jpg" alt="Ms. Alaimahal">
+        </div>
+        <div class="card-name">Ms. A. Alaimahal</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">DIP · AI &amp; ML</div>
+        <div class="card-email">aal@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Ms. A. Alaimahal</strong> M.E. in Communication Systems, pursuing Ph.D. in Medical Image Processing. Research in diabetic retinopathy, COVID-19 detection and fish freshness detection. Patent on metamaterial-based triple-band antenna (under examination).
+        <br>
+        <br>
+        <em>Experience: 9 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/karthik.jpg" alt="Mr. Karthik">
+        </div>
+        <div class="card-name">Mr. K. Karthik</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">Communication &amp; Networks</div>
+        <div class="card-email">kk@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. K. Karthik</strong> M.E. in Communication and Networking. Published on image denoising and content-based video retrieval. Book chapters with Springer and IGI Global. Mentored students through NPTEL and TI India embedded programs.
+        <br>
+        <br>
+        <em>Experience: 15 years (incl. industry)</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/bkn.jpg" alt="Mr. B. Karthikeyan">
+        </div>
+        <div class="card-name">Mr. B. Karthikeyan</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">VLSI &amp; Nano Electronics</div>
+        <div class="card-email">bkk@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. B. Karthikeyan</strong> M.Tech in Control and Instrumentation. Research in IoT, AI, control systems, optimization and fault tolerance. Published in IEEE on sensor fault detection, smart systems and deep learning.
+        <br>
+        <br>
+        <em>Experience: 14 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/janani.jpg" alt="Mrs. Janani">
+        </div>
+        <div class="card-name">Mrs. V. G. Janani</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">Machine Learning &amp; Image Processing</div>
+        <div class="card-email">vgj@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs. V. G. Janani</strong> Research in suspicious activity detection, pedestrian tracking and vehicle recognition. 4 journal papers, 8 conference papers. Best Paper Award at international conference. Cash award for high academic pass percentage.
+        <br>
+        <br>
+        <em>Experience: 13+ years</em>
+       </div>
+      </div>
+     </div>
     </div>
     <div class="slide">
-      <div class="slide-header">
-        <div class="eyebrow">ECE Department</div>
-        <h1>Assistant Professors – Grade III</h1>
-      </div>
-      <div class="cards-row">
-         <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/j-rajeswari.jpg" alt="Mrs. J. Rajeswari">
-            <div class="card-name">Mrs. J. Rajeswari</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">IoT &amp; Communication Systems</div>
-            <div class="card-email">j.rajeswari@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs. J. Rajeswari</strong>
-            14 international journal papers on fire safety, navigation devices and crop disease detection. Grants from AICTE, Anna University and DST for FDPs and seminars. TNSCST funded project recipient.
-            <br><br><em>Experience: 9+ years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/sakthipreetha.png" alt="Mrs. Sakthi Preetha">
-            <div class="card-name">Mrs. A. Sakthi Preetha</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">Antenna &amp; Networks</div>
-            <div class="card-email">sps@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs. A. Sakthi Preetha</strong>
-            M.E. in Wireless Technologies. Pursuing Ph.D. at Anna University. Research in metamaterial antennas, wearable antennas and networks. 4 international journal papers. University and college first rank holder. Lifetime member of IETE.
-            <br><br><em>Experience: 9+ years</em>
-          </div>
-        </div>
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/swedheetha.jpg" alt="Mrs. Swedheetha">
-            <div class="card-name">Mrs. C. Swedheetha</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">Antenna &amp; Communication</div>
-            <div class="card-email">csa@vcet.ac.in</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs. C. Swedheetha</strong>
-            Pursuing Ph.D. in RF Antennas at Anna University. Research in wireless body area networks and fractal antennas. Certified LabVIEW Associate Developer. GATE 87.13 percentile. Ideathon 2022 award winner.
-            <br><br><em>Experience: 10 years</em>
-          </div>
-        </div>
-
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/ananthi roy.jpg" alt="Mrs. Ananthi Roy">
-            <div class="card-name">Mrs. S. Ananthi Roy</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">VLSI &amp; Image Processing</div>
-            <div class="card-email">ananthi.roy@gmail.com</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs. S. Ananthi Roy</strong>
-            M.E. from College of Engineering, Guindy. Senior Research Fellow at Mepco Schlenk. Research in Deep Learning, VLSI Signal Processing and steganography. NPTEL Deep Learning certification from IIT Madras.
-            <br><br><em>Experience: 2 years</em>
-          </div>
-        </div>
-
+     <div class="slide-header">
+      <div class="eyebrow">ECE Department</div>
+      <h1 style ="color: #131212;">Assistant Professors – Grade III</h1>
+     </div>
+     <div class="cards-row">
       <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="staff members/staff/shanmuga priya.jpg" alt="Ms. Shanmuga Priya">
-            <div class="card-name">Ms. R. Shanmuga Priya</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">Communication &amp; Embedded Systems</div>
-            <div class="card-email">shanmugapriya302002@gmail.com</div>
-          </div>
-          <div class="card-info">
-            <strong>Ms. R. Shanmuga Priya</strong>
-            Pursuing M.E. in Communication Systems. Research in AI-based medical image classification using CNN, VGG and XGBoost. Co-authored 2 conference papers on deep learning for cancer detection. Gold Medal in academics.
-            <br><br><em>Experience: 2 years</em>
-            </div>
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/j-rajeswari.jpg" alt="Mrs. J. Rajeswari">
         </div>
-
-
-        <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="images/malathy.JPG.jpeg" alt="Mrs.K Malathy">
-            <div class="card-name">Mrs.K.Malathy</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">Communication &amp; Image processing</div>
-            <div class="card-email">malathyk07@gmail.com</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs.K.Malathy</strong>
-            Pursuing M.E. in Communication Systems with research interest in Digital Communication, focusing on modulation techniques and noise analysis.
-            <br><br><em>Experience: 10 years</em>
-            </div>
+        <div class="card-name">Mrs. J. Rajeswari</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">IoT &amp; Communication Systems</div>
+        <div class="card-email">j.rajeswari@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs. J. Rajeswari</strong> 14 international journal papers on fire safety, navigation devices and crop disease detection. Grants from AICTE, Anna University and DST for FDPs and seminars. TNSCST funded project recipient.
+        <br>
+        <br>
+        <em>Experience: 9+ years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/sakthipreetha.png" alt="Mrs. Sakthi Preetha">
         </div>
-
-        
-
-       <div class="staff-card">
-          <div class="card-front">
-            <img class="card-photo" src="images/shanmugavalli.JPG.jpeg" alt="Mrs.M.Shanmugavalli">
-            <div class="card-name">Mrs.M.Shanmugavalli</div>
-            <div class="card-role">Assistant Professor III</div>
-            <div class="card-spec">VLSI &amp; Embedded Systems</div>
-            <div class="card-email">shanmugavalli13579@gmail.com</div>
-          </div>
-          <div class="card-info">
-            <strong>Mrs. M. Shanmugavalli</strong>
-            Pursuing M.E. in Communication Systems with a strong academic background and interest in interdisciplinary research. Co-authored conference papers and awarded Gold Medal in academics.
-            <br><br><em>Experience: 6 years</em>
-            </div>
+        <div class="card-name">Mrs. A. Sakthi Preetha</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">Antenna &amp; Networks</div>
+        <div class="card-email">sps@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs. A. Sakthi Preetha</strong> M.E. in Wireless Technologies. Pursuing Ph.D. at Anna University. Research in metamaterial antennas, wearable antennas and networks. 4 international journal papers. University and college first rank holder. Lifetime member of IETE.
+        <br>
+        <br>
+        <em>Experience: 9+ years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/swedheetha.jpg" alt="Mrs. Swedheetha">
         </div>
-
-
-      
-
-
-      
+        <div class="card-name">Mrs. C. Swedheetha</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">Antenna &amp; Communication</div>
+        <div class="card-email">csa@vcet.ac.in</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs. C. Swedheetha</strong> Pursuing Ph.D. in RF Antennas at Anna University. Research in wireless body area networks and fractal antennas. Certified LabVIEW Associate Developer. GATE 87.13 percentile. Ideathon 2022 award winner.
+        <br>
+        <br>
+        <em>Experience: 10 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/ananthi roy.jpg" alt="Mrs. Ananthi Roy">
         </div>
+        <div class="card-name">Mrs. S. Ananthi Roy</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">VLSI &amp; Image Processing</div>
+        <div class="card-email">ananthi.roy@gmail.com</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs. S. Ananthi Roy</strong> M.E. from College of Engineering, Guindy. Senior Research Fellow at Mepco Schlenk. Research in Deep Learning, VLSI Signal Processing and steganography. NPTEL Deep Learning certification from IIT Madras.
+        <br>
+        <br>
+        <em>Experience: 2 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="staff members/staff/shanmuga priya.jpg" alt="Ms. Shanmuga Priya">
         </div>
-
-  </div><!-- /slides-track -->
-</div><!-- /slides-outer -->
-
-<!-- ARROWS -->
-<button class="arrow-btn arrow-left"  onclick="move(-1)">&#8592;</button>
-<button class="arrow-btn arrow-right" onclick="move(+1)">&#8594;</button>
-
-<!-- DOTS -->
-<div class="dots" id="dots"></div>
-
-<script>
+        <div class="card-name">Ms. R. Shanmuga Priya</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">Communication &amp; Embedded Systems</div>
+        <div class="card-email">shanmugapriya302002@gmail.com</div>
+       </div>
+       <div class="card-info">
+        <strong>Ms. R. Shanmuga Priya</strong> Pursuing M.E. in Communication Systems. Research in AI-based medical image classification using CNN, VGG and XGBoost. Co-authored 2 conference papers on deep learning for cancer detection. Gold Medal in academics.
+        <br>
+        <br>
+        <em>Experience: 2 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="images/malathy.JPG.jpeg" alt="Mrs.K Malathy">
+        </div>
+        <div class="card-name">Mrs.K.Malathy</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">Communication &amp; Image processing</div>
+        <div class="card-email">malathyk07@gmail.com</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs.K.Malathy</strong> Pursuing M.E. in Communication Systems with research interest in Digital Communication, focusing on modulation techniques and noise analysis.
+        <br>
+        <br>
+        <em>Experience: 10 years</em>
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <div class="photo-frame">
+         <img class="card-photo" src="images/shanmugavalli.JPG.jpeg" alt="Mrs.M.Shanmugavalli">
+        </div>
+        <div class="card-name">Mrs.M.Shanmugavalli</div>
+        <div class="card-role">Assistant Professor III</div>
+        <div class="card-spec">VLSI &amp; Embedded Systems</div>
+        <div class="card-email">shanmugavalli13579@gmail.com</div>
+       </div>
+       <div class="card-info">
+        <strong>Mrs. M. Shanmugavalli</strong> Pursuing M.E. in Communication Systems with a strong academic background and interest in interdisciplinary research. Co-authored conference papers and awarded Gold Medal in academics.
+        <br>
+        <br>
+        <em>Experience: 6 years</em>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- /slides-track -->
+  </div>
+  <!-- /slides-outer -->
+  <!-- ARROWS -->
+  <button class="arrow-btn arrow-left" onclick="move(-1)">←</button>
+  <button class="arrow-btn arrow-right" onclick="move(+1)">→</button>
+  <!-- DOTS -->
+  <div class="dots" id="dots"></div>
+  <script>
   function toggleMenu() {
   const m = document.getElementById('mobileMenu');
   const arrows = document.querySelectorAll('.arrow-btn');
@@ -800,24 +908,24 @@ body {
   m.style.display = isOpen ? 'none' : 'block';
   arrows.forEach(a => a.style.display = isOpen ? 'flex' : 'none');
 }
-
+ 
   const track   = document.getElementById('track');
   const slides  = track.querySelectorAll('.slide');
   const dotsEl  = document.getElementById('dots');
   const counter = document.getElementById('counter');
   let current   = 0;
   const total   = slides.length;
-
+ 
   /* update track width dynamically based on slide count */
   track.style.width = (total * 100) + 'vw';
-
+ 
   slides.forEach((_, i) => {
     const d = document.createElement('div');
     d.className = 'dot' + (i === 0 ? ' active' : '');
     d.onclick = () => goTo(i);
     dotsEl.appendChild(d);
   });
-
+ 
   function goTo(n) {
     current = (n + total) % total;
     track.style.transform = `translateX(-${current * 100}vw)`;
@@ -826,20 +934,40 @@ body {
     );
     counter.textContent = `${current + 1} / ${total}`;
   }
-
+ 
   function move(dir) { goTo(current + dir); }
-
+ 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') move(+1);
     if (e.key === 'ArrowLeft')  move(-1);
   });
-
+ 
   let startX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - startX;
     if (Math.abs(dx) > 50) move(dx < 0 ? +1 : -1);
   });
+ 
+  /* ── PHOTO FALLBACK ──
+     If a photo file is missing/broken, browsers show the alt text
+     stacked inside the circle. Replace it with a clean initials avatar instead. */
+  function initialsAvatar(name) {
+    const initials = name.split(/\s+/).filter(Boolean).slice(0, 2)
+      .map(w => w[0].toUpperCase()).join('');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" fill="#e6d3d5"/>
+      <text x="50" y="58" font-family="Arial, sans-serif" font-size="34"
+        font-weight="600" fill="#7a1620" text-anchor="middle">${initials}</text>
+    </svg>`;
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  }
+  document.querySelectorAll('img.card-photo').forEach(img => {
+    img.addEventListener('error', function handler() {
+      this.removeEventListener('error', handler);
+      this.src = initialsAvatar(this.alt || '?');
+    });
+  });
 </script>
-</body>
+ </body>
 </html>

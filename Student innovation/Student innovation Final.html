@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ECE ASSOCIATION - Student Innovation Corner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
   a { text-decoration: none; color: inherit; }
-
+ 
   body {
     font-family: 'Inter', sans-serif;
     color: #1a1a1a;
@@ -23,17 +23,18 @@
     line-height: 1.7;
     min-height: 100vh;
   }
-
+ 
   /* ===== Navbar (matches Contact page) ===== */
   .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; /* add this line if not merging into sticky above */
+}
   .nav-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -64,11 +65,20 @@
     border: none; color: #1a1a1a; padding: 4px 8px;
   }
   #mobileMenu {
-    display: none; list-style: none;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(0,0,0,0.08);
-  }
+  display: none;
+  list-style: none;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
   #mobileMenu.open { display: block; }
   #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
   #mobileMenu li a {
@@ -78,7 +88,7 @@
   }
   #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
   #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
-
+ 
   /* ===== Header ===== */
   .page-header {
     text-align: center;
@@ -116,7 +126,7 @@
     color: #7a1620;
     letter-spacing: 0.5px;
   }
-
+ 
   /* ===== Project grid (rows & columns) ===== */
   .cascade-wrap {
     max-width: 1180px;
@@ -128,7 +138,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
-
+ 
   .tab-card {
     position: relative;
     border-radius: 16px;
@@ -173,7 +183,7 @@
     font-size: 0.78rem; color: #7a1620;
     font-weight: 600;
   }
-
+ 
   @media (max-width: 1020px) {
     .cascade-track { grid-template-columns: repeat(3, 1fr); }
   }
@@ -183,7 +193,7 @@
   @media (max-width: 480px) {
     .cascade-track { grid-template-columns: 1fr; }
   }
-
+ 
   /* ===== Reveal Zone ===== */
   .reveal-zone {
     max-width: 1100px;
@@ -191,7 +201,7 @@
     padding: 0 24px 80px;
     min-height: 200px;
   }
-
+ 
   .reveal-header {
     display: flex; align-items: center;
     margin-bottom: 20px; gap: 14px;
@@ -205,7 +215,7 @@
     font-size: 1.4rem; font-weight: 600;
     color: #1a1a1a;
   }
-
+ 
   /* Project card (glass, light) */
   .project-card {
     background: rgba(255,255,255,0.72);
@@ -218,7 +228,7 @@
     display: flex;
     flex-direction: column;
   }
-
+ 
   /* image slider inside card */
   .proj-slider-wrap {
     position: relative;
@@ -269,7 +279,7 @@
     cursor: pointer; transition: background 0.2s;
   }
   .slide-dot.active { background: #7a1620; box-shadow: none; }
-
+ 
   .proj-body { padding: 26px 30px 30px; }
   .proj-body h2 {
     font-family: 'Playfair Display', serif;
@@ -292,7 +302,7 @@
     margin-top: 4px;
   }
   .proj-team span { color: #6b6b6b; font-weight: 500; }
-
+ 
   .proj-link {
     display: inline-block;
     margin-top: 14px;
@@ -303,7 +313,7 @@
     word-break: break-all;
   }
   .proj-link:hover { text-decoration: none; color: #4d0e15; }
-
+ 
   /* ===== Popup ===== */
   .popup {
     display: none; position: fixed; inset: 0;
@@ -316,7 +326,7 @@
     border-radius: 12px;
     box-shadow: 0 0 40px rgba(0,0,0,0.4);
   }
-
+ 
   /* ===== Footer ===== */
   .site-footer {
     text-align: center;
@@ -334,23 +344,61 @@
     border: 1px solid rgba(255,255,255,0.5);
   }
   .footer-card a { color: #7a1620; font-weight: 600; }
-  </style>
+  
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+ 
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+ 
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .proj-slider-wrap { height: 200px; }
+    .header-card { padding: 30px 20px; }
+  }
+ 
+</style>
  </head>
  <body>
   <!-- NAVBAR -->
   <nav class="navbar">
    <div class="nav-inner">
     <div class="nav-logos">
-     <img src="../images/templatemo_logo.png" alt="VCET">
-     <img src="../images/title_logo1.png" alt="ECE Association">
-     <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+     <img src="../images/templatemo_logo.png" alt="VCET"> <img src="../images/title_logo1.png" alt="ECE Association">
+     <div class="nav-brand">
+      ECE Association<span>VCET MADURAI</span>
+     </div>
     </div>
     <div class="nav-right">
      <div class="social-icons">
-      <a href="https://www.youtube.com/@VCETECE"><img src="../images/youtube.png" alt="YouTube"></a>
-      <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="../images/linkedin.png" alt="LinkedIn"></a>
-      <a href="https://www.instagram.com/vcet_ece_asso/"><img src="../images/instagram.png" alt="Instagram"></a>
-      <a href="mailto:vceteceassociation2627@gmail.com"><img src="../images/gmail.png" alt="Gmail"></a>
+      <a href="https://www.youtube.com/@VCETECE"><img src="../images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="../images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="../images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="../images/gmail.png" alt="Gmail"></a>
      </div>
      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
@@ -368,35 +416,29 @@
     <li><a href="../contact.html">Contact Us</a></li>
    </ul>
   </nav>
-
   <!-- HEADER -->
   <header class="page-header">
    <div class="header-card">
-    <div class="eyebrow">ECE Association &bull; VCET Madurai</div>
+    <div class="eyebrow">ECE Association • VCET Madurai</div>
     <h1>Student Innovation Corner</h1>
     <p>Select a project below to explore the innovation</p>
    </div>
   </header>
-
   <!-- GRID -->
   <div class="cascade-wrap">
    <div class="cascade-track" id="cascadeTrack"></div>
   </div>
-
   <!-- REVEAL -->
   <div class="reveal-zone" id="revealZone"></div>
-
   <!-- POPUP -->
   <div id="imagePopup" class="popup" onclick="closeImage()">
    <img id="popupImg">
   </div>
-
   <footer class="site-footer">
-    <div class="footer-card">
-      Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
-    </div>
+   <div class="footer-card">
+    Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
+   </div>
   </footer>
-
   <script>
 const PROJECTS = [
   {
@@ -536,10 +578,10 @@ const PROJECTS = [
     link: "https://store.pothi.com/book/sitangshu-sekhar-biswas-coolant-flow-drive-control-fast-reactor/"
   }
 ];
-
+ 
 const track = document.getElementById("cascadeTrack");
 const revealZone = document.getElementById("revealZone");
-
+ 
 // Build project grid tiles
 PROJECTS.forEach((proj, idx) => {
   const tab = document.createElement("div");
@@ -557,29 +599,29 @@ PROJECTS.forEach((proj, idx) => {
   `;
   track.appendChild(tab);
 });
-
+ 
 // Slider state per project
 const sliderState = PROJECTS.map(() => ({ current: 0 }));
-
+ 
 function selectTab(idx) {
   document.querySelectorAll(".tab-card").forEach((t, i) =>
     t.classList.toggle("active", i === idx)
   );
-
+ 
   const proj = PROJECTS[idx];
   const imgCount = proj.images.length;
-
+ 
   const dotsHTML = imgCount > 1
     ? proj.images.map((_, i) =>
         `<div class="slide-dot ${i === 0 ? 'active' : ''}" onclick="goSlide(${idx},${i},event)"></div>`
       ).join("")
     : "";
-
+ 
   const prevBtn = imgCount > 1
     ? `<button class="slider-btn prev" onclick="changeSlide(${idx},-1,event)">&#8592;</button>` : "";
   const nextBtn = imgCount > 1
     ? `<button class="slider-btn next" onclick="changeSlide(${idx},1,event)">&#8594;</button>` : "";
-
+ 
   revealZone.innerHTML = `
     <div class="reveal-header">
       <div class="reveal-chip" style="background:${proj.color}"></div>
@@ -606,19 +648,19 @@ function selectTab(idx) {
       </div>
     </div>
   `;
-
+ 
   // reset slider position
   sliderState[idx].current = 0;
   updateSlider(idx);
-
+ 
   gsap.fromTo(".project-card",
     { opacity: 0, y: 28 },
     { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
   );
-
+ 
   revealZone.scrollIntoView({ behavior: "smooth", block: "start" });
 }
-
+ 
 function changeSlide(idx, dir, e) {
   e.stopPropagation();
   const proj = PROJECTS[idx];
@@ -626,13 +668,13 @@ function changeSlide(idx, dir, e) {
   state.current = (state.current + dir + proj.images.length) % proj.images.length;
   updateSlider(idx);
 }
-
+ 
 function goSlide(idx, pos, e) {
   e.stopPropagation();
   sliderState[idx].current = pos;
   updateSlider(idx);
 }
-
+ 
 function updateSlider(idx) {
   const cur = sliderState[idx].current;
   const sliderEl = document.getElementById("slider-" + idx);
@@ -644,14 +686,14 @@ function updateSlider(idx) {
     );
   }
 }
-
+ 
 // Toggle mobile menu visibility
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   if (!menu) return;
   menu.classList.toggle('open');
 }
-
+ 
 // Lightbox for project images
 function openImage(src, e) {
   e.stopPropagation();
@@ -660,12 +702,12 @@ function openImage(src, e) {
   img.src = src;
   popup.style.display = 'flex';
 }
-
+ 
 function closeImage() {
   const popup = document.getElementById('imagePopup');
   popup.style.display = 'none';
 }
-
+ 
 // show first project on load
 document.addEventListener('DOMContentLoaded', () => { if (PROJECTS.length) selectTab(0); });
 </script>

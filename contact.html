@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us | ECE ASSOCIATION</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | ECE ASSOCIATION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
   body {
     font-family: 'Inter', sans-serif;
     color: #1a1a1a;
@@ -18,25 +18,26 @@
     background-attachment: fixed;
     line-height: 1.7;
   }
-
+ 
   a { color: inherit; text-decoration: none; }
-
+ 
   .wrapper {
     max-width: 1180px;
     margin: 0 auto;
   }
-
+ 
   /* ===== Navbar ===== */
   .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; /* add this line if not merging into sticky above */
+}
+ 
   .nav-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -45,20 +46,20 @@
     justify-content: space-between;
     padding: 14px 24px;
   }
-
+ 
   .nav-logos {
     display: flex;
     align-items: center;
     gap: 12px;
   }
-
+ 
   .nav-logos img {
     height: 44px;
     width: 44px;
     object-fit: contain;
     border-radius: 50%;
   }
-
+ 
   .nav-brand {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
@@ -74,13 +75,13 @@
     color: #6b6b6b;
     font-family: 'Inter', sans-serif;
   }
-
+ 
   .nav-right {
     display: flex;
     align-items: center;
     gap: 18px;
   }
-
+ 
   .social-icons {
     display: flex;
     gap: 10px;
@@ -93,7 +94,7 @@
     transition: opacity 0.25s ease, transform 0.25s ease;
   }
   .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
-
+ 
   .menu-toggle {
     font-size: 26px;
     cursor: pointer;
@@ -102,14 +103,22 @@
     color: #1a1a1a;
     padding: 4px 8px;
   }
-
+ 
   #mobileMenu {
-    display: none;
-    list-style: none;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(0,0,0,0.08);
-  }
+  display: none;
+  list-style: none;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
   #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
   #mobileMenu li a {
     display: block;
@@ -121,7 +130,7 @@
   }
   #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
   #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
-
+ 
   /* ===== Marquee strip ===== */
   .marquee-strip {
     background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
@@ -142,7 +151,7 @@
     from { transform: translateX(0); }
     to { transform: translateX(-100%); }
   }
-
+ 
   /* ===== Hero ===== */
   .hero {
     padding: 90px 24px 70px;
@@ -183,12 +192,12 @@
     font-family: 'Inter', sans-serif;
     letter-spacing: 1px;
   }
-
+ 
   /* ===== Sections ===== */
   .section {
     padding: 30px 24px 60px;
   }
-
+ 
   .section-card {
     max-width: 1100px;
     margin: 0 auto;
@@ -200,9 +209,9 @@
     padding: 48px;
     box-shadow: 0 16px 40px rgba(0,0,0,0.08);
   }
-
+ 
   .section-card + .section-card { margin-top: 36px; }
-
+ 
   .section-label {
     font-size: 0.72rem;
     font-weight: 700;
@@ -211,7 +220,7 @@
     text-transform: uppercase;
     margin-bottom: 10px;
   }
-
+ 
   .section-card h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem;
@@ -221,13 +230,13 @@
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
   }
-
+ 
   .section-card > p.intro {
     color: #333;
     font-size: 0.96rem;
     margin-bottom: 32px;
   }
-
+ 
   /* ===== Contact layout ===== */
   .contact-grid {
     display: grid;
@@ -235,7 +244,7 @@
     gap: 40px;
     align-items: start;
   }
-
+ 
   .contact-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
@@ -245,19 +254,19 @@
     padding-bottom: 10px;
     border-bottom: 2px solid rgba(122,22,32,0.18);
   }
-
+ 
   .contact-info p {
     font-size: 0.95rem;
     color: #333;
     margin-bottom: 18px;
   }
-
+ 
   .contact-info a {
     color: #7a1620;
     font-weight: 600;
   }
   .contact-info a:hover { text-decoration: underline; }
-
+ 
   .map-frame {
     border-radius: 16px;
     overflow: hidden;
@@ -270,7 +279,7 @@
     border: 0;
     display: block;
   }
-
+ 
   /* ===== Socials grid ===== */
   .socials-grid {
     display: grid;
@@ -278,7 +287,7 @@
     gap: 24px;
     margin-top: 8px;
   }
-
+ 
   .social-card {
     text-align: center;
     background: rgba(255,255,255,0.6);
@@ -313,7 +322,7 @@
     color: #7a1620;
     border-bottom: 1px solid rgba(122,22,32,0.35);
   }
-
+ 
   /* ===== Footer ===== */
   .site-footer {
     text-align: center;
@@ -331,34 +340,73 @@
     border: 1px solid rgba(255,255,255,0.5);
   }
   .footer-card a { color: #7a1620; font-weight: 600; }
-
+ 
   @media (max-width: 860px) {
     .contact-grid { grid-template-columns: 1fr; }
     .socials-grid { grid-template-columns: 1fr; }
     .section-card { padding: 32px 22px; }
   }
+ 
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+ 
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+ 
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .map-frame iframe { height: 240px; }
+  }
+  @media (max-width: 480px) {
+    .contact-info h3 { font-size: 1rem; }
+  }
+ 
 </style>
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="nav-inner">
+ </head>
+ <body>
+  <nav class="navbar">
+   <div class="nav-inner">
     <div class="nav-logos">
-      <img src="images/templatemo_logo.png" alt="VCET">
-      <img src="images/title_logo1.png" alt="ECE Association">
-      <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+     <img src="images/templatemo_logo.png" alt="VCET"> <img src="images/title_logo1.png" alt="ECE Association">
+     <div class="nav-brand">
+      ECE Association<span>VCET MADURAI</span>
+     </div>
     </div>
     <div class="nav-right">
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a>
-        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
-      </div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
-  </div>
-  <ul id="mobileMenu">
+   </div>
+   <ul id="mobileMenu">
     <li><a href="index.html">Home</a></li>
     <li><a href="achivements/Achievement.html">Achievements</a></li>
     <li><a href="event list/index.html">Event List</a></li>
@@ -369,81 +417,67 @@
     <li><a href="lab.html">Laboratories</a></li>
     <li><a href="magazine.html">Magazine</a></li>
     <li><a href="contact.html" class="current">Contact Us</a></li>
-  </ul>
-</nav>
-
-
-
-<header class="hero">
-  <div class="hero-card">
+   </ul>
+  </nav>
+  <header class="hero">
+   <div class="hero-card">
     <div class="eyebrow">Velammal College of Engineering and Technology</div>
     <h1>Contact Us<span>ECE Association, VCET Madurai</span></h1>
-  </div>
-</header>
-
-<main class="section">
-
-  <div class="section-card">
+   </div>
+  </header>
+  <main class="section">
+   <div class="section-card">
     <div class="section-label">Get in Touch</div>
     <h2>Reach the ECE Association</h2>
     <p class="intro">To upload your achievements or innovation to the website, kindly send your achievement or project details to the ECE Association.</p>
-
     <div class="contact-grid">
-      <div class="contact-info">
-        <h3>Address</h3>
-        <p>
-          Velammal College of Engineering and Technology,<br>
-          Madurai to Rameshwaram Highway, Viraganoor,<br>
-          Madurai&nbsp;-&nbsp;625009.
-        </p>
-        <h3>Email</h3>
-        <p>
-          <a href="mailto:vceteceassociation2627@gmail.com">vceteceassociation2627@gmail.com</a>
-        </p>
-      </div>
-
-      <div class="map-frame">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.0035819034415!2d78.1760881!3d9.8938804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c542e773b4bf%3A0x18ff131aca07d79b!2sVELAMMAL%20COLLEGE%20OF%20ENGINEERING%20AND%20TECHNOLOGY!5e1!3m2!1sen!2sin!4v1752420888871!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+     <div class="contact-info">
+      <h3>Address</h3>
+      <p>Velammal College of Engineering and Technology,
+       <br>
+       Madurai to Rameshwaram Highway, Viraganoor,
+       <br>
+       Madurai&nbsp;-&nbsp;625009.</p>
+      <h3>Email</h3>
+      <p><a href="mailto:vceteceassociation2627@gmail.com">vceteceassociation2627@gmail.com</a></p>
+     </div>
+     <div class="map-frame">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.0035819034415!2d78.1760881!3d9.8938804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c542e773b4bf%3A0x18ff131aca07d79b!2sVELAMMAL%20COLLEGE%20OF%20ENGINEERING%20AND%20TECHNOLOGY!5e1!3m2!1sen!2sin!4v1752420888871!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     </div>
     </div>
-  </div>
-
-  <div class="section-card">
+   </div>
+   <div class="section-card">
     <div class="section-label">Connect With Us</div>
     <h2>Our Socials</h2>
     <div class="socials-grid">
-      <div class="social-card">
-        <img src="images/youtube.png" alt="YouTube">
-        <h4>YouTube</h4>
-        <a class="visit-link" href="https://www.youtube.com/@VCETECE">Visit Channel</a>
-      </div>
-      <div class="social-card">
-        <img src="images/instagram.png" alt="Instagram">
-        <h4>Instagram</h4>
-        <a class="visit-link" href="https://www.instagram.com/vcet_ece_asso/">Visit Profile</a>
-      </div>
-      <div class="social-card">
-        <img src="images/linkedin.png" alt="LinkedIn">
-        <h4>LinkedIn</h4>
-        <a class="visit-link" href="http://www.linkedin.com/in/vcet-ece-association-064684374">Visit Page</a>
-      </div>
+     <div class="social-card">
+      <img src="images/youtube.png" alt="YouTube">
+      <h4>YouTube</h4>
+      <a class="visit-link" href="https://www.youtube.com/@VCETECE">Visit Channel</a>
+     </div>
+     <div class="social-card">
+      <img src="images/instagram.png" alt="Instagram">
+      <h4>Instagram</h4>
+      <a class="visit-link" href="https://www.instagram.com/vcet_ece_asso/">Visit Profile</a>
+     </div>
+     <div class="social-card">
+      <img src="images/linkedin.png" alt="LinkedIn">
+      <h4>LinkedIn</h4>
+      <a class="visit-link" href="http://www.linkedin.com/in/vcet-ece-association-064684374">Visit Page</a>
+     </div>
     </div>
-  </div>
-
-</main>
-
-<footer class="site-footer">
-  <div class="footer-card">
+   </div>
+  </main>
+  <footer class="site-footer">
+   <div class="footer-card">
     Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
-  </div>
-</footer>
-
-<script>
+   </div>
+  </footer>
+  <script>
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 </script>
-
-</body>
+ </body>
 </html>

@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laboratories - ECE ASSOCIATION</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratories - ECE ASSOCIATION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
   body {
     font-family: 'Inter', sans-serif;
     color: #1a1a1a;
@@ -18,19 +18,20 @@
     background-attachment: fixed;
     line-height: 1.7;
   }
-
+ 
   a { color: inherit; text-decoration: none; }
-
+ 
   /* ===== Navbar (same as index) ===== */
   .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative; /* add this line if not merging into sticky above */
+}
   .nav-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -68,11 +69,20 @@
     color: #1a1a1a; padding: 4px 8px;
   }
   #mobileMenu {
-    display: none; list-style: none;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(0,0,0,0.08);
-  }
+  display: none;
+  list-style: none;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
   #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
   #mobileMenu li a {
     display: block; padding: 14px 24px; color: #1a1a1a;
@@ -134,7 +144,7 @@
     margin-left: auto;
     margin-right: auto;
   }
-
+ 
   /* ===== Section shell ===== */
   .section { padding: 30px 24px 70px; }
   .section-intro {
@@ -150,7 +160,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem; font-weight: 600; color: #1a1a1a;
   }
-
+ 
   /* ===== Lab grid ===== */
   .lab-grid {
     max-width: 1180px;
@@ -159,7 +169,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
-
+ 
   .lab-card {
     background: rgba(255,255,255,0.72);
     backdrop-filter: blur(14px) saturate(150%);
@@ -176,7 +186,7 @@
     transform: translateY(-4px);
     box-shadow: 0 22px 48px rgba(0,0,0,0.14);
   }
-
+ 
   /* Photo slot - swap the placeholder div for an <img> per lab */
   .lab-photo {
     position: relative;
@@ -219,7 +229,7 @@
     padding: 5px 12px;
     border-radius: 20px;
   }
-
+ 
   .lab-body { padding: 24px 26px 28px; flex: 1; display: flex; flex-direction: column; }
   .lab-body h3 {
     font-family: 'Playfair Display', serif;
@@ -256,7 +266,7 @@
     padding: 5px 11px;
     border-radius: 14px;
   }
-
+ 
   /* ===== Footer ===== */
   .site-footer { text-align: center; padding: 30px 24px 50px; }
   .footer-card {
@@ -270,33 +280,72 @@
     border: 1px solid rgba(255,255,255,0.5);
   }
   .footer-card a { color: #7a1620; font-weight: 600; }
-
-
+ 
+ 
   @media (max-width: 860px) {
     .lab-grid { grid-template-columns: 1fr; }
   }
+ 
+  /* ===== Mobile Optimization Layer ===== */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
+ 
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 36px; }
+    .hero-card { padding: 30px 20px; border-radius: 18px; }
+    .hero-card .eyebrow { font-size: 0.68rem; letter-spacing: 1.5px; }
+    .hero-card p.sub, .hero-card p.intro { font-size: 0.9rem; }
+    .section { padding: 18px 14px 40px; }
+    .section-card { padding: 24px 18px !important; border-radius: 16px; }
+    .section-card + .section-card { margin-top: 24px; }
+    .section-card h2, .section-card > h2 {
+      font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 12px;
+    }
+    .section-label { font-size: 0.66rem; }
+    .footer-card { padding: 16px; font-size: 0.8rem; }
+    .site-footer { padding: 20px 16px 36px; }
+    .marquee-strip { font-size: 0.78rem; }
+  }
+ 
+  @media (max-width: 480px) {
+    .nav-inner { padding: 10px 14px; gap: 8px; }
+    .nav-logos { gap: 8px; }
+    .nav-logos img { height: 34px; width: 34px; }
+    .nav-brand { font-size: 0.82rem; }
+    .nav-brand span { display: none; }
+    .nav-right { gap: 8px; }
+    .social-icons { display: none; }
+    .menu-toggle { font-size: 22px; padding: 2px 6px; }
+    #mobileMenu li a { padding: 12px 18px; font-size: 0.9rem; }
+    .hero-card h1 { font-size: 1.7rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .lab-photo { height: 170px; }
+  }
+  @media (max-width: 480px) {
+    .lab-body { padding: 18px 18px 20px; }
+  }
+ 
 </style>
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="nav-inner">
+ </head>
+ <body>
+  <nav class="navbar">
+   <div class="nav-inner">
     <div class="nav-logos">
-      <img src="images/templatemo_logo.png" alt="VCET">
-      <img src="images/title_logo1.png" alt="ECE Association">
-      <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+     <img src="images/templatemo_logo.png" alt="VCET"> <img src="images/title_logo1.png" alt="ECE Association">
+     <div class="nav-brand">
+      ECE Association<span>VCET MADURAI</span>
+     </div>
     </div>
     <div class="nav-right">
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a>
-        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
-      </div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
-  </div>
-  <ul id="mobileMenu">
+   </div>
+   <ul id="mobileMenu">
     <li><a href="index.html">Home</a></li>
     <li><a href="achivements/Achievement.html">Achievements</a></li>
     <li><a href="event list/index.html">Event List</a></li>
@@ -307,185 +356,167 @@
     <li><a href="lab.html" class="current">Laboratories</a></li>
     <li><a href="magazine.html">Magazine</a></li>
     <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-</nav>
-
-
-<header class="hero">
-  <div class="hero-card">
+   </ul>
+  </nav>
+  <header class="hero">
+   <div class="hero-card">
     <div class="eyebrow">Department of Electronics &amp; Communication Engineering</div>
     <h1>Laboratories<span>Where Circuits Meet Curiosity</span></h1>
     <p class="intro">Seven dedicated labs equip every ECE student with hands-on experience across communication systems, VLSI, embedded design and beyond — backed by DRDO, AICTE and DST funded infrastructure.</p>
-  </div>
-</header>
-
-<main class="section">
-  <div class="section-intro">
+   </div>
+  </header>
+  <main class="section">
+   <div class="section-intro">
     <div class="section-label">Infrastructure</div>
     <h2>Our Laboratories</h2>
-  </div>
-
-  <div class="lab-grid">
-
+   </div>
+   <div class="lab-grid">
     <!-- ================= LAB 1 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/communication-systems-lab.jpg" alt="Communication Systems Lab"> -->
-        <img src="images/CS_lab.jpeg" alt="Communication Systems Lab">
-        <div class="lab-tag">RF &amp; Comms</div>
-      </div>
-      <div class="lab-body">
-        <h3>Communication Systems Lab</h3>
-       <div class="lab-room">5G Simulation • SDR Technology • Wireless Innovation Zone</div>
-
-        <!-- Replace with actual lab description -->
-        <p class="lab-desc">The Communication Systems Laboratory provides students with practical exposure to modern communication technologies, including analog and digital transmission techniques. The lab is equipped with advanced tools that enable experimentation with modulation, multiplexing, and signal propagation. Students gain hands-on experience in analyzing real-time signals and understanding wireless communication concepts.</p>
-        <ul class="lab-equip">
-          <li>Signal Generators</li>
-          <li>Spectrum Analyzers</li>
-          <li>Antenna Trainer Kits</li>
-        </ul>
-      </div>
+      <img src="images/CS_lab.jpeg" alt="Communication Systems Lab">
+      <div class="lab-tag">RF &amp; Comms</div>
+     </div>
+     <div class="lab-body">
+      <h3>Communication Systems Lab</h3>
+      <div class="lab-room">5G Simulation • SDR Technology • Wireless Innovation Zone</div>
+      <!-- Replace with actual lab description -->
+      <p class="lab-desc">The Communication Systems Laboratory provides students with practical exposure to modern communication technologies, including analog and digital transmission techniques. The lab is equipped with advanced tools that enable experimentation with modulation, multiplexing, and signal propagation. Students gain hands-on experience in analyzing real-time signals and understanding wireless communication concepts.</p>
+      <ul class="lab-equip">
+       <li>Signal Generators</li>
+       <li>Spectrum Analyzers</li>
+       <li>Antenna Trainer Kits</li>
+      </ul>
+     </div>
     </div>
-
     <!-- ================= LAB 2 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/dsp-lab.jpg" alt="Digital Signal Processing Lab"> -->
-       <img src="images/dsp_lab.jpeg" alt="Digital Signal Processing Lab">
-        <div class="lab-tag">DSP</div>
-      </div>
-      <div class="lab-body">
-        <h3>Digital Signal Processing Lab</h3>
-       <div class="lab-room">MATLAB & Python • Real-time Signal Processing • Audio Analysis Setup</div>
-
-        <p class="lab-desc">The Digital Signal Processing (DSP) Laboratory focuses on the analysis and processing of signals using modern computational tools. Students work with platforms like MATLAB and Python to design filters, perform spectral analysis, and process real-time audio and image signals. The lab provides a strong foundation in understanding signal behavior and system performance.</p>
-        <ul class="lab-equip">
-          <li>TMS320 DSP Kits</li>
-          <li>MATLAB Workstations</li>
-          <li>CRO &amp; Function Generators</li>
-        </ul>
-      </div>
+      <img src="images/dsp_lab.jpeg" alt="Digital Signal Processing Lab">
+      <div class="lab-tag">DSP</div>
+     </div>
+     <div class="lab-body">
+      <h3>Digital Signal Processing Lab</h3>
+      <div class="lab-room">MATLAB &amp; Python • Real-time Signal Processing • Audio Analysis Setup</div>
+      <p class="lab-desc">The Digital Signal Processing (DSP) Laboratory focuses on the analysis and processing of signals using modern computational tools. Students work with platforms like MATLAB and Python to design filters, perform spectral analysis, and process real-time audio and image signals. The lab provides a strong foundation in understanding signal behavior and system performance.</p>
+      <ul class="lab-equip">
+       <li>TMS320 DSP Kits</li>
+       <li>MATLAB Workstations</li>
+       <li>CRO &amp; Function Generators</li>
+      </ul>
+     </div>
     </div>
-
     <!-- ================= LAB 3 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/vlsi-lab.jpg" alt="VLSI Design Lab"> -->
-        <img src="images/Vlsi_lab.jpeg" alt="VLSI Design Lab">
-        <div class="lab-tag">VLSI</div>
-      </div>
-      <div class="lab-body">
-        <h3>VLSI Design Lab</h3>
-        <div class="lab-room">MATLAB & Python • Real-time Signal Processing • Audio Analysis Setup</div>
-
-        <p class="lab-desc">The VLSI Design Laboratory offers an advanced environment for learning integrated circuit design and semiconductor technologies. Students are trained in using industry-standard Electronic Design Automation (EDA) tools for circuit simulation, synthesis, and layout design. The lab emphasizes practical implementation through FPGA prototyping and chip-level design projects. </p>
-        <ul class="lab-equip">
-          <li>Xilinx FPGA Boards</li>
-          <li>Cadence / Modelsim</li>
-          <li>High-end Workstations</li>
-        </ul>
-      </div>
+      <img src="images/Vlsi_lab.jpeg" alt="VLSI Design Lab">
+      <div class="lab-tag">VLSI</div>
+     </div>
+     <div class="lab-body">
+      <h3>VLSI Design Lab</h3>
+      <div class="lab-room">MATLAB &amp; Python • Real-time Signal Processing • Audio Analysis Setup</div>
+      <p class="lab-desc">The VLSI Design Laboratory offers an advanced environment for learning integrated circuit design and semiconductor technologies. Students are trained in using industry-standard Electronic Design Automation (EDA) tools for circuit simulation, synthesis, and layout design. The lab emphasizes practical implementation through FPGA prototyping and chip-level design projects.</p>
+      <ul class="lab-equip">
+       <li>Xilinx FPGA Boards</li>
+       <li>Cadence / Modelsim</li>
+       <li>High-end Workstations</li>
+      </ul>
+     </div>
     </div>
-
     <!-- ================= LAB 4 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/microprocessor-lab.jpg" alt="Microprocessor and Microcontroller Lab"> -->
-        <img src="images/Mpmc_lab.jpeg" alt="Microprocessor & Microcontroller Lab">
-        <div class="lab-tag">Embedded Core</div>
-      </div>
-      <div class="lab-body">
-        <h3>Microprocessor &amp; Microcontroller Lab</h3>
-        <div class="lab-room">Embedded Systems • ARM Kits • Robotics Integration</div>
-        <p class="lab-desc">The Microprocessor and Microcontroller Laboratory provides hands-on experience with programming and interfacing of microprocessors and microcontrollers. Students work with kits such as 8085/8086 and modern controllers like ARM and PIC to develop embedded applications. The lab focuses on real-time problem-solving, hardware interfacing, and system design.</p>
-        <ul class="lab-equip">
-          <li>8085 / 8086 Kits</li>
-          <li>ARM &amp; PIC Trainers</li>
-          <li>Interfacing Modules</li>
-        </ul>
-      </div>
+      <img src="images/Mpmc_lab.jpeg" alt="Microprocessor &amp; Microcontroller Lab">
+      <div class="lab-tag">Embedded Core</div>
+     </div>
+     <div class="lab-body">
+      <h3>Microprocessor &amp; Microcontroller Lab</h3>
+      <div class="lab-room">Embedded Systems • ARM Kits • Robotics Integration</div>
+      <p class="lab-desc">The Microprocessor and Microcontroller Laboratory provides hands-on experience with programming and interfacing of microprocessors and microcontrollers. Students work with kits such as 8085/8086 and modern controllers like ARM and PIC to develop embedded applications. The lab focuses on real-time problem-solving, hardware interfacing, and system design.</p>
+      <ul class="lab-equip">
+       <li>8085 / 8086 Kits</li>
+       <li>ARM &amp; PIC Trainers</li>
+       <li>Interfacing Modules</li>
+      </ul>
+     </div>
     </div>
-
     <!-- ================= LAB 5 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/electron-devices-lab.jpg" alt="Electronic Devices and Circuits Lab"> -->
-        <img src="images/Electronic_Devices_lab.jpeg" alt="Electronic Devices & Circuits Lab">
-        <div class="lab-tag">Devices &amp; Circuits</div>
-      </div>
-      <div class="lab-body">
-        <h3>Electronic Devices &amp; Circuits Lab</h3>
-        <div class="lab-room">Smart Workbenches • Circuit Simulation • Practical Innovation Space</div>
-        <p class="lab-desc">The Electronic Devices and Circuits Laboratory introduces students to the fundamentals of electronic components and circuit behavior. Through practical experiments, students study the characteristics of diodes, transistors, and amplifiers. The lab emphasizes hands-on learning using modern workbenches and simulation tools. </p>
-        <ul class="lab-equip">
-          <li>Regulated Power Supplies</li>
-          <li>Breadboard Stations</li>
-          <li>Component Kits</li>
-        </ul>
-      </div>
+      <img src="images/Electronic_Devices_lab.jpeg" alt="Electronic Devices &amp; Circuits Lab">
+      <div class="lab-tag">Devices &amp; Circuits</div>
+     </div>
+     <div class="lab-body">
+      <h3>Electronic Devices &amp; Circuits Lab</h3>
+      <div class="lab-room">Smart Workbenches • Circuit Simulation • Practical Innovation Space</div>
+      <p class="lab-desc">The Electronic Devices and Circuits Laboratory introduces students to the fundamentals of electronic components and circuit behavior. Through practical experiments, students study the characteristics of diodes, transistors, and amplifiers. The lab emphasizes hands-on learning using modern workbenches and simulation tools.</p>
+      <ul class="lab-equip">
+       <li>Regulated Power Supplies</li>
+       <li>Breadboard Stations</li>
+       <li>Component Kits</li>
+      </ul>
+     </div>
     </div>
-
     <!-- ================= LAB 6 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/analog-digital-lab.jpg" alt="Analog and Digital Electronics Lab"> -->
-       <img src="images/ADC_lab.jpeg" alt="Analog & Digital Electronics Lab">
-        <div class="lab-tag">Analog / Digital</div>
-      </div>
-      <div class="lab-body">
-        <h3>Analog &amp; Digital Electronics Lab</h3>
-        <div class="lab-room">Logic Design • PCB Prototyping • Mixed Signal Testing</div>
-        <p class="lab-desc">The Analog and Digital Electronics Laboratory focuses on the design and analysis of both analog and digital circuits. Students perform experiments on logic gates, combinational and sequential circuits, and analog systems. The lab is equipped with trainer kits and testing instruments that enable practical learning. </p>
-        <ul class="lab-equip">
-          <li>Logic Gate Trainers</li>
-          <li>ADC / DAC Kits</li>
-          <li>Digital IC Trainers</li>
-        </ul>
-      </div>
+      <img src="images/ADC_lab.jpeg" alt="Analog &amp; Digital Electronics Lab">
+      <div class="lab-tag">Analog / Digital</div>
+     </div>
+     <div class="lab-body">
+      <h3>Analog &amp; Digital Electronics Lab</h3>
+      <div class="lab-room">Logic Design • PCB Prototyping • Mixed Signal Testing</div>
+      <p class="lab-desc">The Analog and Digital Electronics Laboratory focuses on the design and analysis of both analog and digital circuits. Students perform experiments on logic gates, combinational and sequential circuits, and analog systems. The lab is equipped with trainer kits and testing instruments that enable practical learning.</p>
+      <ul class="lab-equip">
+       <li>Logic Gate Trainers</li>
+       <li>ADC / DAC Kits</li>
+       <li>Digital IC Trainers</li>
+      </ul>
+     </div>
     </div>
-
     <!-- ================= LAB 7 ================= -->
     <div class="lab-card">
-      <div class="lab-photo">
-        <!-- Replace the placeholder-mark block below with:
+     <div class="lab-photo">
+      <!-- Replace the placeholder-mark block below with:
              <img src="lab/iot-embedded-lab.jpg" alt="IoT and Embedded Systems Lab"> -->
-         <img src="images/I&E_lab.jpeg" alt="IoT & Embedded Systems Lab">
-        <div class="lab-tag">IoT &amp; Embedded</div>
-      </div>
-      <div class="lab-body">
-        <h3>IoT &amp; Embedded Systems Lab</h3>
-        <div class="lab-room">IoT Devices • Cloud Integration • Smart Automation Projects</div>
-        <p class="lab-desc">The IoT and Embedded Systems Laboratory is a modern innovation space where students design and develop smart devices using microcontrollers, sensors, and cloud platforms. The lab focuses on real-time data acquisition, automation, and connectivity.</p>
-        <ul class="lab-equip">
-          <li>Raspberry Pi &amp; Arduino</li>
-          <li>Sensor Node Kits</li>
-          <li>Wi-Fi / IoT Modules</li>
-        </ul>
-      </div>
+      <img src="images/I&amp;E_lab.jpeg" alt="IoT &amp; Embedded Systems Lab">
+      <div class="lab-tag">IoT &amp; Embedded</div>
+     </div>
+     <div class="lab-body">
+      <h3>IoT &amp; Embedded Systems Lab</h3>
+      <div class="lab-room">IoT Devices • Cloud Integration • Smart Automation Projects</div>
+      <p class="lab-desc">The IoT and Embedded Systems Laboratory is a modern innovation space where students design and develop smart devices using microcontrollers, sensors, and cloud platforms. The lab focuses on real-time data acquisition, automation, and connectivity.</p>
+      <ul class="lab-equip">
+       <li>Raspberry Pi &amp; Arduino</li>
+       <li>Sensor Node Kits</li>
+       <li>Wi-Fi / IoT Modules</li>
+      </ul>
+     </div>
     </div>
-
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="footer-card">
+   </div>
+  </main>
+  <footer class="site-footer">
+   <div class="footer-card">
     Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
-  </div>
-</footer>
-
-<script>
+   </div>
+  </footer>
+  <script>
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 </script>
-
-</body>
+ </body>
 </html>
