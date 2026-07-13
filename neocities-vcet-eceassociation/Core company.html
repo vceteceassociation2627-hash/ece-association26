@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECE ASSOCIATION — Core Company</title>
+  <link rel="icon" href="images/title_logo1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    background-image: url(images/templatemo_body.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    line-height: 1.7;
+  }
+ 
+  a { color: inherit; text-decoration: none; }
+ 
+  /* ===== Navbar ===== */
+  .navbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .nav-logos { display: flex; align-items: center; gap: 12px; }
+  .nav-logos img { height: 44px; width: 44px; object-fit: contain; border-radius: 50%; }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: #7a1620; line-height: 1.2; }
+  .nav-brand span { display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 1px; color: #6b6b6b; font-family: 'Inter', sans-serif; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .social-icons { display: flex; gap: 10px; }
+  .social-icons img { width: 26px; height: 26px; border-radius: 6px; opacity: 0.85; transition: opacity 0.25s ease, transform 0.25s ease; }
+  .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
+  .menu-toggle { font-size: 26px; cursor: pointer; background: none; border: none; color: #1a1a1a; padding: 4px 8px; }
+  #mobileMenu { display: none; list-style: none; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-top: 1px solid rgba(0,0,0,0.08); }
+  #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  #mobileMenu li a { display: block; padding: 14px 24px; color: #1a1a1a; font-weight: 500; font-size: 0.95rem; transition: background 0.2s ease, padding-left 0.2s ease; }
+  #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
+  #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
+ 
+  /* ===== Marquee ===== */
+  .marquee-strip {
+    background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
+    color: #fff; overflow: hidden; white-space: nowrap; padding: 10px 0;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3px;
+  }
+  .marquee-strip .marquee-text { display: inline-block; padding-left: 100%; animation: marquee 40s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+ 
+  /* ===== Hero ===== */
+  .hero { padding: 90px 24px 60px; text-align: center; }
+  .hero-card {
+    max-width: 760px; margin: 0 auto;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 24px; padding: 50px 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  .hero-card .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; color: #7a1620; text-transform: uppercase; margin-bottom: 14px; }
+  .hero-card h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: #1a1a1a; margin-bottom: 14px; }
+  .hero-card p.sub { font-size: 1rem; color: #444; max-width: 560px; margin: 0 auto; }
+ 
+  /* ===== Sections ===== */
+  .section { padding: 30px 24px 70px; }
+  .section-card {
+    max-width: 1100px; margin: 0 auto;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px; padding: 48px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  }
+  .section-card + .section-card { margin-top: 36px; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; color: #7a1620; text-transform: uppercase; margin-bottom: 10px; }
+  .section-card > h2 {
+    font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 600; color: #1a1a1a;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+ 
+  /* ===== Company card ===== */
+  .company-block {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+ 
+  .image-wrapper {
+    width: 220px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+    position: relative;
+  }
+  .slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+  .slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.1s ease-in-out;
+  }
+  .slider img.is-active { opacity: 1; }
+ 
+  .company-info { flex: 1; min-width: 0; }
+ 
+  .caption {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #7a1620;
+    margin-bottom: 12px;
+  }
+ 
+  .about p {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 14px;
+  }
+ 
+  .see-more-btn {
+    margin-top: 6px;
+    background: #7a1620;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .see-more-btn:hover { background: #5e1018; transform: translateY(-2px); }
+ 
+  /* ===== Modal ===== */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(20,10,10,0.55);
+    backdrop-filter: blur(4px);
+    padding: 40px 16px;
+    overflow-y: auto;
+  }
+  .modal.is-open { display: flex; justify-content: center; align-items: flex-start; }
+ 
+  .modal-content {
+    position: relative;
+    max-width: 780px;
+    width: 100%;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    padding: 44px 40px 40px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  }
+ 
+  .close {
+    position: absolute;
+    top: 18px; right: 20px;
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    background: #7a1620;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .close:hover { background: #5e1018; transform: rotate(90deg); }
+ 
+  .faq h3, .resources h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+ 
+  .qa p { font-size: 0.9rem; color: #333; margin-bottom: 10px; }
+  .qa p strong { color: #7a1620; }
+  .qa code {
+    background: rgba(122,22,32,0.08);
+    color: #7a1620;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .qa pre {
+    background: #1a1a1a;
+    color: #f4f0e8;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    overflow-x: auto;
+    margin-bottom: 18px;
+  }
+  .qa pre code { background: none; color: inherit; padding: 0; }
+ 
+  .resources { margin-top: 32px; }
+  .resources ul { list-style: none; }
+  .resources li {
+    font-size: 0.88rem;
+    color: #333;
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+  }
+  .resources li:last-child { border-bottom: none; }
+  .resources li a { color: #7a1620; font-weight: 600; }
+  .resources li a:hover { text-decoration: underline; }
+ 
+  /* ===== Footer ===== */
+  .site-footer { text-align: center; padding: 30px 24px 50px; }
+  .footer-card {
+    max-width: 1100px; margin: 0 auto;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(14px);
+    border-radius: 16px; padding: 20px;
+    font-size: 0.85rem; color: #444;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  .footer-card a { color: #7a1620; font-weight: 600; }
+ 
+  @media (max-width: 780px) {
+    .section-card { padding: 32px 22px; }
+    .company-block { flex-direction: column; }
+    .image-wrapper { width: 100%; max-width: 280px; }
+    .modal-content { padding: 34px 22px 28px; }
+  }
+</style>
+ </head>
+ <body>
+  <nav class="navbar">
+   <div class="nav-inner">
+    <div class="nav-logos">
+     <img src="images/templatemo_logo.png" alt="VCET"> <img src="images/title_logo1.png" alt="ECE Association">
+     <div class="nav-brand">
+      ECE Association<span>VCET MADURAI</span>
+     </div>
+    </div>
+    <div class="nav-right">
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+   </div>
+   <ul id="mobileMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="achivements/Achievement.html">Achievements</a></li>
+    <li><a href="event list/index.html">Event List</a></li>
+    <li><a href="Core company.html" class="current">Core Company</a></li>
+    <li><a href="Student innovation/Student innovation Final.html">Student Innovation Corner</a></li>
+    <li><a href="staffmembers.html">Staff Members</a></li>
+    <li><a href="Office Bearers/office Bearers.html">Office Bearers</a></li>
+    <li><a href="lab.html">Laboratories</a></li>
+    <li><a href="magazine.html">Magazine</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+   </ul>
+  </nav>
+ 
+  <header class="hero">
+   <div class="hero-card">
+    <div class="eyebrow">Placements</div>
+    <h1>Core Companies</h1>
+    <p class="sub">The organisations our ECE graduates go on to build careers with — plus the interview questions and resources to help you get there.</p>
+   </div>
+  </header>
+  <main class="section">
+   <div class="section-card">
+    <div class="section-label">Semiconductors &amp; Wireless</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/q1.jpg" alt="Qualcomm" class="is-active"> <img src="core company/q2.jpg" alt="Qualcomm"> <img src="core company/q3.jpg" alt="Qualcomm">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Qualcomm</div>
+      <div class="about">
+       <p>Qualcomm is a global leader in wireless technology and semiconductor innovation, best known for revolutionizing the mobile industry through its cutting-edge processors and communication technologies. Founded in 1985 and headquartered in San Diego, California, Qualcomm has consistently been at the forefront of digital transformation, powering billions of devices around the world — from smartphones and laptops to automotive systems and smart city infrastructure.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('qualcommModal')">See More</button>
+     </div>
+    </div>
+   </div>
+   <!-- VALEO START -->
+    <div class="section-card">
+    <div class="section-label">AUTOMOTIVE ELECTRONICS & EMBEDDED SYSTEMS</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/valeo1.jpeg" alt="Valeo" class="is-active"> <img src="core company/valeo2.jpeg" alt="Valeo"> <img src="core company/valeo3.jpeg" alt="Valeo">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Valeo</div>
+      <div class="about">
+       <p>Valeo is a global leader in automotive technology, specializing in smart mobility and innovative vehicle solutions. Founded in 1923 and headquartered in Paris, France, Valeo develops advanced driver assistance systems (ADAS), powertrain technologies, thermal systems, and embedded software that enhance vehicle safety, efficiency, and sustainability. With operations in over 30 countries, Valeo is driving the future of electric, autonomous, and connected vehicles through cutting-edge engineering and innovation.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('valeoModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- VALEO END -->
+
+  <!-- Hewlett Packard Enterprise START -->
+   <div class="section-card">
+    <div class="section-label">ENTERPRISE TECHNOLOGY & CLOUD COMPUTING</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/hpe1.jpeg" alt="Hewlett Packard Enterprise" class="is-active"> <img src="core company/hpe2.jpeg" alt="Hewlett Packard Enterprise"> <img src="core company/hpe3.jpeg" alt="Hewlett Packard Enterprise">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Hewlett Packard Enterprise</div>
+      <div class="about">
+       <p>Hewlett Packard Enterprise (HPE) is a global leader in enterprise technology, cloud computing, and IT infrastructure solutions. Established in 2015 and headquartered in Spring, Texas, USA, HPE helps organizations accelerate digital transformation through advanced cloud services, artificial intelligence, networking, edge computing, and data management solutions. Operating in more than 170 countries, HPE empowers businesses to innovate, enhance productivity, and build secure, scalable technology solutions while offering exciting career opportunities for engineers in software development, cloud computing, networking, and cybersecurity.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('hpeModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- Hewlett Packard Enterprise End -->
+
+  <!-- Emerson START -->
+   <div class="section-card">
+    <div class="section-label">INDUSTRIAL AUTOMATION & ENGINEERING TECHNOLOGY</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/emerson1.jpeg" alt="Emerson" class="is-active"> <img src="core company/emerson2.jpeg" alt="Emerson"> <img src="core company/emerson3.jpeg" alt="Emerson">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Emerson</div>
+      <div class="about">
+       <p>Emerson is a global technology and engineering company specializing in industrial automation, digital transformation, and intelligent manufacturing solutions. Founded in 1890 and headquartered in St. Louis, Missouri, USA, Emerson provides advanced technologies for process control, automation, IoT, and software that improve efficiency, safety, and sustainability across industries. Operating in more than 150 countries, Emerson continues to drive innovation through smart engineering solutions, creating exciting career opportunities for engineers in automation, embedded systems, electronics, and software development.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('emersonModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- Emerson END -->
+   
+  <!-- Multicoreware START -->
+   <div class="section-card">
+    <div class="section-label">AI, EMBEDDED SYSTEMS & SOFTWARE ENGINEERING</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/multicoreware1.jpeg" alt="Multicoreware" class="is-active"> <img src="core company/multicoreware2.jpeg" alt="Multicoreware"> <img src="core company/multicoreware3.jpeg" alt="Multicoreware">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">MulticoreWare</div>
+      <div class="about">
+       <p>MulticoreWare is a global technology company specializing in artificial intelligence, high-performance computing, embedded systems, computer vision, and multimedia software solutions. Founded in 2009, the company has a strong presence in India with its headquarters in Chennai. MulticoreWare collaborates with leading semiconductor and technology companies to develop innovative solutions for AI, automotive, healthcare, and media industries. It offers exciting career opportunities for engineers in embedded systems, software development, AI, and GPU programming.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('multicorewareModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- Multicoreware END -->
+
+  <!-- EmbedUR Systems START-->
+   <div class="section-card">
+    <div class="section-label">EMBEDDED SYSTEMS & EDGE AI</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/embed1.jpeg" alt="EmbedUR Systems" class="is-active"> <img src="core company/embed2.jpeg" alt="EmbedUR Systems"> <img src="core company/embed3.jpeg" alt="EmbedUR Systems">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">EmbedUR Systems</div>
+      <div class="about">
+       <p>embedUR Systems is a leading embedded software engineering company specializing in embedded systems, Edge AI, IoT, networking, and cloud technologies. Founded in 2004 and headquartered in Silicon Valley, USA, with a major engineering center in Chennai, India, embedUR develops intelligent firmware and software solutions for global technology companies. Its innovations power millions of connected devices worldwide across industries such as telecommunications, automotive, healthcare, and industrial automation, making it an excellent career destination for engineers passionate about embedded systems and cutting-edge technologies.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('embedModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- EmbedUR Systems END -->
+
+  <!-- Kaar Tech START-->
+   <div class="section-card">
+    <div class="section-label">SAP CONSULTING & DIGITAL TRANSFORMATION</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/kaar1.jpeg" alt="Kaar Technologies" class="is-active"> <img src="core company/kaar2.jpeg" alt="Kaar Technologies"> <img src="core company/kaar3.jpeg" alt="Kaar Technologies">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Kaar Technologies</div>
+      <div class="about">
+        <p>Kaar Technologies is a global IT consulting company specializing in SAP solutions, digital transformation, cloud technologies, and enterprise applications. Founded in 2006 and headquartered in Chennai, India, Kaar Technologies provides end-to-end SAP consulting, implementation, migration, and support services to organizations across industries. With a presence in more than 20 countries, the company helps businesses improve operational efficiency through innovative technology solutions while offering excellent career opportunities for aspiring software and technology professionals.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('kaarModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- Kaar Tech END -->
+
+
+  <!-- Michelin Tyres START-->
+   <div class="section-card">
+    <div class="section-label">SMART MOBILITY & DIGITAL ENGINEERING</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/mi1.jpeg" alt="Michelin Tyres" class="is-active"> <img src="core company/mi2.jpeg" alt="Michelin Tyres"> <img src="core company/mi3.jpeg" alt="Michelin Tyres">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Michelin Tyres</div>
+      <div class="about">
+        <p>Michelin is a global leader in tire manufacturing, sustainable mobility, and digital engineering solutions. Founded in 1889 and headquartered in Clermont-Ferrand, France, Michelin designs and manufactures high-performance tires for automobiles, aircraft, motorcycles, and industrial vehicles. Beyond tires, the company invests in connected mobility, AI, embedded systems, data analytics, and software technologies to develop innovative solutions for safer, smarter, and more sustainable transportation. With operations in over 170 countries, Michelin offers exciting career opportunities for engineers in software development, embedded systems, data science, and manufacturing.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('michelinModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- Michelin Tyres END -->
+
+  <!-- NVIDIA START -->
+   <div class="section-card">
+    <div class="section-label">Graphics &amp; AI Computing</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/nvidia-1.jpg" alt="Nvidia" class="is-active"> <img src="core company/nvidia-2.jpg" alt="Nvidia"> <img src="core company/nvidia-2.webp" alt="Nvidia">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Nvidia</div>
+      <div class="about">
+       <p>NVIDIA Corporation is an American multinational technology company founded in 1993. Headquartered in Santa Clara, California, NVIDIA is a pioneer in graphics processing technology. It provides GPUs for gaming, data centers, and AI development.</p>
+       <p>NVIDIA's CUDA platform allows massive parallel computing. The company has grown beyond graphics to become a major player in AI, deep learning, autonomous vehicles, and high-performance computing.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('NvidiaModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- NVIDIA END -->
+
+  <!-- SIFY START -->
+   <div class="section-card">
+    <div class="section-label">ICT &amp; Digital Infrastructure</div>
+    <div class="company-block">
+     <div class="image-wrapper">
+      <div class="slider" data-slider>
+       <img src="core company/sify-1.jpg" alt="Sify" class="is-active"> <img src="core company/sify-2.jpg" alt="Sify"> <img src="core company/sify-3.jpg" alt="Sify">
+      </div>
+     </div>
+     <div class="company-info">
+      <div class="caption">Sify</div>
+      <div class="about">
+       <p>Sify Technologies Limited is one of India's first internet service providers and a pioneer in digital transformation. Established in 1995 and headquartered in Chennai, Sify played a major role in India's early internet revolution and was the first Indian ICT company to be listed on the NASDAQ (in 1999). Today, Sify is a leading ICT solutions provider offering data centers, cloud services, network connectivity, cybersecurity, and digital transformation for enterprises and governments.</p>
+      </div>
+      <button class="see-more-btn" onclick="openModal('SifyModal')">See More</button>
+     </div>
+    </div>
+   </div>
+  <!-- SIFY END -->
+
+
+  </main>
+  <!-- ===== Qualcomm Modal ===== -->
+  <div id="qualcommModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('qualcommModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Qualcomm Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer includes your academic background, technical skills, relevant projects, and a short statement about your passion for Qualcomm or embedded/software systems.</p>
+      <p><strong>2. What do you know about Qualcomm? Why do you want to work here?</strong></p>
+      <p>Qualcomm is a global leader in semiconductors, 5G, and wireless technologies. I admire its innovation culture and products like Snapdragon processors and modem chips, and I want to be part of cutting-edge technologies shaping the future.</p>
+      <p><strong>3. Explain your final year project / internship project.</strong></p>
+      <p>Be prepared to explain the objective, technologies used, what you implemented, challenges you faced, and how you solved them. Use real diagrams if needed.</p>
+      <p><strong>4. What are pointers in C? Can you explain with an example?</strong></p>
+      <p>Pointers are variables that store memory addresses. For example, <code>int *p = &amp;x;</code> stores the address of variable x. They're used in dynamic memory, arrays, and function arguments.</p>
+      <p><strong>5. Write code to reverse a linked list / implement LRU cache.</strong></p>
+      <p>Expect coding questions on data structures. Practice problems like reversing a list, detecting loops, or designing an LRU cache using linked list + hashmap.</p>
+      <p><strong>6. What is the difference between microprocessor and microcontroller?</strong></p>
+      <p>A microprocessor is CPU-only (used in PCs), while a microcontroller has CPU + memory + peripherals in one chip, ideal for embedded systems.</p>
+      <p><strong>7. Explain the OSI model and how data flows through it.</strong></p>
+      <p>The OSI model has 7 layers: Application, Presentation, Session, Transport, Network, Data Link, and Physical. Data flows top-down when sending, and bottom-up when receiving.</p>
+      <p><strong>8. What is virtual memory? How does paging work?</strong></p>
+      <p>Virtual memory allows programs to use more memory than physically available by using the hard disk. Paging divides memory into fixed-size pages stored in RAM or disk as needed.</p>
+      <p><strong>9. What is Verilog? Write a simple module.</strong></p>
+      <pre><code>module mux2to1(input a, b, sel, output y);
+  assign y = sel ? b : a;
+endmodule</code></pre>
+      <p><strong>10. Tell us about a time you failed or had a team conflict.</strong></p>
+      <p>Describe a real scenario, what went wrong, how you took responsibility, and what you learned. Emphasize communication, teamwork, and personal growth.</p>
+     </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Qualcomm Hiring Preparation</h3>
+     <ul>
+      <li><strong>Qualcomm Careers Page:</strong> <a href="https://www.qualcomm.com/company/careers" target="_blank">qualcomm.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com/" target="_blank">leetcode.com</a></li>
+      <li><strong>Embedded C Crash Course (YouTube):</strong> <a href="https://youtube.com/playlist?list=PLfhaFzFjknNzXKguKLDvZ_UctdY0QnN0t" target="_blank">Embedded C</a></li>
+      <li><strong>Verilog/SystemVerilog Basics:</strong> <a href="https://asic-world.com/verilog/index.html" target="_blank">asic-world.com/verilog</a></li>
+      <li><strong>GeeksforGeeks C Programming:</strong> <a href="https://www.geeksforgeeks.org/c-programming-language/" target="_blank">GFG – C Language</a></li>
+      <li><strong>Digital Electronics Notes:</strong> <a href="https://nptel.ac.in/courses/117/106/117106086/" target="_blank">NPTEL Digital Circuits</a></li>
+      <li><strong>Resume Builder &amp; Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Glassdoor Qualcomm Reviews:</strong> <a href="https://www.glassdoor.co.in/Interview/Qualcomm-Interview-Questions-E640.htm" target="_blank">Interview Experiences</a></li>
+      <li><strong>Operating System Basics:</strong> <a href="https://www.javatpoint.com/operating-system-tutorial" target="_blank">OS Concepts – JavaTpoint</a></li>
+      <li><strong>Network Protocols &amp; OSI Model:</strong> <a href="https://www.geeksforgeeks.org/layers-of-osi-model/" target="_blank">OSI Model Explained</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+
+  <!-- EMBEDUR MODAL START-->
+   <div id="embedModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('embedModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at EmbedUR Systems Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, embedded systems knowledge, projects, and your passion for firmware and software development.</p>
+      
+      <p><strong>2. What is the difference between a Microprocessor and a Microcontroller?</strong></p>
+      <p>A microprocessor contains only the CPU and requires external memory and peripherals, whereas a microcontroller integrates the CPU, memory, and I/O peripherals on a single chip for embedded applications.</p>
+      
+      <p><strong>3. Explain your embedded systems or IoT project.</strong></p>
+      <p>Be prepared to explain the project objective, hardware used, software implementation, communication protocols, challenges faced, and how you solved them.</p>
+      
+      <p><strong>4. What are pointers in C? Explain with an example.</strong></p>
+      <p>Pointers are variables that store memory addresses. They are widely used in embedded programming for efficient memory access.</p>
+      
+      <p><strong>5. What are UART, SPI, and I2C?</strong></p>
+      <p>UART, SPI, and I2C are communication protocols used to transfer data between microcontrollers and peripheral devices. Be able to explain their working principles and differences.</p>
+      
+      <p><strong>6. What is an Interrupt?</strong></p>
+      <p>An interrupt is a signal that temporarily pauses the CPU's current execution to handle a high-priority event before returning to the original task</p>      
+      
+      <p><strong>7. What is an RTOS?</strong></p>
+      <p>An RTOS (Real-Time Operating System) is designed to execute tasks within strict timing constraints. It provides features like task scheduling, semaphores, queues, and timers.</p>
+      
+      <p><strong>8. Explain the difference between Stack and Heap memory.</strong></p>
+      <p>The stack stores local variables and function calls and is automatically managed, while the heap is used for dynamic memory allocation and must be managed by the programmer.</p>
+      
+      <p><strong>9. What is the purpose of the volatile keyword in C?</strong></p>
+      <p>The volatile keyword tells the compiler that a variable's value may change unexpectedly, preventing unwanted compiler optimizations. It is commonly used with hardware registers and interrupt service routines.</p>
+      
+      <p><strong>10. Tell us about a time you faced a challenge or worked in a team.</strong></p>
+      <p>Share a real example that highlights your teamwork, communication, problem-solving skills, and how you contributed to achieving the project's goals.</p>
+      
+    </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for EmbedUR Systems Hiring Preparation</h3>
+     <ul>
+      <li><strong>EmbedUR Systems Careers Page:</strong> <a href="https://www.embedur.ai/" target="_blank">EmbedUR.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com/" target="_blank">Leetcode.com</a></li>
+      <li><strong>Embedded C Crash Course (YouTube):</strong> <a href="https://www.youtube.com/watch?v=8jiiKQH1ciw" target="_blank">Embedded C</a></li>
+      <li><strong>ARM Cortex-M Programming:</strong> <a href="https://developer.arm.com/documentation?utm_source=chatgpt.com" target="_blank">Arm Documentation</a></li>
+      <li><strong>GeeksforGeeks C Programming:</strong> <a href="https://www.geeksforgeeks.org/c-programming-language/" target="_blank">GFG – C Language</a></li>
+      <li><strong>STM32 Embedded Tutorials:</strong> <a href="https://controllerstech.com/?utm_source=chatgpt.com" target="_blank">STM32</a></li>
+      <li><strong>Resume Builder & Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Communication Protocols (UART, SPI, I2C):</strong> <a href="https://deepbluembedded.com/?utm_source=chatgpt.com" target="_blank">Communication Protocols</a></li>
+      <li><strong>Operating System Basics:</strong> <a href="https://www.tpointtech.com/operating-system" target="_blank">OS Concepts – JavaTpoint</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <!-- EMBEDUR MODAL END -->
+
+  <!-- VALEO MODAL START -->
+   <div id="valeoModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('valeoModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Valeo Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, relevant projects, and your interest in automotive electronics and embedded systems.</p>
+      
+      <p><strong>2. Why do you want to join Valeo?</strong></p>
+      <p>Mention Valeo's leadership in automotive technology, electric vehicles, ADAS, and smart mobility, and explain how your skills align with the company's innovative work.</p>
+      
+      <p><strong>3. Explain your embedded systems or electronics project.</strong></p>
+      <p>Be prepared to explain the project objective, hardware and software used, your role, challenges faced, and how you solved them.</p>
+      
+      <p><strong>4. What is the difference between a Microprocessor and a Microcontroller?</strong></p>
+      <p>A microprocessor contains only the CPU and requires external memory and peripherals, whereas a microcontroller integrates the CPU, memory, and peripherals on a single chip for embedded applications.</p>
+      
+      <p><strong>5.What are CAN, UART, SPI, and I2C?</strong></p>
+      <p>These are communication protocols used in embedded and automotive systems. Be prepared to explain their working principles, applications, and key differences.</p>
+      
+      <p><strong>6. What is PWM, and where is it used?</strong></p>
+      <p>PWM (Pulse Width Modulation) is a technique used to control the average power supplied to a device. It is commonly used for motor speed control, LED brightness control, and automotive applications.</p>
+      
+      <p><strong>7. What is an Interrupt?</strong></p>
+      <p>An interrupt is a signal that temporarily pauses the CPU's current execution to handle a high-priority event before returning to the previous task.</p>
+      
+      <p><strong>8. Explain the OSI Model.</strong></p>
+      <p>The OSI model consists of 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. It standardizes communication between networked devices.</p>
+      
+      <p><strong>9. What is the difference between RAM and ROM?</strong></p>
+      <p>RAM is volatile memory used for temporary data storage during program execution, while ROM is non-volatile memory used to store firmware and permanent instructions.</p>
+      
+      <p><strong>10. Tell us about a time you faced a challenge or worked in a team.</strong></p>
+      <p>Share a real example that highlights your teamwork, communication, problem-solving skills, and how you contributed to achieving the project's goals.</p>      
+    </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Valeo Hiring Preparation</h3>
+     <ul>
+      <li><strong>Valeo Careers Page:</strong> <a href="https://www.valeo.com/en/india/" target="_blank">valeo.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com/?utm_source=chatgpt.com" target="_blank">leetcode.com</a></li>
+      <li><strong>Embedded C Programming (YouTube):</strong> <a href="https://www.youtube.com/@nesoacademy?utm_source=chatgpt.com" target="_blank">Embedded C</a></li>
+      <li><strong>CAN Protocol Basics:</strong> <a href="https://kvaser.com/learning-center/?utm_source=chatgpt.com" target="_blank">CAN Protocol</a></li>
+      <li><strong>GeeksforGeeks C Programming:</strong> <a href="https://www.geeksforgeeks.org/c-programming-language/?utm_source=chatgpt.com" target="_blank">GFG – C Language</a></li>
+      <li><strong>Free RTOS Documentation:</strong> <a href="https://www.freertos.org/?utm_source=chatgpt.com" target="_blank">RTOS</a></li>
+      <li><strong>NPTEL Digital Electronic Notes:</strong> <a href="https://nptel.ac.in/?utm_source=chatgpt.com" target="_blank">NPTEL</a></li>
+      <li><strong>Glassdoor Valeo Interview Experience:</strong> <a href="https://www.glassdoor.com/Interview/Valeo-Interview-Questions-E4797.htm" target="_blank">Interview Experiences</a></li>
+      <li><strong>Operating System Basics:</strong> <a href="https://www.tpointtech.com/operating-system" target="_blank">OS Concepts – JavaTpoint</a></li>
+      <li><strong>Communication Protocols (UART, SPI, I2C):</strong> <a href="https://deepbluembedded.com/?utm_source=chatgpt.com" target="_blank">Communication Protocols</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <!-- VALEO MODAL END -->
+
+  <!-- MULTICOREWARE MODAL START -->
+   <div id="multicorewareModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('multicorewareModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at MulticoreWare Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, relevant projects, and your interest in automotive electronics and embedded systems.</p>
+      
+      <p><strong>2. Why do you want to join MulticoreWare?</strong></p>
+      <p>Mention MulticoreWare's expertise in artificial intelligence, computer vision, high-performance computing, and embedded systems, and explain how your skills align with the company's innovative technologies.</p>
+
+      <p><strong>3. Explain your project or internship.</strong></p>
+      <p>Be prepared to explain the project objective, technologies used, your role, challenges faced, and how you solved them. Highlight your contributions and the project's impact.</p>
+      
+      <p><strong>4. What are pointers in C?</strong></p>
+      <p>Pointers are variables that store memory addresses. They are commonly used in embedded programming and memory management.</p>
+      
+      <p><strong>5. Write a program to reverse a string or an array.</strong></p>
+      <p>Expect coding questions on C/C++, Java, or Python. Practice arrays, strings, linked lists, recursion, and sorting algorithms.</p>      
+
+      <p><strong>6. What is the difference between Process and Thread?</strong></p>
+      <p>A process is an independent program with its own memory space, while a thread is a lightweight unit of execution within a process that shares the same memory.</p>      
+
+      <p><strong>7. Explain Object-Oriented Programming (OOP) concepts.</strong></p>
+      <p>Be familiar with the four pillars of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction, along with real-world examples.</p>
+      
+      <p><strong>8. What is the difference between Stack and Heap memory?</strong></p>
+      <p>The stack stores local variables and function calls and is automatically managed, while the heap is used for dynamic memory allocation and is managed by the programmer.</p>      
+
+      <p><strong>9. What are Data Structures? Which one would you use to implement a queue?</strong></p>
+      <p>Data structures organize and store data efficiently. A queue can be implemented using an array or a linked list, following the FIFO (First In, First Out) principle.</p>      
+
+      <p><strong>10. Tell us about a time you worked in a team or solved a difficult problem.</strong></p>
+      <p>Share a real example that demonstrates teamwork, communication, analytical thinking, and problem-solving skills.</p>
+    
+    </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for MulticoreWare Hiring Preparation</h3>
+     <ul>
+      <li><strong>MulticoreWare Careers Page:</strong> <a href="https://multicoreware.org/" target="_blank">MulticoreWare.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com/" target="_blank">Leetcode.com</a></li>
+      <li><strong>C++ Programming:</strong> <a href="https://www.nesoacademy.org/" target="_blank">C++</a></li>
+      <li><strong>OpenCV Documentation:</strong> <a href="https://docs.opencv.org/5.0/index.html" target="_blank">OpenCV</a></li>
+      <li><strong>GeeksforGeeks C++ Programming:</strong> <a href="https://www.geeksforgeeks.org/cpp/c-plus-plus/" target="_blank">GFG – C++ Language</a></li>
+      <li><strong>CUDA ToolKit Documentation:</strong> <a href="https://docs.nvidia.com/cuda/" target="_blank">CUDA Programming Guide</a></li>
+      <li><strong>Resume Builder & Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Glassdoor MulticoreWare Reviews:</strong> <a href="https://www.glassdoor.co.in/Interview/MulticoreWare-Interview-Questions-E716101.htm?countryRedirect=true" target="_blank">Interview Experiences</a></li>
+      <li><strong>Operating System Basics:</strong> <a href="https://www.tpointtech.com/operating-system" target="_blank">OS Concepts – JavaTpoint</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <!-- MULTICOREWARE MODAL END -->
+
+
+  <!-- EMERSON MODAL START -->
+   <div id="emersonModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('emersonModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Emerson Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, relevant projects, and your interest in automation, industrial technology, and embedded systems.</p>      
+
+      <p><strong>2. Why do you want to join Emerson?</strong></p>
+      <p>Mention Emerson's leadership in industrial automation, process control, IoT, and digital transformation. Explain how your skills align with the company's focus on innovation and engineering excellence.</p>
+
+      <p><strong>3. Explain your electronics or embedded systems project.</strong></p>
+      <p>Be prepared to explain the project objective, hardware and software used, your role, challenges faced, and how you solved them. Highlight the technologies and tools you used.</p>      
+
+      <p><strong>4. What is the difference between a Microprocessor and a Microcontroller?</strong></p>
+      <p>A microprocessor contains only the CPU and requires external memory and peripherals, whereas a microcontroller integrates the CPU, memory, and I/O peripherals on a single chip for embedded applications.</p>      
+
+      <p><strong>5. What is PLC, and where is it used?</strong></p>
+      <p>A Programmable Logic Controller (PLC) is an industrial computer used to automate manufacturing processes, machinery, and production systems. It is widely used in factories, power plants, and process industries.</p>
+
+      <p><strong>6. What are Sensors and Actuators?</strong></p>
+      <p>Sensors detect physical quantities such as temperature, pressure, or motion and convert them into electrical signals. Actuators receive control signals and perform physical actions such as moving a motor or opening a valve.</p>
+
+      <p><strong>7. What is an RTOS?</strong></p>
+      <p>UART, SPI, and I2C are communication protocols used in embedded systems. Be prepared to explain their working principles, advantages, limitations, and common applications.</p>      
+
+      <p><strong>8. What is the difference between Stack and Heap memory?</strong></p>
+      <p>A Real-Time Operating System (RTOS) is designed to execute tasks within strict timing constraints. It provides deterministic task scheduling, inter-task communication, and efficient resource management.</p>
+
+      <p><strong>9. What is the purpose of the volatile keyword in C?</strong></p>
+      <p>The volatile keyword tells the compiler that a variable's value may change unexpectedly, preventing compiler optimizations. It is commonly used for hardware registers, interrupt service routines, and shared variables.</p>
+
+      <p><strong>10. Tell us about a time you solved a problem or worked in a team.</strong></p>
+      <p>Share a real example that demonstrates your teamwork, communication, analytical thinking, and problem-solving skills. Focus on your contribution and the outcome.</p>
+
+    </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Emerson Hiring Preparation</h3>
+     <ul>
+      <li><strong>Emerson Careers Page:</strong> <a href="https://www.emerson.com/en-us/careers" target="_blank">Emerson.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com" target="_blank">leetcode.com</a></li>
+      <li><strong>Embedded C Crash Course (YouTube):</strong> <a href="https://www.youtube.com/@nesoacademy" target="_blank">Embedded C</a></li>
+      <li><strong>PLC Programming Basics (InstrumentationTools):</strong> <a href="https://instrumentationtools.com" target="_blank">PLC Programming</a></li>
+      <li><strong>Industrial Automation Tutorials::</strong> <a href="https://automationforum.co" target="_blank">Industrial Automation Tutorials</a></li>
+      <li><strong>FreeRTOS Documentation:</strong> <a href="https://www.freertos.org" target="_blank">FreeRTOS Documentation</a></li>
+      <li><strong>GeeksforGeeks C Programming:</strong> <a href="https://www.geeksforgeeks.org/c-programming-language/" target="_blank">GFG – C Programming </a></li>
+      <li><strong>Communication Protocols (UART, SPI, I2C):</strong> <a href="https://deepbluembedded.com" target="_blank"> Communication Protocols </a></li>
+      <li><strong>Resume Builder &amp; Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Glassdoor Emerson Reviews:</strong> <a href="https://www.glassdoor.com/Interview/Emerson-Interview-Questions-E225.htm" target="_blank">Interview Experiences</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+   </div>
+  </div>
+  <!-- EMERSON MODAL END -->
+
+
+  <!-- HPE MODAL START -->
+   <div id="hpeModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('hpeModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Hewlett Packard Enterprise Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, programming knowledge, relevant projects, and your interest in enterprise technology and software development.</p>
+
+      <p><strong>2. Why do you want to join HPE?</strong></p>
+      <p>Mention HPE's leadership in cloud computing, networking, AI, and enterprise solutions. Explain how your skills and career goals align with HPE's focus on innovation and digital transformation.</p>
+
+      <p><strong>3. Explain your project or internship.</strong></p>
+      <p>Be prepared to discuss your project's objective, technologies used, your role, challenges faced, and the solutions you implemented.</p>
+
+      <p><strong>4. What is the difference between Object-Oriented Programming (OOP) and Procedural Programming?</strong></p>
+      <p>OOP organizes programs using classes and objects with concepts like inheritance and polymorphism, while procedural programming focuses on functions and step-by-step execution.</p>
+
+      <p><strong>5. Write a program to reverse a string or find the largest element in an array.</strong></p>
+      <p>Expect coding questions in Java, C, or C++. Practice arrays, strings, linked lists, recursion, and sorting algorithms.</p>
+
+      <p><strong>6. What is the difference between Process and Thread?</strong></p>
+      <p>A process is an independent program with its own memory space, whereas a thread is a lightweight unit of execution within a process that shares the same memory.</p>
+
+      <p><strong>7. Explain the OSI Model.</strong></p>
+      <p>The OSI model consists of 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. It provides a standard framework for network communication.</p>
+
+      <p><strong>8. What are DBMS and SQL?</strong></p>
+      <p>A Database Management System (DBMS) is software used to store and manage data. SQL (Structured Query Language) is used to create, retrieve, update, and delete data in databases.</p>
+
+      <p><strong>9. What is Cloud Computing?</strong></p>
+      <p>Cloud computing is the delivery of computing services such as servers, storage, databases, networking, and software over the internet, enabling scalable and on-demand access to resources.</p>
+
+      <p><strong>10. Tell us about a time you solved a problem or worked in a team.</strong></p>
+      <p>Share a real example that demonstrates your teamwork, communication, analytical thinking, and problem-solving skills. Focus on your contribution and the outcome.</p>
+
+
+    </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Hewlett Packard Enterprise(HPE)  Hiring Preparation</h3>
+     <ul>
+      <li><strong>Hewlett Packard Enterprise(HPE) Careers Page:</strong> <a href="https://careers.hpe.com" target="_blank">Hewlett Packard Enterprise(HPE).com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com" target="_blank">leetcode.com</a></li>
+      <li><strong>Java Programming (Official Oracle Tutorials):</strong> <a href="https://dev.java" target="_blank">Java</a></li>
+      <li><strong>GeeksforGeeks DSA & Java:</strong> <a href="https://www.geeksforgeeks.org" target="_blank">GFC – Java and DSA </a></li>
+      <li><strong>Operating System Basics:</strong> <a href="https://www.tpointtech.com/operating-system" target="_blank">Operating System Tutorials</a></li>
+      <li><strong>Computer Networks Notes:</strong> <a href="https://www.geeksforgeeks.org/computer-network-tutorials/" target="_blank">Computer Network</a></li>
+      <li><strong>SQL & DBMS Tutorial:</strong> <a href="https://www.w3schools.com/sql/" target="_blank">SQL & DBMS </a></li>
+      <li><strong>Cloud Computing Basics (Microsoft Learn):</strong> <a href="https://learn.microsoft.com/training/browse/?products=azure" target="_blank"> Cloud Computing </a></li>
+      <li><strong>Resume Builder &amp; Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Glassdoor Hewlett Packard Enterprise(HPE) Reviews:</strong> <a href="https://www.glassdoor.com/Interview/Hewlett-Packard-Enterprise-HPE-Interview-Questions-E1093046.htm" target="_blank">Interview Experiences</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+   </div>
+  </div>
+  <!-- HPE MODAL END -->
+
+  <!-- KAAR MODAL START -->
+  <div id="kaarModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('kaarModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Kaar Technologies Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, projects, internships, and your interest in SAP consulting and enterprise software.</p>
+      <p><strong>2. Why do you want to join Kaar Technologies?</strong></p>
+      <p>Mention Kaar Technologies' expertise in SAP consulting, cloud solutions, and digital transformation. Explain how your skills and career goals align with the company's innovative work environment.</p>
+      <p><strong>3. Explain your academic or internship project.</strong></p>
+      <p>Be prepared to discuss the project objective, technologies used, your role, challenges faced, and how you solved them.</p>
+      <p><strong>4. What is Object-Oriented Programming (OOP)?</strong></p>
+      <p>Explain the four pillars of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction, with simple examples.</p>
+      <p><strong>5. What is the difference between SQL and DBMS?</strong></p>
+      <p>A DBMS is software used to manage databases, while SQL (Structured Query Language) is the language used to create, retrieve, update, and manage data stored in databases.</p>
+      <p><strong>6. What are the four main concepts of SAP?</strong></p>
+      <p>Be familiar with SAP basics, ERP systems, SAP modules (such as MM, SD, FICO, and HCM), and how SAP helps businesses manage operations efficiently.</p>
+      <p><strong>7. What is the difference between Primary Key and Foreign Key?</strong></p>
+      <p>A Primary Key uniquely identifies each record in a table, while a Foreign Key establishes a relationship between two tables.</p>
+      <p><strong>8. Explain the difference between Process and Thread.</strong></p>
+      <p>A process is an independent program with its own memory space, while a thread is a lightweight unit of execution within a process that shares memory.</p>
+      <p><strong>9.What is Cloud Computing?</strong></p>
+      <p>Cloud computing is the delivery of computing resources such as servers, storage, databases, networking, and software over the internet on demand.</p>
+      <p><strong>10. Tell us about a situation where you worked in a team or solved a difficult problem.</strong></p>
+      <p>Share a real example demonstrating teamwork, communication, problem-solving, and leadership skills.</p>
+     </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Kaar Technologies Hiring Preparation</h3>
+     <ul>
+      <li><strong>Kaar Technologies Careers Page:</strong> <a href="https://www.kaartech.com/careers" target="_blank">Kaar Technologies.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com" target="_blank">leetcode.com</a></li>
+      <li><strong>Java Programming (Official Oracle Tutorials):</strong> <a href="https://dev.java" target="_blank">Java</a></li>
+      <li><strong>SQL Tutorial (W3Schools):</strong> <a href="https://www.w3schools.com/sql" target="_blank">SQL </a></li>
+      <li><strong>Cloud Computing basics (Microsoft Learn):</strong> <a href="https://learn.microsoft.com/training/" target="_blank">Cloud computing Basics</a></li>
+      <li><strong>DBMS Tutorial:</strong> <a href="https://www.geeksforgeeks.org/dbms/" target="_blank">DBMS - Tutorial </a></li>
+      <li><strong>Aptitude Preparation (IndiaBIX):</strong> <a href="https://www.indiabix.com" target="_blank">Aptitude</a></li>
+      <li><strong>Resume Builder &amp; Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Glassdoor Kaar Technologies Reviews:</strong> <a href="https://www.glassdoor.co.in/Interview/Kaar-Technologies-Interview-Questions-E523876.htm" target="_blank">Interview Experiences</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <!-- KAAR MODAL END -->
+
+  <!-- ===== Michelin Tires ===== -->
+  <div id="michelinModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('michelinModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Michelin Tyres Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your academic background, technical skills, projects, internships, and your interest in manufacturing technology, software development, or embedded systems.</p>
+      <p><strong>2. Why do you want to join Michelin?</strong></p>
+      <p>Mention Michelin's reputation for innovation, sustainability, digital transformation, and smart mobility. Explain how your skills align with the company's engineering culture and global impact.</p>
+      <p><strong>3. Explain your academic or internship project.</strong></p>
+      <p>Be prepared to discuss the project objective, technologies used, your role, challenges faced, and the solutions you implemented.</p>
+      <p><strong>4. What is the difference between a Process and a Thread?</strong></p>
+      <p>This process is an independent program with its own memory space, while a thread is a lightweight execution unit within a process that shares memory with other threads.</p>
+      <p><strong>5. Explain the four pillars of Object-Oriented Programming (OOP).</strong></p>
+      <p>Discuss Encapsulation, Inheritance, Polymorphism, and Abstraction with simple examples.</p>
+      <p><strong>6. What is the difference between SQL and DBMS?</strong></p>
+      <p>A DBMS manages databases, while SQL is the language used to create, retrieve, update, and manage data stored in those databases.</p>
+      <p><strong>7. What are Arrays and Linked Lists?</strong></p>
+      <p>Arrays store elements in contiguous memory locations with fixed size, while linked lists consist of nodes connected through pointers and support dynamic memory allocation.</p>
+      <p><strong>8.What are the basic communication protocols used in embedded systems?</strong></p>
+      <p>Common protocols include UART, SPI, and I2C, which are used for communication between microcontrollers and peripheral devices.</p>
+      <p><strong>9. What is the difference between RAM and ROM?</strong></p>
+      <p>RAM is volatile memory used for temporary storage during execution, whereas ROM is non-volatile memory used to store firmware and permanent instructions.</p>
+      <p><strong>10.Tell us about a time you solved a difficult problem or worked in a team.</strong></p>
+      <p>Share a real example demonstrating teamwork, communication, analytical thinking, and problem-solving abilities.</p>
+     </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Michelin Tires Hiring Preparation</h3>
+     <ul>
+      <li><strong>Michelin Tyres Careers Page:</strong> <a href="https://jobs.michelin.in/" target="_blank">Michelin Tyres.com</a></li>
+      <li><strong>LeetCode Practice for DSA:</strong> <a href="https://leetcode.com" target="_blank">leetcode.com</a></li>
+      <li><strong>Java Programming (Official Oracle Tutorials):</strong> <a href="https://dev.java" target="_blank">Java</a></li>
+      <li><strong>GeeksforGeeks DSA :</strong> <a href="https://www.geeksforgeeks.org" target="_blank">GFG – DSA </a></li>
+      <li><strong>Operating System Basics:</strong> <a href="https://www.tpointtech.com/operating-system" target="_blank">Operating System Tutorials</a></li>
+      <li><strong>Computer Networks Notes:</strong> <a href="https://www.geeksforgeeks.org/computer-network-tutorials/" target="_blank">Computer Network</a></li>
+      <li><strong>SQL & DBMS Tutorial:</strong> <a href="https://www.w3schools.com/sql/" target="_blank">SQL & DBMS </a></li>
+      <li><strong>Embedded Systems Basics:</strong> <a href="https://www.geeksforgeeks.org/embedded-systems/" target="_blank"> Embedded System</a></li>
+      <li><strong>Resume Builder &amp; Templates:</strong> <a href="https://www.novoresume.com/" target="_blank">NovoResume</a></li>
+      <li><strong>Glassdoor Michelin Tyres Reviews:</strong> <a href="https://www.glassdoor.com/Interview/Michelin-Interview-Questions-E5264.htm" target="_blank">Interview Experiences</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+
+  <!-- ===== Nvidia Modal ===== -->
+  <div id="NvidiaModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('NvidiaModal')">×</span>
+    <div class="faq">
+     <h3>🧠 10 Frequently Asked Questions at Nvidia Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer includes your academic background, technical skills, relevant projects, and a short statement about your passion for embedded/software systems.</p>
+      <p><strong>2. What is CUDA and how does it relate to NVIDIA GPUs?</strong></p>
+      <p>CUDA is NVIDIA's parallel computing platform that allows developers to use the GPU for general purpose processing. It enables massive parallelism using thousands of GPU cores.</p>
+      <p><strong>3. Explain your final year project / internship project.</strong></p>
+      <p>Be prepared to explain the objective, technologies used, what you implemented, challenges you faced, and how you solved them. Use real diagrams if needed.</p>
+      <p><strong>4. What are pointers in C? Can you explain with an example?</strong></p>
+      <p>Pointers are variables that store memory addresses. For example, <code>int *p = &amp;x;</code></p>
+      <p><strong>5. Write code to reverse a linked list / implement LRU cache.</strong></p>
+      <p>Expect coding questions on data structures. Practice problems like reversing a list, detecting loops, or designing an LRU cache using linked list + hashmap.</p>
+      <p><strong>6. What is the difference between microprocessor and microcontroller?</strong></p>
+      <p>A microprocessor is CPU-only, while a microcontroller includes CPU + memory + peripherals.</p>
+      <p><strong>7. Explain the OSI model and how data flows through it.</strong></p>
+      <p>The OSI model has 7 layers. Data goes top to bottom when sent, and bottom to top when received.</p>
+      <p><strong>8. What is virtual memory? How does paging work?</strong></p>
+      <p>Virtual memory allows large memory usage by mapping disk to RAM using pages.</p>
+      <p><strong>9. What is Verilog? Write a simple module.</strong></p>
+      <pre><code>module mux2to1(input a, b, sel, output y);
+  assign y = sel ? b : a;
+endmodule</code></pre>
+      <p><strong>10. Tell us about a time you failed or had a team conflict.</strong></p>
+      <p>Share a true situation and highlight problem-solving and teamwork.</p>
+     </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Nvidia Hiring Preparation</h3>
+     <ul>
+      <li><a href="https://developer.nvidia.com/cuda-zone" target="_blank">NVIDIA CUDA Developer Zone</a></li>
+      <li><a href="https://leetcode.com" target="_blank">LeetCode – Practice coding problems</a></li>
+      <li><a href="https://www.geeksforgeeks.org" target="_blank">GeeksforGeeks – DSA and theory</a></li>
+      <li><a href="https://www.nvidia.com/en-us/about-nvidia/careers/" target="_blank">NVIDIA Official Careers</a></li>
+      <li><a href="https://www.interviewbit.com/" target="_blank">InterviewBit – Interview prep portal</a></li>
+      <li><a href="https://github.com/Ebazhanov/linkedin-skill-assessments-quizzes" target="_blank">GitHub LinkedIn Skill Assessments</a></li>
+      <li><a href="https://www.udemy.com/topic/cuda/" target="_blank">CUDA &amp; GPU Programming Courses on Udemy</a></li>
+      <li><a href="https://www.youtube.com/@NVIDIADeveloper" target="_blank">NVIDIA Developer YouTube Channel</a></li>
+      <li><a href="https://careers.nvidia.com/" target="_blank">Nvidia Careers Portal – Search Jobs by Role</a></li>
+      <li><a href="https://docs.nvidia.com/cuda/" target="_blank">CUDA Documentation</a></li>
+      <li><a href="https://forums.developer.nvidia.com/" target="_blank">NVIDIA Developer Forums</a></li>
+      <li><a href="https://github.com/NVIDIA" target="_blank">NVIDIA Official GitHub Repositories</a></li>
+      <li><a href="https://www.nvidia.com/en-us/deep-learning-ai/" target="_blank">NVIDIA Deep Learning &amp; AI</a></li>
+      <li><a href="https://ngc.nvidia.com/catalog" target="_blank">NVIDIA GPU Cloud (NGC) Catalog</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <!-- ===== Sify Modal ===== -->
+  <div id="SifyModal" class="modal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('SifyModal')">×</span>
+    <div class="faq">
+     <h3>🛡️ 10 Frequently Asked Questions at Sify Interviews (with Answers)</h3>
+     <div class="qa">
+      <p><strong>1. Tell me about yourself.</strong></p>
+      <p>A good answer should include your name, educational background, core technical skills, relevant projects or internships, and your interest in working at Sify. Keep it structured, confident, and relevant to the job role.</p>
+      <p><strong>2. What is the difference between microprocessor and microcontroller?</strong></p>
+      <p>A microprocessor is a CPU-only chip used in general-purpose computing like PCs. A microcontroller integrates CPU, memory, and I/O peripherals in a single chip and is ideal for embedded systems.</p>
+      <p><strong>3. Explain the working of a Phase Locked Loop (PLL).</strong></p>
+      <p>A PLL is a control system that synchronizes an output signal's phase and frequency with a reference signal. It includes a phase detector, low-pass filter, and voltage-controlled oscillator (VCO).</p>
+      <p><strong>4. How does RADAR work and what are its applications?</strong></p>
+      <p>RADAR transmits radio waves that reflect off objects. The receiver detects the echo and measures distance and speed. Applications include weather tracking, military defense, and air traffic control.</p>
+      <p><strong>5. What is modulation and why is it used in communication systems?</strong></p>
+      <p>Modulation is the process of varying a carrier wave to transmit data. It's used to reduce antenna size, minimize interference, and allow multiple signals over the same channel.</p>
+      <p><strong>6. Draw and explain the block diagram of an 8085 microprocessor.</strong></p>
+      <p>The 8085 block diagram includes ALU, registers (A, B, C, D, E, H, L), program counter, stack pointer, control unit, and buses. It fetches, decodes, and executes instructions sequentially.</p>
+      <p><strong>7. Difference between analog and digital signals with examples.</strong></p>
+      <p>Analog signals are continuous (e.g., temperature, sound), while digital signals are discrete (e.g., binary data in computers). Analog: sine wave; Digital: square wave.</p>
+      <p><strong>8. Explain Nyquist theorem and its significance.</strong></p>
+      <p>The Nyquist theorem states that the sampling rate must be at least twice the highest frequency of the signal to avoid aliasing. It is key in digital signal processing.</p>
+      <p><strong>9. How does an op-amp work in inverting and non-inverting mode?</strong></p>
+      <p>In inverting mode, input is given to the negative terminal, and the output is inverted. In non-inverting mode, input goes to the positive terminal, and the output is in phase with input.</p>
+      <p><strong>10. Explain the working of a basic transmitter and receiver.</strong></p>
+      <p>A transmitter modulates and sends the signal via antenna; the receiver captures, demodulates, amplifies, and processes the signal to retrieve the original data.</p>
+     </div>
+    </div>
+    <div class="resources">
+     <h3>📚 Useful Resources for Sify Hiring Preparation</h3>
+     <ul>
+      <li><a href="https://www.geeksforgeeks.org" target="_blank">GeeksforGeeks – Networking &amp; OS</a></li>
+      <li><a href="https://www.tutorialspoint.com" target="_blank">TutorialsPoint – Networking Concepts</a></li>
+      <li><a href="https://www.linkedin.com/company/sify" target="_blank">Sify LinkedIn Page</a></li>
+      <li><a href="https://naukri.com" target="_blank">Naukri – Sify Job Openings</a></li>
+      <li><a href="https://www.sifytechnologies.com/" target="_blank">Official Website – Sify Technologies</a></li>
+      <li><a href="https://www.sifytechnologies.com/cloud/" target="_blank">Sify Cloud Services</a></li>
+      <li><a href="https://www.sifytechnologies.com/data-center/" target="_blank">Sify Data Center Solutions</a></li>
+      <li><a href="https://www.ambitionbox.com/overview/sify-technologies-overview" target="_blank">Sify Employee Reviews – AmbitionBox</a></li>
+      <li><a href="https://in.indeed.com/cmp/Sify-Technologies" target="_blank">Sify Job Reviews – Indeed</a></li>
+      <li><a href="https://www.crunchbase.com/organization/sify-technologies" target="_blank">Sify Company Profile – Crunchbase</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <footer class="site-footer">
+   <div class="footer-card">
+    Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
+   </div>
+  </footer>
+  <script>
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+ 
+function openModal(id) {
+  document.getElementById(id).classList.add("is-open");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove("is-open");
+  document.body.style.overflow = "";
+}
+// close modal when clicking the dark backdrop
+document.querySelectorAll(".modal").forEach(function (modal) {
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
+  });
+});
+ 
+// auto-cycle each company image slider
+document.querySelectorAll("[data-slider]").forEach(function (slider) {
+  const imgs = slider.querySelectorAll("img");
+  if (imgs.length < 2) return;
+  let i = 0;
+  setInterval(function () {
+    imgs[i].classList.remove("is-active");
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add("is-active");
+  }, 3200);
+});
+</script>
+ </body>
+</html>

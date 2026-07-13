@@ -1,0 +1,317 @@
+	
+	body {
+	margin: 0px;
+	padding: 0px;
+	color: #333333;
+	font-family: Helevetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height:1.5em; 
+	text-align: justify;
+	background-color: #ffffff;
+	background-image: url(templatemo_body.jpeg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	
+}
+
+a, a:link, a:visited {
+	color: #000000;
+}
+
+a:hover {
+	color: #990000;
+	text-decoration: none;
+}
+
+p { margin: 0px; padding: 0 0 10px 0; }
+img { border: none; }
+
+h1, h2, h3, h4, h5 { font-weight: normal; color: #000; }
+
+h1 { font-size: 38px; font-weight: bold; margin: 0 0 30px 0; padding: 5px 0; color: #fff; }
+h2 { font-size: 26px; font-weight: bold; margin: 0 0 20px 0; padding: 0; color: #fff; text-shadow: 1px 1px 1px #555; }
+h3 { font-size: 21px;font-weight: bold; margin: 0 0 20px 0; padding: 0; padding: 0; color: #fff; text-shadow: 1px 1px 1px #555; }
+h4 { font-size: 18px; margin: 0 0 20px 0; padding: 0; }
+h5 { font-size: 16px; margin: 0 0 10px 0; padding: 0; }
+h6 { font-size: 14px; margin: 0 0 5px 0; padding: 0;}
+
+
+.cleaner { clear: both; width: 100%; height: 0px; font-size: 0px;  }
+.cleaner_h10 { clear: both; width:100%; height: 10px; }
+.cleaner_h20 { clear: both; width:100%; height: 20px; }
+.cleaner_h30 { clear: both; width:100%; height: 30px; }
+.cleaner_h40 { clear: both; width:100%; height: 40px; }
+.cleaner_h50 { clear: both; width:100%; height: 50px; }
+.cleaner_h60 { clear: both; width:100%; height: 60px; }
+
+.margin_r25 { margin-right: 25px; }
+
+.vertical_divider { background: url(images/templatemo_vertical_divider.png) right repeat-y; }
+ 
+.float_l { float: left; }
+
+.float_r { 	float: right; }
+.marquee-container {
+  width: 970px;
+  margin-left: -30px;
+  overflow: hidden;
+  font-size: 20px;
+  color: blue;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+
+.image_wrapper { display: inline-block; padding: 8px; border: 1px solid #888888; background: #bcbbbc; margin-bottom: 10px; }
+.fl_img { float: left; margin: 3px 30px 15px 0; }
+.fr_img { float: right; margin: 3px 0 15px 15px; }
+.fm_img { float: left; margin: 3px 30px 15px 0; ;}
+
+blockquote { font-style: italic; margin-left: 10px;}
+cite { font-weight: bold; }
+cite span { color: #fff; }
+
+.templatemo_list {
+	margin: 20px;
+	padding: 0;
+	list-style: none;
+}
+
+.templatemo_list li {
+	background:transparent url(images/templatemo_list.png) no-repeat scroll 0 3px;
+	color:#000000;
+	margin:0 0 15px;
+	padding:0 0 0 16px;
+	line-height: 1em;
+}
+
+
+
+.button a {
+	clear: both;
+	display: block;
+	width: 104px;
+	height: 26px;
+	padding: 4px 0 0 0;
+	background: url(images/templatemo_button.png) no-repeat;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #000;
+}
+
+.button a:hover {
+	color: #000;
+	text-shadow: 1px 1px 2px #555;
+	background: url(images/templatemo_button_hover.png) no-repeat;
+}
+
+#templatemo_wrapper {
+	width: 970px;
+	margin: 0 auto;
+	padding: 10px 0;
+	background: url(images/templatemo_wrapper.png) repeat-y;
+}
+
+#templatemo_top {
+	padding: 5px 40px;
+}
+
+#social {
+	float: right;
+	margin-top:30px;
+	padding: 0;
+	list-style: none;
+}
+
+#social li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+#social li a {
+	float: left;
+	display: block;
+	width: 59px;
+	height: 59px;
+	margin-left: 10px;
+}
+
+#templatemo_header {
+	width: 950px;
+	height: 150px;
+	padding: 0 10px;
+	
+	
+	background: url(images/templatemo_header.png) ;
+	border-radius: 15px 15px 0px 0px;
+}
+
+#templatemo_header  #site_title {
+	float: left;
+	width: 900px;
+	height: auto;
+	margin-top: 10px;
+	text-align: left;
+	padding: 0px 0 0 20px;
+}
+
+#templatemo_header  #site_title a {
+	margin: 0px;
+
+	font-size: 30px;
+	color: #ffffff;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#templatemo_header  #site_title a span {
+	display: block;
+	text-align: left;
+	font-size: 14px;
+	
+	color: #5f6675;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+#templatemo_banner {
+	width: 970px;
+	height: 600px;
+	background: url(images/temp_banner1.png) no-repeat;
+}
+
+#templatemo_menu {
+	float: left;
+	width: 280px;
+	margin-bottom: 50px;
+	background-color:#b9a29f;
+	border-radius: 15px;
+}
+
+#templatemo_menu ul {
+	margin: 0 0 0 2px;
+	padding: 20px 0 0 0;
+	list-style: none;
+}
+
+#templatemo_menu ul li {
+	padding: 0px;
+	margin: 0 0 10px 0;
+}
+
+#templatemo_menu ul li a {
+	display: block;
+	padding: 15px 0 5px 30px;
+	font-size: 16px;
+	text-decoration: none;
+	color: #000000;	
+	font-weight: bold;
+	outline: none;
+	background: url(images/templatemo_menu_divider.png) left bottom no-repeat;
+}
+
+#templatemo_menu li a:hover {
+	padding-left: 40px;
+}
+
+#templatemo_menu li .current{
+	padding-left: 40px;
+	color: #ffffff;
+}
+    .magazine-banner {
+      background-color: #ab8985;
+      color: black;
+      text-align: center;
+      padding: 20px 20px;
+      font-family: 'Playfair Display', serif;    
+    }
+    
+
+    .magazine-banner h1 {
+      font-size: 30px;
+      margin-bottom: 40px;
+      color: black;
+    }
+
+    .magazine-banner p {
+      font-size: 1.2em;
+      margin: auto;
+    }
+
+    .magazine-section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .magazine-section h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+      color: #7b3f00;
+    }
+
+    .magazine-gallery {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .mag-card {
+      position: relative;
+      width: 240px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background-color: white;
+      transition: transform 4s ease;
+    }
+
+    .mag-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .mag-card:hover {
+      transform: scale(1.05);
+    }
+
+    .mag-info {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.65);
+      color: #fff;
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .mag-info h3 {
+      margin: 5px 0;
+      font-size: 1.2em;
+    }
+
+    .mag-info a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95em;
+    }

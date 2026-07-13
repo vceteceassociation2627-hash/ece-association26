@@ -1,0 +1,531 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>ECE ASSOCIATION – Office Bearers</title>
+  <link href="../images/title_logo1.png" rel="icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="templatemo_style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  overflow-x: hidden;
+  background: url('../images/templatemo_body.jpeg') center center / cover no-repeat fixed;
+  line-height: 1.7;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.nav-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px;
+}
+.nav-logos { display: flex; align-items: center; gap: 12px; }
+.nav-logos img { height: 44px; width: 44px; object-fit: contain; border-radius: 50%; }
+.nav-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: #7a1620; line-height: 1.2; }
+.nav-brand span { display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 1px; color: #6b6b6b; font-family: 'Inter', sans-serif; }
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.social-icons { display: flex; gap: 10px; }
+.social-icons img { width: 26px; height: 26px; border-radius: 6px; opacity: 0.85; transition: opacity 0.25s, transform 0.25s; }
+.social-icons img:hover { opacity: 1; transform: translateY(-2px); }
+.menu-toggle { font-size: 26px; cursor: pointer; background: none; border: none; color: #1a1a1a; padding: 4px 8px; }
+#mobileMenu { display: none; list-style: none; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-top: 1px solid rgba(0,0,0,0.08); }
+#mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
+#mobileMenu li a { display: block; padding: 16px 24px; color: #1a1a1a; font-weight: 500; font-size: 0.95rem; }
+#mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
+#mobileMenu li a.current { color: #7a1620; font-weight: 700; }
+
+/* ── MARQUEE STRIP (matches Contact page) ── */
+.marquee-strip {
+  background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.marquee-strip .marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 48s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* ── SLIDES WRAPPER ── */
+.slides-outer { width: 100vw; height: calc(100vh - 73px - 41px); overflow: hidden; position: relative; }
+
+.slides-track {
+  display: flex; height: 100%;
+  transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
+  will-change: transform;
+}
+
+.slide {
+  width: 100vw; min-width: 100vw; max-width: 100vw;
+  height: 100%; flex-shrink: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 12px 20px 50px;
+  position: relative; overflow: hidden;
+  background: transparent;
+}
+
+.slide-header, .cards-row { position: relative; z-index: 1; }
+
+/* ── SLIDE HEADER ── */
+.slide-header { text-align: center; margin-bottom: 20px; }
+.slide-header .eyebrow {
+  font-size: 0.72rem; letter-spacing: 2px; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 8px;
+  color: #7a1620;
+}
+.slide-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  color: #1a1a1a; font-weight: 700;
+}
+
+/* ── CARDS ROW ── */
+.cards-row {
+  display: flex; gap: 22px;
+  justify-content: center; flex-wrap: wrap;
+  max-width: 95vw;
+  align-items: flex-start;
+}
+
+/* ── SINGLE CARD ── */
+.staff-card {
+  width: 220px;
+  height: 220px;
+  max-height: calc(100vh - 240px);
+  border-radius: 18px; overflow: hidden;
+  position: relative; cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.staff-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 24px 55px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ── GLASS CARD FRONT – matches Contact page's frosted panels ── */
+.card-front {
+  padding: 18px 14px 16px;
+  min-height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  transition: opacity 0.35s;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.card-photo {
+  width: 90px; height: 75px;
+  min-height: 75px;
+  border-radius: 50%; object-fit: cover;
+  object-position: top center; /* FIX: keeps faces centered instead of cropping the top of the head */
+  border: 3px solid rgba(122,22,32,0.25);
+  margin-bottom: 10px; background: #ddd;
+}
+.card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem; font-weight: 600;
+  color: #1a1a1a; margin-bottom: 3px; line-height: 1.25;
+}
+.card-role { font-size: 0.66rem; color: #7a1620; font-weight: 600; margin-bottom: 3px; }
+.card-spec { font-size: 0.62rem; color: #555; margin-bottom: 5px; }
+.card-email { font-size: 0.6rem; color: #777; word-break: break-all; }
+
+/* ── CARD BACK (hover) ── */
+.card-info {
+  position: absolute; inset: 0;
+  border-radius: 18px; padding: 16px 14px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+  font-size: 0.68rem; line-height: 1.55; color: #333;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.card-info strong { display: block; font-size: 0.78rem; margin-bottom: 8px; color: #7a1620; }
+.staff-card:hover .card-front { opacity: 0; }
+.staff-card:hover .card-info  { opacity: 1; pointer-events: auto; }
+
+/* Convener card bigger */
+.hod-card { width: 260px; }
+.hod-card .card-photo { width: 100px; height: 100px; min-height: 100px; }
+.hod-card .card-name  { font-size: 1rem; }
+
+/* ── NAV ARROWS – light glass, matches Contact page palette ── */
+.arrow-btn {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.65);
+  border: 1.5px solid rgba(255,255,255,0.7);
+  color: #7a1620; width: 52px; height: 52px;
+  border-radius: 50%; font-size: 1.5rem;
+  cursor: pointer; z-index: 9999;
+  backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%);
+  transition: background 0.2s, transform 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.arrow-btn:hover { background: rgba(255,255,255,0.9); transform: translateY(-50%) scale(1.1); }
+.arrow-left  { left: 16px; }
+.arrow-right { right: 16px; }
+
+/* ── DOTS ── */
+.dots {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 9px; z-index: 9999;
+}
+.dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(122,22,32,0.25);
+  border: 1px solid rgba(122,22,32,0.4);
+  cursor: pointer; transition: background 0.3s, transform 0.3s;
+}
+.dot.active { background: #7a1620; transform: scale(1.35); }
+
+/* ── SLIDE COUNTER ── */
+.slide-counter {
+  position: fixed; top: 128px; right: 20px;
+  font-size: 0.68rem; letter-spacing: 2px; font-weight: 600;
+  color: #7a1620; z-index: 9999;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+@media (max-width: 600px) {
+  .staff-card { width: 80vw; max-width: 240px; }
+  .hod-card   { width: 80vw; max-width: 260px; }
+  .cards-row  { gap: 14px; }
+  .slide-counter { top: 116px; }
+}
+</style>
+ </head>
+ <body>
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+   <div class="nav-inner">
+    <div class="nav-logos">
+     <img src="../images/templatemo_logo.png" alt="VCET"> <img src="../images/title_logo1.png" alt="ECE">
+     <div class="nav-brand">
+      ECE Association <span>VCET MADURAI</span>
+     </div>
+    </div>
+    <div class="nav-right">
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="../images/youtube.png" alt="YouTube"></a> <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="../images/linkedin.png" alt="LinkedIn"></a> <a href="https://www.instagram.com/vcet_ece_asso/"><img src="../images/instagram.png" alt="Instagram"></a> <a href="mailto:vceteceassociation2627@gmail.com"><img src="../images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+   </div>
+   <ul id="mobileMenu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../achivements/Achievement.html">Achievements</a></li>
+    <li><a href="../event list/index.html">Event List</a></li>
+    <li><a href="../Core company.html">Core Company</a></li>
+    <li><a href="../Student innovation/Student innovation Final.html">Student Innovation Corner</a></li>
+    <li><a href="../staffmembers.html">Staff Members</a></li>
+    <li><a href="./office Bearers.html" class="current">Office Bearers</a></li>
+    <li><a href="../lab.html">Laboratories</a></li>
+    <li><a href="../magazine.html">Magazine</a></li>
+    <li><a href="../contact.html">Contact Us</a></li>
+   </ul>
+  </nav>
+
+ 
+  <div class="slide-counter" id="counter">1 / 6</div>
+
+  <!-- ═══ SLIDES ═══ -->
+  <div class="slides-outer">
+   <div class="slides-track" id="track">
+    <!-- ══ SLIDE 1 – CONVENER ══ -->
+    <div class="slide">
+     <div class="slide-header">
+      <div class="eyebrow">ECE Association</div>
+      <h1>Convener</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card hod-card">
+       <div class="card-front">
+        <img class="card-photo" src="hod.png" alt="Dr. S. Vasuki">
+        <div class="card-name">Dr. S. Vasuki</div>
+        <div class="card-role">Convener</div>
+        <div class="card-spec">Dean (Research &amp; Development), Head/ECE</div>
+       </div>
+       <div class="card-info">
+        <strong>Dr. S. Vasuki</strong> Convener of the ECE Association. Dean (Research and Development) &amp; Head of Department, ECE.
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- ══ SLIDE 2 – STAFF ADVISORS ══ -->
+    <div class="slide">
+     <div class="slide-header">
+      <div class="eyebrow">ECE Association</div>
+      <h1>Staff Advisors</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="suban.jpg" alt="Mr. A. Suban">
+        <div class="card-name">Mr. A. Suban</div>
+        <div class="card-role">Staff Advisor</div>
+       </div>
+       <div class="card-info">
+        <strong>Mr. A. Suban</strong> Staff Advisor for the ECE Association.
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="alaimahal.jpg" alt="Ms. A. Alaimahal">
+        <div class="card-name">Ms. A. Alaimahal</div>
+        <div class="card-role">Staff Advisor</div>
+       </div>
+       <div class="card-info">
+        <strong>Ms. A. Alaimahal</strong> Staff Advisor for the ECE Association.
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- ══ SLIDE 3 – SECRETARIES ══ -->
+    <div class="slide">
+     <div class="slide-header">
+      <div class="eyebrow">ECE Association</div>
+      <h1>Secretaries</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="subin.jpeg" alt="Subin Raj R">
+        <div class="card-name">Subin Raj R</div>
+        <div class="card-role">Secretary</div>
+        <div class="card-spec">III Year ECE A</div>
+       </div>
+       <div class="card-info">
+        <strong>Subin Raj R</strong> Secretary, ECE Association. III Year ECE A.
+       </div>
+      </div>
+      
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="siva.jpeg" alt="Sivaraman S">
+        <div class="card-name">Sivaraman S</div>
+        <div class="card-role">Secretary</div>
+        <div class="card-spec">III Year ECE C</div>
+       </div>
+       <div class="card-info">
+        <strong>Sivaraman S</strong> Secretary, ECE Association. III Year ECE C.
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- ══ SLIDE 4 – JOINT SECRETARIES ══ -->
+    <div class="slide">
+     <div class="slide-header">
+      <div class="eyebrow">ECE Association</div>
+      <h1>Joint Secretaries</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="josh.png" alt="Joshva Daniel">
+        <div class="card-name">Joshva Daniel</div>
+        <div class="card-role">Joint Secretary</div>
+        <div class="card-spec">III Year ECE A</div>
+       </div>
+       <div class="card-info">
+        <strong>Joshva Daniel</strong> Joint Secretary, ECE Association. III Year ECE A.
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="bhagath.png" alt="Bhagath Singh">
+        <div class="card-name">Bhagath Singh</div>
+        <div class="card-role">Joint Secretary</div>
+        <div class="card-spec">III Year ECE A</div>
+       </div>
+       <div class="card-info">
+        <strong>Bhagath Singh</strong> Joint Secretary, ECE Association. III Year ECE A.
+       </div>
+      </div>
+       <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="rohini.PNG" alt="Rohini D">
+        <div class="card-name">Rohini D</div>
+        <div class="card-role">Joint Secretary</div>
+        <div class="card-spec">III Year ECE A</div>
+       </div>
+       <div class="card-info">
+        <strong>Rohini D</strong> Joint Secretary, ECE Association. III Year ECE A.
+       </div>
+      </div>
+      
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="beula1.png" alt="Nikila S">
+        <div class="card-name">Nikila S</div>
+        <div class="card-role">Joint Secretary</div>
+        <div class="card-spec">III Year ECE C</div>
+       </div>
+       <div class="card-info">
+        <strong>Nikila S</strong> Joint Secretary, ECE Association. III Year ECE C.
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="sivarajan.png" alt="Sivaranjan S">
+        <div class="card-name">Sivaranjan S</div>
+        <div class="card-role">Joint Secretary</div>
+        <div class="card-spec">III Year ECE C</div>
+       </div>
+       <div class="card-info">
+        <strong>Sivaranjan S</strong> Joint Secretary, ECE Association. III Year ECE C.
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- ══ SLIDE 5 – STEERING COMMITTEE ══ -->
+    <div class="slide">
+     <div class="slide-header">
+      <div class="eyebrow">ECE Association</div>
+      <h1>Steering Committee</h1>
+     </div>
+     <div class="cards-row">
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="jeevitha.png" alt="Jeevitha K">
+        <div class="card-name">Jeevitha K</div>
+        <div class="card-role">Steering Committee</div>
+        <div class="card-spec">III Year ECE A</div>
+       </div>
+       <div class="card-info">
+        <strong>Jeevitha K</strong> Steering Committee, ECE Association. III Year ECE A.
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="ajees.png" alt="Abdul Ajees M">
+        <div class="card-name">Abdul Ajees M</div>
+        <div class="card-role">Steering Committee</div>
+        <div class="card-spec">III Year ECE A</div>
+       </div>
+       <div class="card-info">
+        <strong>Abdul Ajees M</strong> Steering Committee, ECE Association. III Year ECE A.
+       </div>
+      </div>
+      
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="sivaram.png" alt="Sivaram M">
+        <div class="card-name">Sivaram M</div>
+        <div class="card-role">Steering Committee</div>
+        <div class="card-spec">III Year ECE C</div>
+       </div>
+       <div class="card-info">
+        <strong>Sivaram M</strong> Steering Committee, ECE Association. III Year ECE C.
+       </div>
+      </div>
+      <div class="staff-card">
+       <div class="card-front">
+        <img class="card-photo" src="nikila.png" alt="Jayani S">
+        <div class="card-name">Jayani S</div>
+        <div class="card-role">Steering Committee</div>
+        <div class="card-spec">III Year ECE C</div>
+       </div>
+       <div class="card-info">
+        <strong>Jayani S</strong> Steering Committee, ECE Association. III Year ECE C.
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- /slides-track -->
+  </div>
+  <!-- /slides-outer -->
+
+  <!-- ARROWS -->
+  <button class="arrow-btn arrow-left" onclick="move(-1)">←</button>
+  <button class="arrow-btn arrow-right" onclick="move(+1)">→</button>
+  <!-- DOTS -->
+  <div class="dots" id="dots"></div>
+
+  <script>
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    const arrows = document.querySelectorAll('.arrow-btn');
+    const isOpen = m.style.display === 'block';
+    m.style.display = isOpen ? 'none' : 'block';
+    arrows.forEach(a => a.style.display = isOpen ? 'flex' : 'none');
+  }
+
+  const track   = document.getElementById('track');
+  const slides  = track.querySelectorAll('.slide');
+  const dotsEl  = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  let current   = 0;
+  const total   = slides.length;
+
+  track.style.width = (total * 100) + 'vw';
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = `translateX(-${current * 100}vw)`;
+    dotsEl.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+    counter.textContent = `${current + 1} / ${total}`;
+  }
+
+  function move(dir) { goTo(current + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') move(+1);
+    if (e.key === 'ArrowLeft')  move(-1);
+  });
+
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) move(dx < 0 ? +1 : -1);
+  });
+</script>
+ </body>
+</html>

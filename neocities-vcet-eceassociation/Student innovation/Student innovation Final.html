@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECE ASSOCIATION - Student Innovation Corner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  a { text-decoration: none; color: inherit; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    background-image: url('../images/templatemo_body.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ===== Navbar (matches Contact page) ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .nav-logos { display: flex; align-items: center; gap: 12px; }
+  .nav-logos img { height: 44px; width: 44px; object-fit: contain; border-radius: 50%; }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 600; color: #7a1620; line-height: 1.2;
+  }
+  .nav-brand span {
+    display: block; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 1px; color: #6b6b6b; font-family: 'Inter', sans-serif;
+  }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .social-icons { display: flex; gap: 10px; }
+  .social-icons img {
+    width: 26px; height: 26px; border-radius: 6px;
+    opacity: 0.85; transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
+  .menu-toggle {
+    font-size: 26px; cursor: pointer; background: none;
+    border: none; color: #1a1a1a; padding: 4px 8px;
+  }
+  #mobileMenu {
+    display: none; list-style: none;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  #mobileMenu.open { display: block; }
+  #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  #mobileMenu li a {
+    display: block; padding: 14px 24px;
+    color: #1a1a1a; font-weight: 500; font-size: 0.95rem;
+    transition: background 0.2s ease, padding-left 0.2s ease;
+  }
+  #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
+  #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
+
+  /* ===== Header ===== */
+  .page-header {
+    text-align: center;
+    padding: 70px 24px 20px;
+  }
+  .header-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 24px;
+    padding: 44px 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  .page-header .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7a1620;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7a1620;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Project grid (rows & columns) ===== */
+  .cascade-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 36px 24px 0;
+  }
+  .cascade-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .tab-card {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .tab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.14);
+  }
+  .tab-card.active {
+    box-shadow: 0 0 0 2px rgba(122,22,32,0.55), 0 16px 32px rgba(0,0,0,0.16);
+  }
+  .tab-strip { height: 8px; width: 100%; flex-shrink: 0; }
+  .tab-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 18px 20px;
+    flex: 1;
+  }
+  .tab-color-chip {
+    width: 38px; height: 8px; border-radius: 5px;
+    flex-shrink: 0;
+  }
+  .tab-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-weight: 600;
+    margin-bottom: 4px; color: #1a1a1a;
+    line-height: 1.35;
+  }
+  .tab-text span {
+    font-size: 0.78rem; color: #7a1620;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1020px) {
+    .cascade-track { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .cascade-track { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .cascade-track { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Reveal Zone ===== */
+  .reveal-zone {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 24px 80px;
+    min-height: 200px;
+  }
+
+  .reveal-header {
+    display: flex; align-items: center;
+    margin-bottom: 20px; gap: 14px;
+  }
+  .reveal-chip {
+    width: 14px; height: 38px; border-radius: 5px;
+    flex-shrink: 0;
+  }
+  .reveal-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  /* Project card (glass, light) */
+  .project-card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* image slider inside card */
+  .proj-slider-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 260px;
+    background: #f2e9ea;
+  }
+  .proj-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+  }
+  .proj-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    cursor: zoom-in;
+  }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(122,22,32,0.75);
+    border: none;
+    color: #fff;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+    transition: background 0.2s;
+  }
+  .slider-btn:hover { background: rgba(122,22,32,0.95); }
+  .slider-btn.prev { left: 10px; }
+  .slider-btn.next { right: 10px; }
+  .slide-dots {
+    position: absolute;
+    bottom: 10px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px;
+  }
+  .slide-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    box-shadow: 0 0 0 1px rgba(122,22,32,0.4);
+    cursor: pointer; transition: background 0.2s;
+  }
+  .slide-dot.active { background: #7a1620; box-shadow: none; }
+
+  .proj-body { padding: 26px 30px 30px; }
+  .proj-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 600;
+    color: #1a1a1a; margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    line-height: 1.4;
+  }
+  .proj-body p {
+    font-size: 0.94rem; color: #333;
+    line-height: 1.7; margin-bottom: 16px;
+  }
+  .proj-team {
+    font-size: 0.85rem;
+    color: #7a1620;
+    font-weight: 600;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 14px;
+    margin-top: 4px;
+  }
+  .proj-team span { color: #6b6b6b; font-weight: 500; }
+
+  .proj-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #7a1620;
+    border-bottom: 1px solid rgba(122,22,32,0.35);
+    word-break: break-all;
+  }
+  .proj-link:hover { text-decoration: none; color: #4d0e15; }
+
+  /* ===== Popup ===== */
+  .popup {
+    display: none; position: fixed; inset: 0;
+    background: rgba(20,4,6,0.85);
+    justify-content: center; align-items: center;
+    z-index: 9999; cursor: zoom-out;
+  }
+  .popup img {
+    max-width: 90%; max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+  }
+
+  /* ===== Footer ===== */
+  .site-footer {
+    text-align: center;
+    padding: 30px 24px 50px;
+  }
+  .footer-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 0.85rem;
+    color: #444;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  .footer-card a { color: #7a1620; font-weight: 600; }
+  </style>
+ </head>
+ <body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+   <div class="nav-inner">
+    <div class="nav-logos">
+     <img src="../images/templatemo_logo.png" alt="VCET">
+     <img src="../images/title_logo1.png" alt="ECE Association">
+     <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+    </div>
+    <div class="nav-right">
+     <div class="social-icons">
+      <a href="https://www.youtube.com/@VCETECE"><img src="../images/youtube.png" alt="YouTube"></a>
+      <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+      <a href="https://www.instagram.com/vcet_ece_asso/"><img src="../images/instagram.png" alt="Instagram"></a>
+      <a href="mailto:vceteceassociation2627@gmail.com"><img src="../images/gmail.png" alt="Gmail"></a>
+     </div>
+     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+   </div>
+   <ul id="mobileMenu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../achivements/Achievement.html">Achievements</a></li>
+    <li><a href="../event list/index.html">Event List</a></li>
+    <li><a href="../Core company.html">Core Company</a></li>
+    <li><a href="../Student innovation/Student innovation Final.html" class="current">Student Innovation Corner</a></li>
+    <li><a href="../staffmembers.html">Staff Members</a></li>
+    <li><a href="../Office Bearers/office Bearers.html">Office Bearers</a></li>
+    <li><a href="../lab.html">Laboratories</a></li>
+    <li><a href="../magazine.html">Magazine</a></li>
+    <li><a href="../contact.html">Contact Us</a></li>
+   </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-header">
+   <div class="header-card">
+    <div class="eyebrow">ECE Association &bull; VCET Madurai</div>
+    <h1>Student Innovation Corner</h1>
+    <p>Select a project below to explore the innovation</p>
+   </div>
+  </header>
+
+  <!-- GRID -->
+  <div class="cascade-wrap">
+   <div class="cascade-track" id="cascadeTrack"></div>
+  </div>
+
+  <!-- REVEAL -->
+  <div class="reveal-zone" id="revealZone"></div>
+
+  <!-- POPUP -->
+  <div id="imagePopup" class="popup" onclick="closeImage()">
+   <img id="popupImg">
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-card">
+      Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
+    </div>
+  </footer>
+
+  <script>
+const PROJECTS = [
+  {
+    title: "Unified Wearable System for Asthma and COPD (ACOS) Monitoring",
+    color: "#7a1620",
+    images: ["sud.jpg", "sud2.jpg"],
+    desc: "Selected for the final round of the Healthcare Hackathon held on 18th & 19th Feb at VIT Bhopal by John Hawkins University and VIT Bhopal. Out of 250 teams, we excelled in 5 challenging rounds with our innovative idea: a wearable belt for chronic disease management. This belt leverages real-time sensor monitoring and data analytics to empower patients with timely health insights.",
+    team: "Sudharsan M, Dhivya Dharshini B, Danush Kumar B, Sri Vasthan S, Santoshi T V",
+    link: null
+  },
+  {
+    title: "Bionic Prosthetic Arm",
+    color: "#a8273a",
+    images: ["harini.jpg", "harini2.jpg", "harini3.jpg"],
+    desc: "This low-cost bionic prosthetic arm mimics real hand gestures using computer vision and servo motors. It identifies hand signs from a webcam and replicates them with string-based biomechanics in real time.",
+    team: "Harini V, Akshaya K P, Yugashree A",
+    link: null
+  },
+  {
+    title: "Detection Cap",
+    color: "#8B1E3F",
+    images: ["b1.jpg", "b2.jpg"],
+    desc: "A smart wearable safety cap that detects hazardous conditions such as gas leaks, high temperature, or accidents and provides instant alerts to improve worker safety.",
+    team: "Ranjith Kumar R, Nimal K S R, Balaji J, Kavishwaran K",
+    link: null
+  },
+  {
+    title: "Leaf Detection Robot",
+    color: "#a8273a",
+    images: ["d1.jpg"],
+    desc: "A smart robot that detects unhealthy or diseased leaves using a camera and image processing, helping farmers monitor crop health and improve agricultural productivity.",
+    team: "Ranjith Kumar R, Nimal K S R, Balaji J, Kavishwaran K",
+    link: null
+  },
+  {
+    title: "Birds Wing Flapping",
+    color: "#9c2030",
+    images: ["e1.jpg"],
+    desc: "A bio-inspired mechanism that mimics the flapping motion of bird wings to generate lift and thrust for efficient, lightweight flight.",
+    team: "Dakshan karthic S, Pranav Kumar R S, Dinesh Karthick S",
+    link: null
+  },
+  {
+    title: "Op-Amp based Transformer Security System",
+    color: "#7a1620",
+    images: ["f1.jpg"],
+    desc: "An op-amp-based protection system that monitors transformer conditions and detects faults or unauthorized access, helping improve safety and prevent damage.",
+    team: "Dakshan Karthic S, Medwin Manuel S, Akil Radheswar S",
+    link: null
+  },
+  {
+    title: "Home Automation Using ESP-32",
+    color: "#b22a3d",
+    images: ["g1.jpg", "g2.jpg", "g3.jpg"],
+    desc: "It is designed to remotely monitor and control household electrical appliances through a smartphone or web application.",
+    team: "Praveena V, Jeyaprasanna L, Abhisri, Sivadharani L",
+    link: null
+  },
+  {
+    title: "Automatic Lift System",
+    color: "#6e1220",
+    images: ["h1.jpg", "h2.jpg", "h3.jpg", "h4.jpg"],
+    desc: "It uses a DC geared motor to drive a rack-and-pinion mechanism, which converts the motor's rotational motion into the vertical movement of the lift cabin.",
+    team: "Hemaroopa B, Joshitha Sri G S",
+    link: null
+  },
+  {
+    title: "Aeroplane",
+    color: "#8c1c28",
+    images: ["c1.jpg", "c2.jpg", "c3.jpg", "c4.jpg"],
+    desc: "This project demonstrates an aeroplane model designed for educational purposes, showcasing aircraft structure, aerodynamics, and basic flight principles.",
+    team: "Balaji J, Kavishwaran K",
+    link: null
+  },
+  {
+    title: "Line Follower Bot",
+    color: "#8c1c28",
+    images: ["dravid.jpg", "dravid4.jpg"],
+    desc: "A Line Following Robot that uses IR sensors and a microcontroller to detect and follow a pre-defined line on the floor. It adjusts direction based on sensor feedback, using motors and a motor driver module.",
+    team: "Vimal Raj M, Dravid S K, Ahamed Asha J, Sriram T",
+    link: null
+  },
+  {
+    title: "Drowsiness Detection Alarm System Using Arduino Nano",
+    color: "#9c2030",
+    images: ["aga1.jpg", "aga2.jpg"],
+    desc: "A smart vehicle prototype with drowsiness detection using Arduino Nano. It enhances driver safety by detecting sleep signals and triggering alerts to prevent accidents.",
+    team: "Agastina P, Bhuvana G, Sathana",
+    link: null
+  },
+  {
+    title: "Quantum Fusion Dynamics",
+    color: "#4d0e15",
+    images: ["ag1.jpg", "ag2.jpg"],
+    desc: "This study explores nuclear fusion using quantum mechanics. It focuses on quantum tunneling, where particles pass energy barriers without having enough energy to overcome them classically.",
+    team: "Agastina A, Deepthika A",
+    link: null
+  },
+  {
+    title: "Boat Surveillance and Fish Classification using Neural Networks",
+    color: "#b22a3d",
+    images: ["a2.jpg"],
+    desc: "This project uses neural networks to monitor aquatic environments and classify fish species. It's ideal for detecting illegal fishing and supporting marine conservation efforts.",
+    team: "Agastina P, Harsha D",
+    link: null
+  },
+  {
+    title: "Brain Machine Interface",
+    color: "#7a1620",
+    images: ["a3.jpg", "a4.jpg"],
+    desc: "This project explores Brain-Computer Interfaces that allow users to control devices using only brain signals. Applications include prosthetics, wheelchairs, and human-machine communication.",
+    team: "Agastina P, Aashita S",
+    link: null
+  },
+  {
+    title: "Drowsiness Detection and Health Monitoring System for Smart Drive",
+    color: "#d33a52",
+    images: ["a5.jpg", "a6.jpg"],
+    desc: "Combines driver drowsiness detection with real-time health monitoring using sensors. It analyzes eye movement, head position, and heart rate to improve road safety.",
+    team: "Agastina P, Akshaya Pa, Shruthi Meenakshi M, Ganessga T",
+    link: null
+  },
+  {
+    title: "AI-Enhanced BCI with IoT for Real-Time Neuroprosthetic and Health Monitoring",
+    color: "#6e1220",
+    images: ["a8.jpg"],
+    desc: "This project merges Brain-Computer Interfaces with AI and IoT for real-time prosthetic control and health tracking. It transmits neural signals to smart systems for advanced decision-making and medical alerts.",
+    team: "Agastina P, Akshaya Pa",
+    link: null
+  },
+  {
+    title: "Coolant Flow Drive Control in Fast Reactor",
+    color: "#4d0e15",
+    images: ["book1.jpg", "book2.jpg"],
+    desc: "A valuable contribution to nuclear engineering offering a clear and practical exploration of coolant dynamics, control logic, and reactor safety. With its interdisciplinary approach combining control systems, thermal physics, and nuclear design, it's highly recommended for academic scholars, industry professionals, and engineering students in ECE, mechanical, and nuclear engineering fields.",
+    team: "Aashita",
+    link: "https://store.pothi.com/book/sitangshu-sekhar-biswas-coolant-flow-drive-control-fast-reactor/"
+  }
+];
+
+const track = document.getElementById("cascadeTrack");
+const revealZone = document.getElementById("revealZone");
+
+// Build project grid tiles
+PROJECTS.forEach((proj, idx) => {
+  const tab = document.createElement("div");
+  tab.className = "tab-card";
+  tab.onclick = () => selectTab(idx);
+  tab.innerHTML = `
+    <div class="tab-strip" style="background:${proj.color}"></div>
+    <div class="tab-body">
+      <div class="tab-color-chip" style="background:${proj.color}"></div>
+      <div class="tab-text">
+        <h3>${proj.title}</h3>
+        <span>${proj.images.length} image${proj.images.length > 1 ? "s" : ""}</span>
+      </div>
+    </div>
+  `;
+  track.appendChild(tab);
+});
+
+// Slider state per project
+const sliderState = PROJECTS.map(() => ({ current: 0 }));
+
+function selectTab(idx) {
+  document.querySelectorAll(".tab-card").forEach((t, i) =>
+    t.classList.toggle("active", i === idx)
+  );
+
+  const proj = PROJECTS[idx];
+  const imgCount = proj.images.length;
+
+  const dotsHTML = imgCount > 1
+    ? proj.images.map((_, i) =>
+        `<div class="slide-dot ${i === 0 ? 'active' : ''}" onclick="goSlide(${idx},${i},event)"></div>`
+      ).join("")
+    : "";
+
+  const prevBtn = imgCount > 1
+    ? `<button class="slider-btn prev" onclick="changeSlide(${idx},-1,event)">&#8592;</button>` : "";
+  const nextBtn = imgCount > 1
+    ? `<button class="slider-btn next" onclick="changeSlide(${idx},1,event)">&#8594;</button>` : "";
+
+  revealZone.innerHTML = `
+    <div class="reveal-header">
+      <div class="reveal-chip" style="background:${proj.color}"></div>
+      <h2>${proj.title}</h2>
+    </div>
+    <div class="project-card">
+      <div class="proj-slider-wrap">
+        ${prevBtn}
+        <div class="proj-slider" id="slider-${idx}">
+          ${proj.images.map(img =>
+            `<img src="${img}" alt="${proj.title}" onclick="openImage(this.src,event)">`
+          ).join("")}
+        </div>
+        ${nextBtn}
+        <div class="slide-dots" id="dots-${idx}">${dotsHTML}</div>
+      </div>
+      <div class="proj-body">
+        <h2>${proj.title}</h2>
+        <p>${proj.desc}</p>
+        <div class="proj-team">
+          <span>Team Members: </span>${proj.team}
+        </div>
+        ${proj.link ? `<a class="proj-link" href="${proj.link}" target="_blank">${proj.link}</a>` : ""}
+      </div>
+    </div>
+  `;
+
+  // reset slider position
+  sliderState[idx].current = 0;
+  updateSlider(idx);
+
+  gsap.fromTo(".project-card",
+    { opacity: 0, y: 28 },
+    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+  );
+
+  revealZone.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function changeSlide(idx, dir, e) {
+  e.stopPropagation();
+  const proj = PROJECTS[idx];
+  const state = sliderState[idx];
+  state.current = (state.current + dir + proj.images.length) % proj.images.length;
+  updateSlider(idx);
+}
+
+function goSlide(idx, pos, e) {
+  e.stopPropagation();
+  sliderState[idx].current = pos;
+  updateSlider(idx);
+}
+
+function updateSlider(idx) {
+  const cur = sliderState[idx].current;
+  const sliderEl = document.getElementById("slider-" + idx);
+  const dotsEl   = document.getElementById("dots-" + idx);
+  if (sliderEl) sliderEl.style.transform = `translateX(-${cur * 100}%)`;
+  if (dotsEl) {
+    dotsEl.querySelectorAll(".slide-dot").forEach((d, i) =>
+      d.classList.toggle("active", i === cur)
+    );
+  }
+}
+
+// Toggle mobile menu visibility
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (!menu) return;
+  menu.classList.toggle('open');
+}
+
+// Lightbox for project images
+function openImage(src, e) {
+  e.stopPropagation();
+  const popup = document.getElementById('imagePopup');
+  const img = document.getElementById('popupImg');
+  img.src = src;
+  popup.style.display = 'flex';
+}
+
+function closeImage() {
+  const popup = document.getElementById('imagePopup');
+  popup.style.display = 'none';
+}
+
+// show first project on load
+document.addEventListener('DOMContentLoaded', () => { if (PROJECTS.length) selectTab(0); });
+</script>
+ </body>
+</html>

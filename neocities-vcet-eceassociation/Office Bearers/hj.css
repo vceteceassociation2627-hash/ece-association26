@@ -1,0 +1,353 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	color: #333333;
+	font-family: Helevetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height:1.5em; 
+	text-align: justify;
+	background-color: #ffffff;
+	background-image: url(images/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+a, a:link, a:visited {
+	color: #000000;
+}
+
+a:hover {
+	color: #990000;
+	text-decoration: none;
+}
+
+p { margin: 0px; padding: 0 0 10px 0; }
+img { border: none; }
+
+h1, h2, h3, h4, h5 { font-weight: normal; color: #000; }
+
+h1 { font-size: 38px; font-weight: bold; margin: 0 0 30px 0; padding: 5px 0; color: #fff; }
+h2 { font-size: 26px; font-weight: bold; margin: 0 0 20px 0; padding: 0; color: #fff; text-shadow: 1px 1px 1px #555; }
+h3 { font-size: 21px;font-weight: bold; margin: 0 0 20px 0; padding: 0; padding: 0; color: #fff; text-shadow: 1px 1px 1px #555; }
+h4 { font-size: 18px; margin: 0 0 20px 0; padding: 0; }
+h5 { font-size: 16px; margin: 0 0 10px 0; padding: 0; }
+h6 { font-size: 14px; margin: 0 0 5px 0; padding: 0;}
+
+
+.cleaner { clear: both; width: 100%; height: 0px; font-size: 0px;  }
+.cleaner_h10 { clear: both; width:100%; height: 10px; }
+.cleaner_h20 { clear: both; width:100%; height: 20px; }
+.cleaner_h30 { clear: both; width:100%; height: 30px; }
+.cleaner_h40 { clear: both; width:100%; height: 40px; }
+.cleaner_h50 { clear: both; width:100%; height: 50px; }
+.cleaner_h60 { clear: both; width:100%; height: 60px; }
+
+.margin_r25 { margin-right: 25px; }
+
+.vertical_divider { background: url(images/templatemo_vertical_divider.png) right repeat-y; }
+ 
+.float_l { float: left; }
+
+.float_r { 	float: right; }
+
+.image_wrapper { display: inline-block; padding: 8px; border: 1px solid #888888; background: #bcbbbc; margin-bottom: 10px; }
+.fl_img { float: left; margin: 3px 30px 15px 0; }
+.fr_img { float: right; margin: 3px 0 15px 15px; }
+.fm_img { float: left; margin: 3px 30px 15px 0; ;}
+
+blockquote { font-style: italic; margin-left: 10px;}
+cite { font-weight: bold; }
+cite span { color: #fff; }
+
+.templatemo_list {
+	margin: 20px;
+	padding: 0;
+	list-style: none;
+}
+
+.templatemo_list li {
+	background:transparent url(images/templatemo_list.png) no-repeat scroll 0 3px;
+	color:#000000;
+	margin:0 0 15px;
+	padding:0 0 0 16px;
+	line-height: 1em;
+}
+
+.button a {
+	clear: both;
+	display: block;
+	width: 104px;
+	height: 26px;
+	padding: 4px 0 0 0;
+	background: url(images/templatemo_button.png) no-repeat;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #000;
+}
+
+.button a:hover {
+	color: #000;
+	text-shadow: 1px 1px 2px #555;
+	background: url(images/templatemo_button_hover.png) no-repeat;
+}
+
+#templatemo_wrapper {
+	width: 970px;
+	margin: 0 auto;
+	padding: 10px 0;
+	background: url(images/templatemo_wrapper.png) repeat-y;
+}
+
+#templatemo_top {
+	padding: 5px 40px;
+}
+
+#social {
+	float: right;
+	margin-top:30px;
+	padding: 0;
+	list-style: none;
+}
+
+#social li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+#social li a {
+	float: left;
+	display: block;
+	width: 59px;
+	height: 59px;
+	margin-left: 10px;
+}
+
+#templatemo_header {
+	width: 950px;
+	height: 150px;
+	padding: 0 10px;
+	
+	
+	background: url(images/templatemo_header.png) ;
+	border-radius: 15px 15px 0px 0px;
+}
+
+#templatemo_header  #site_title {
+	float: left;
+	width: 900px;
+	height: auto;
+	margin-top: 10px;
+	text-align: left;
+	padding: 0px 0 0 20px;
+}
+
+#templatemo_header  #site_title a {
+	margin: 0px;
+
+	font-size: 30px;
+	color: #ffffff;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#templatemo_header  #site_title a span {
+	display: block;
+	text-align: left;
+	font-size: 14px;
+	
+	color: #5f6675;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+#templatemo_banner {
+	width: 970px;
+	height: 600px;
+	background: url(/images/bg.jpg) no-repeat;
+	background-size: cover;
+}
+
+#templatemo_menu {
+	float: left;
+	width: 280px;
+	margin-bottom: 50px;
+}
+
+#templatemo_menu ul {
+	margin: 0 0 0 2px;
+	padding: 20px 0 0 0;
+	list-style: none;
+}
+
+#templatemo_menu ul li {
+	padding: 0px;
+	margin: 0 0 10px 0;
+}
+
+#templatemo_menu ul li a {
+	display: block;
+	padding: 15px 0 5px 30px;
+	font-size: 16px;
+	text-decoration: none;
+	color: #000000;	
+	font-weight: bold;
+	outline: none;
+	background: url(images/templatemo_menu_divider.png) left bottom no-repeat;
+}
+
+#templatemo_menu li a:hover {
+	padding-left: 40px;
+}
+
+#templatemo_menu li .current{
+	padding-left: 40px;
+	color: #000000;
+}
+
+:root {
+    --primary-color: #586fd8;
+    --primary-dark: #6769f1;
+    --primary-light: #a594e9;
+    --primary-gradient: linear-gradient(135deg, #586fd8, #6769f1);
+    --bg-dark: #ffffff;
+    --text-light: #030303;
+    --text-gray: #9ca3af;
+    --card-bg: #fffcfc;
+    --card-hover: #2e2e2e;
+    --border-radius: 12px;
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --border-light: rgba(255, 255, 255, 0.05);
+    --bg-overlay: rgba(255, 255, 255, 0.1);
+    --text-dark: #000;
+    --shadow-color-primary: rgba(139, 92, 246, 0.3);
+    --shadow-color-primary-hover: rgba(139, 92, 246, 0.4);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+ 
+  
+
+  header p {
+    font-size: 1.1rem;
+    
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px; 
+  }
+.team-card.first-teacher-card {
+        width: 600px; /* Example width */
+        height: 371px; /* Example height, adjust as needed */
+        /* You might need to adjust other properties like padding or margin */
+    }
+    .first-teacher-card .profile-img img {
+        width: 100%; /* Make image fill the width of its container */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover; /* Cover the area, cropping if necessary */
+    }
+    .first-teacher-card .profile-bg {
+        height: 120px; /* Adjust background height if needed */
+    }
+  .team-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .team-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
+  .team-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .team-card:hover .profile.bg {
+    transform: scale(1,1);
+  }
+
+  .card-top {
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 30px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .profile-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: var(--primary-gradient);
+    z-index: -1;
+    transition: transform 0.4s ease;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 4px solid var(--card-bg);
+    position: relative;
+  }
+
+  .profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .team-card:hover .profile-img img {
+    transform: scale(1.1);
+  }
+
+  @keyframes appear{
+    from{
+      opacity: 0;
+      scale: 0.5;
+    }
+    to{
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  .team-card {
+    animation: appear 1s linear;
+  }
+
+ 

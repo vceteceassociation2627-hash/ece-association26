@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event List | ECE ASSOCIATION</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logos">
+      <img src="../images/templatemo_logo.png" alt="VCET">
+      <img src="../images/title_logo1.png" alt="ECE Association">
+      <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+    </div>
+    <div class="nav-right">
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@VCETECE"><img src="../images/youtube.png" alt="YouTube"></a>
+        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="../images/instagram.png" alt="Instagram"></a>
+        <a href="mailto:vceteceassociation2627@gmail.com"><img src="../images/gmail.png" alt="Gmail"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
+  <ul id="mobileMenu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../achivements/Achievement.html">Achievements</a></li>
+    <li><a href="./index.html" class="current">Event List</a></li>
+    <li><a href="../Core company.html">Core Company</a></li>
+    <li><a href="../Student innovation/Student innovation Final.html">Student Innovation Corner</a></li>
+    <li><a href="../staffmembers.html">Staff Members</a></li>
+    <li><a href="../Office Bearers/office Bearers.html">Office Bearers</a></li>
+    <li><a href="../lab.html">Laboratories</a></li>
+    <li><a href="../magazine.html">Magazine</a></li>
+    <li><a href="../contact.html">Contact Us</a></li>
+  </ul>
+</nav>
+
+
+
+<header class="hero">
+  <div class="hero-card">
+    <div class="eyebrow">Velammal College of Engineering and Technology</div>
+    <h1>Event List<span>ECE Association, VCET Madurai &middot; 2025&ndash;2026</span></h1>
+  </div>
+</header>
+
+<main class="section">
+
+  <div class="section-card">
+    <div class="section-label">Activity Log</div>
+    <h2>Browse by Category</h2>
+    <p class="intro">Filter events by category, or click any card to view full details. Association office bearers can add or update events using the button below.</p>
+
+    <nav id="category-nav" class="category-nav"></nav>
+
+    <div id="events-section" class="event-grid"></div>
+
+    <div class="admin-bar">
+      <button id="updateBtn" class="btn-outline">Update Events</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- Event detail modal -->
+<div id="eventModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <div class="modal-label" id="modalCategory"></div>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-date" id="modalDate"></p>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Login gate modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content modal-narrow">
+    <span class="close" id="closeLogin">&times;</span>
+    <div class="modal-label">Office Bearers Only</div>
+    <h3>Sign In to Update Events</h3>
+    <form id="loginForm" class="stack-form">
+      <label>ID
+        <input type="text" id="loginId" autocomplete="username" required>
+      </label>
+      <label>Passkey
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </label>
+      <p id="loginError" class="form-error"></p>
+      <button type="submit" class="btn-solid">Sign In</button>
+    </form>
+  </div>
+</div>
+
+<!-- Admin editor modal -->
+<div id="adminModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeAdmin">&times;</span>
+    <div class="modal-label">Editing</div>
+    <h3>Add / Update Event</h3>
+    <form id="eventForm" class="stack-form">
+      <input type="hidden" id="eventId">
+      <label>Title
+        <input type="text" id="fTitle" required>
+      </label>
+      <div class="form-row">
+        <label>Date
+          <input type="date" id="fDate" required>
+        </label>
+        <label>Category
+          <input type="text" id="fCategory" placeholder="e.g. Workshop" required>
+        </label>
+      </div>
+      <label>Description
+        <textarea id="fDesc" rows="4" required></textarea>
+      </label>
+      <label>Image URL <span class="optional">(optional)</span>
+        <input type="text" id="fImage" placeholder="images/example.jpg">
+      </label>
+      <div class="form-row form-actions">
+        <button type="submit" class="btn-solid">Save Event</button>
+        <button type="button" id="deleteEventBtn" class="btn-danger" style="display:none;">Delete</button>
+      </div>
+    </form>
+
+    <div class="admin-list-wrap">
+      <h4>All Events</h4>
+      <ul id="adminEventList" class="admin-list"></ul>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-card">
+    Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

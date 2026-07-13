@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECE ASSOCIATION</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    background-image: url(images/templatemo_body.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* ===== Navbar ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+
+  .nav-logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logos img {
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #7a1620;
+    line-height: 1.2;
+  }
+  .nav-brand span {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #6b6b6b;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  .social-icons img {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    opacity: 0.85;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
+
+  .menu-toggle {
+    font-size: 26px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    padding: 4px 8px;
+  }
+
+  #mobileMenu {
+    display: none;
+    list-style: none;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,.2);
+  }
+  #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  #mobileMenu li a {
+    display: block;
+    padding: 14px 24px;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, padding-left 0.2s ease;
+  }
+  #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
+
+  /* ===== Marquee strip ===== */
+  .marquee-strip {
+    background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .marquee-strip .marquee-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 48s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 90px 24px 70px;
+    text-align: center;
+  }
+  .hero-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  .hero-card .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7a1620;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+  .hero-card h1 span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7a1620;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  /* ===== Sections ===== */
+  .section {
+    padding: 30px 24px 60px;
+  }
+
+  .section-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  }
+
+  .section-card + .section-card { margin-top: 36px; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7a1620;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .section-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .message-block {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .message-block img {
+    width: 160px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    flex-shrink: 0;
+  }
+
+  .message-text p {
+    color: #333;
+    font-size: 0.96rem;
+    margin-bottom: 18px;
+  }
+
+  .signature {
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #7a1620;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* ===== Vision / Mission / PEO grid ===== */
+  .triptych {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .triptych-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #7a1620;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(122,22,32,0.18);
+  }
+
+  .triptych-col p {
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  .triptych-col ol {
+    padding-left: 18px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  .triptych-col ol li { margin-bottom: 10px; }
+
+  .peo-extra {
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: #333;
+  }
+  .peo-extra p { margin-bottom: 12px; }
+
+  .read-more-btn {
+    margin-top: 12px;
+    background: #7a1620;
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 24px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .read-more-btn:hover { background: #5e1018; transform: translateY(-2px); }
+
+  /* ===== Footer ===== */
+  .site-footer {
+    text-align: center;
+    padding: 30px 24px 50px;
+  }
+  .footer-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 0.85rem;
+    color: #444;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  .footer-card a { color: #7a1620; font-weight: 600; }
+
+  @media (max-width: 860px) {
+    .message-block { flex-direction: column; }
+    .message-block img { width: 100%; height: 260px; }
+    .signature { text-align: left; }
+    .triptych { grid-template-columns: 1fr; }
+    .section-card { padding: 32px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logos">
+      <img src="images/templatemo_logo.png" alt="VCET">
+      <img src="images/title_logo1.png" alt="ECE Association">
+      <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+    </div>
+    <div class="nav-right">
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a>
+        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
+  <ul  id="mobileMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="achivements/Achievement.html">Achievements</a></li>
+    <li><a href="event list/index.html">Event List</a></li>
+    <li><a href="Core company.html">Core Company</a></li>
+    <li><a href="Student innovation/Student innovation Final.html">Student Innovation Corner</a></li>
+    <li><a href="staffmembers.html">Staff Members</a></li>
+    <li><a href="Office Bearers/office Bearers.html">Office Bearers</a></li>
+    <li><a href="lab.html">Laboratories</a></li>
+    <li><a href="magazine.html">Magazine</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="marquee-strip">
+  <div class="marquee-text">
+    Events from July - August 2026 &nbsp;•&nbsp; Appointment of Office Bearers (08.07.2026) &nbsp;•&nbsp; ECE Association Inauguration (18.07.2026) &nbsp;•&nbsp; Release of Department Magazine "The Window" (18.07.2026) &nbsp;•&nbsp;Upcoming Event: Workshop on Interview Cracking Skills  &nbsp;•&nbsp;Attitude and Behavior Development &nbsp;•&nbsp; Essay Writing Contest &nbsp;•&nbsp; JAM Talk Show &nbsp;•&nbsp; Quiz Contest &nbsp;•&nbsp; Circuit Building Competition •&nbsp; VCET-ECE APP Challenge Contest. &nbsp;
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-card">
+    <div class="eyebrow">Velammal College of Engineering and Technology</div>
+    <h1>ECE Association<span>2026 – 2027</span></h1>
+  </div>
+</header>
+
+<main class="section">
+
+  <div class="section-card">
+    <div class="section-label">Leadership</div>
+    <h2>Chairman's Message</h2>
+    <div class="message-block">
+      <img src="images/chair_vcet.png" alt="Chairman">
+      <div class="message-text">
+        <p>Every young Indian of this great country should dream big. It is not enough if they only dream — they should work hard to make it a reality. At Velammal College of Engineering and Technology, Madurai, we provide the necessary platform for aspiring youth of this region to become enterprising engineers, so they can deliver the right engineering solutions to propel our nation forward.</p>
+        <p>We sincerely believe in imparting quality engineering education laced with deep social values, ensuring every graduate becomes not only a competent engineer but also a responsible citizen. It is time we moved from "standardized testing" to "creative teaming." Life offers no warranties or guarantees — only possibilities and opportunities. We want our budding engineers to remember this and make the best use of them. Please join us in this exhilarating journey.</p>
+        <div class="signature">Shri M.V. Muthuramalingam, Chairman</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">Leadership</div>
+    <h2>Principal's Message</h2>
+    <div class="message-block">
+      <img src="images/princi_vcet.png" alt="Principal">
+      <div class="message-text">
+        <p>"Branding is the art of becoming knowable, likable and trustable," as John Jantsch puts it — and VCET is a known, liked and trusted technical institution in Madurai. Since its inception in 2007, VCET has emerged as a center of excellence imparting technical and managerial skills to students across southern Tamil Nadu, with accreditations from NAAC and NBA.</p>
+        <p>VCET's infrastructure and state-of-the-art laboratories, along with our highly experienced faculty, ensure our graduates meet global standards. Consistent campus placements and alumni in premier positions worldwide stand as testimony to the quality of education here. I'm proud to be part of an institution that keeps me creative, analytical, and innovative.</p>
+        <div class="signature">Dr. P. Alli, Principal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">Department</div>
+    <h2>HOD's Message</h2>
+    <div class="message-block">
+      <img src="images/hod_vcet.jpg" alt="HOD">
+      <div class="message-text">
+        <p>A hearty welcome to the Department of Electronics and Communication Engineering at Velammal College of Engineering and Technology, Madurai. Since 2007, the department has been a front-runner in imparting quality technical education. A rich technical ambience, enthusiastic faculty, state-of-the-art laboratories, and strong management support have helped students perform with distinction.</p>
+        <p>The department is also making strides in Research and Development, having procured funded projects from DRDO, AICTE, and DST worth ₹258.716 lakhs in just three years. Our students have been placed in top MNCs including TCS, CTS, Wipro, Accenture, Aricent, HP, UST Global, Zoho, and Athena Healthcare, supported by a vibrant worldwide alumni network.</p>
+        <div class="signature">Dr. S. Vasuki, Dean (R&D), Head / ECE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">Foundations</div>
+    <h2>Vision, Mission &amp; Outcomes</h2>
+    <div class="triptych">
+      <div class="triptych-col">
+        <h3>Vision</h3>
+        <p>To emerge and sustain as a center of excellence for technical and managerial education upholding social values.</p>
+      </div>
+      <div class="triptych-col">
+        <h3>Mission</h3>
+        <ol>
+          <li>Impart comprehensive, innovative and value-based education.</li>
+          <li>Expose students to technical, managerial and soft-skill resources with emphasis on research and professionalism.</li>
+          <li>Inculcate the need for a disciplined, happy, and peaceful life.</li>
+        </ol>
+      </div>
+      <div class="triptych-col">
+        <h3>PEOs &amp; PSOs</h3>
+        <p>PEO I: Graduates will have a high level of technical competency to identify problems and produce innovative solutions for industrial needs.</p>
+        <div class="peo-extra" id="peoExtra" style="display:none;">
+          <p>PEO II: Graduates will adapt to changes in roles and responsibilities through professional development and lifelong learning.</p>
+          <p>PEO III: Graduates will ethically apply their computing knowledge considering societal, economic and environmental factors.</p>
+          <p>PSO I: Apply mathematics, science and engineering knowledge to solve complex IT problems, designing and developing solutions using modern tools.</p>
+          <p>PSO II: Apply technology, ethics, management principles and soft skills to carry out societal IT projects as a team member and leader.</p>
+        </div>
+        <button class="read-more-btn" id="peoBtn" onclick="togglePeo()">Read More</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-card">
+    Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function togglePeo() {
+  const extra = document.getElementById("peoExtra");
+  const btn = document.getElementById("peoBtn");
+  const isOpen = extra.style.display === "block";
+  extra.style.display = isOpen ? "none" : "block";
+  btn.textContent = isOpen ? "Read More" : "Read Less";
+}
+</script>
+
+</body>
+</html>

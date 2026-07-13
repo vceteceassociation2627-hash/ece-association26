@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratories - ECE ASSOCIATION</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    background-image: url(images/templatemo_body.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Navbar (same as index) ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .nav-logos { display: flex; align-items: center; gap: 12px; }
+  .nav-logos img { height: 44px; width: 44px; object-fit: contain; border-radius: 50%; }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #7a1620;
+    line-height: 1.2;
+  }
+  .nav-brand span {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #6b6b6b;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .social-icons { display: flex; gap: 10px; }
+  .social-icons img {
+    width: 26px; height: 26px; border-radius: 6px; opacity: 0.85;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .social-icons img:hover { opacity: 1; transform: translateY(-2px); }
+  .menu-toggle {
+    font-size: 26px; cursor: pointer; background: none; border: none;
+    color: #1a1a1a; padding: 4px 8px;
+  }
+  #mobileMenu {
+    display: none; list-style: none;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  #mobileMenu li { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  #mobileMenu li a {
+    display: block; padding: 14px 24px; color: #1a1a1a;
+    font-weight: 500; font-size: 0.95rem;
+    transition: background 0.2s ease, padding-left 0.2s ease;
+  }
+  #mobileMenu li a:hover { background: rgba(122,22,32,0.06); padding-left: 32px; }
+  #mobileMenu li a.current { color: #7a1620; font-weight: 700; }
+  .marquee-strip {
+    background: linear-gradient(90deg, rgba(122,22,32,0.92), rgba(180,40,50,0.92));
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .marquee-strip .marquee-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  /* ===== Hero ===== */
+  .hero { padding: 90px 24px 60px; text-align: center; }
+  .hero-card {
+    max-width: 760px; margin: 0 auto;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  .hero-card .eyebrow {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
+    color: #7a1620; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .hero-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700; color: #1a1a1a; margin-bottom: 8px;
+  }
+  .hero-card h1 span {
+    display: block; font-size: 1rem; font-weight: 500;
+    color: #7a1620; margin-top: 10px;
+    font-family: 'Inter', sans-serif; letter-spacing: 1px;
+  }
+  .hero-card p.intro {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== Section shell ===== */
+  .section { padding: 30px 24px 70px; }
+  .section-intro {
+    max-width: 1100px;
+    margin: 0 auto 34px;
+    text-align: center;
+  }
+  .section-intro .section-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+    color: #7a1620; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 600; color: #1a1a1a;
+  }
+
+  /* ===== Lab grid ===== */
+  .lab-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .lab-card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .lab-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.14);
+  }
+
+  /* Photo slot - swap the placeholder div for an <img> per lab */
+  .lab-photo {
+    position: relative;
+    height: 210px;
+    background: linear-gradient(135deg, rgba(122,22,32,0.10), rgba(122,22,32,0.04));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .lab-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lab-photo .placeholder-mark {
+    text-align: center;
+    color: #7a1620;
+    opacity: 0.55;
+  }
+  .lab-photo .placeholder-mark svg { width: 40px; height: 40px; margin-bottom: 8px; }
+  .lab-photo .placeholder-mark span {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .lab-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(122,22,32,0.92);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .lab-body { padding: 24px 26px 28px; flex: 1; display: flex; flex-direction: column; }
+  .lab-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+  }
+  .lab-body .lab-room {
+    font-size: 0.78rem;
+    color: #7a1620;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .lab-body p.lab-desc {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  .lab-equip {
+    list-style: none;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .lab-equip li {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: #5a1015;
+    background: rgba(122,22,32,0.08);
+    padding: 5px 11px;
+    border-radius: 14px;
+  }
+
+  /* ===== Footer ===== */
+  .site-footer { text-align: center; padding: 30px 24px 50px; }
+  .footer-card {
+    max-width: 1100px; margin: 0 auto;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 0.85rem;
+    color: #444;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  .footer-card a { color: #7a1620; font-weight: 600; }
+
+
+  @media (max-width: 860px) {
+    .lab-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logos">
+      <img src="images/templatemo_logo.png" alt="VCET">
+      <img src="images/title_logo1.png" alt="ECE Association">
+      <div class="nav-brand">ECE Association<span>VCET MADURAI</span></div>
+    </div>
+    <div class="nav-right">
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@VCETECE"><img src="images/youtube.png" alt="YouTube"></a>
+        <a href="http://www.linkedin.com/in/vcet-ece-association-064684374"><img src="images/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/vcet_ece_asso/"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="mailto:vceteceassociation2627@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
+  <ul id="mobileMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="achivements/Achievement.html">Achievements</a></li>
+    <li><a href="event list/index.html">Event List</a></li>
+    <li><a href="Core company.html">Core Company</a></li>
+    <li><a href="Student innovation/Student innovation Final.html">Student Innovation Corner</a></li>
+    <li><a href="staffmembers.html">Staff Members</a></li>
+    <li><a href="Office Bearers/office Bearers.html">Office Bearers</a></li>
+    <li><a href="lab.html" class="current">Laboratories</a></li>
+    <li><a href="magazine.html">Magazine</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</nav>
+
+
+<header class="hero">
+  <div class="hero-card">
+    <div class="eyebrow">Department of Electronics &amp; Communication Engineering</div>
+    <h1>Laboratories<span>Where Circuits Meet Curiosity</span></h1>
+    <p class="intro">Seven dedicated labs equip every ECE student with hands-on experience across communication systems, VLSI, embedded design and beyond — backed by DRDO, AICTE and DST funded infrastructure.</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="section-intro">
+    <div class="section-label">Infrastructure</div>
+    <h2>Our Laboratories</h2>
+  </div>
+
+  <div class="lab-grid">
+
+    <!-- ================= LAB 1 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/communication-systems-lab.jpg" alt="Communication Systems Lab"> -->
+        <img src="images/CS_lab.jpeg" alt="Communication Systems Lab">
+        <div class="lab-tag">RF &amp; Comms</div>
+      </div>
+      <div class="lab-body">
+        <h3>Communication Systems Lab</h3>
+       <div class="lab-room">5G Simulation • SDR Technology • Wireless Innovation Zone</div>
+
+        <!-- Replace with actual lab description -->
+        <p class="lab-desc">The Communication Systems Laboratory provides students with practical exposure to modern communication technologies, including analog and digital transmission techniques. The lab is equipped with advanced tools that enable experimentation with modulation, multiplexing, and signal propagation. Students gain hands-on experience in analyzing real-time signals and understanding wireless communication concepts.</p>
+        <ul class="lab-equip">
+          <li>Signal Generators</li>
+          <li>Spectrum Analyzers</li>
+          <li>Antenna Trainer Kits</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= LAB 2 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/dsp-lab.jpg" alt="Digital Signal Processing Lab"> -->
+       <img src="images/dsp_lab.jpeg" alt="Digital Signal Processing Lab">
+        <div class="lab-tag">DSP</div>
+      </div>
+      <div class="lab-body">
+        <h3>Digital Signal Processing Lab</h3>
+       <div class="lab-room">MATLAB & Python • Real-time Signal Processing • Audio Analysis Setup</div>
+
+        <p class="lab-desc">The Digital Signal Processing (DSP) Laboratory focuses on the analysis and processing of signals using modern computational tools. Students work with platforms like MATLAB and Python to design filters, perform spectral analysis, and process real-time audio and image signals. The lab provides a strong foundation in understanding signal behavior and system performance.</p>
+        <ul class="lab-equip">
+          <li>TMS320 DSP Kits</li>
+          <li>MATLAB Workstations</li>
+          <li>CRO &amp; Function Generators</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= LAB 3 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/vlsi-lab.jpg" alt="VLSI Design Lab"> -->
+        <img src="images/Vlsi_lab.jpeg" alt="VLSI Design Lab">
+        <div class="lab-tag">VLSI</div>
+      </div>
+      <div class="lab-body">
+        <h3>VLSI Design Lab</h3>
+        <div class="lab-room">MATLAB & Python • Real-time Signal Processing • Audio Analysis Setup</div>
+
+        <p class="lab-desc">The VLSI Design Laboratory offers an advanced environment for learning integrated circuit design and semiconductor technologies. Students are trained in using industry-standard Electronic Design Automation (EDA) tools for circuit simulation, synthesis, and layout design. The lab emphasizes practical implementation through FPGA prototyping and chip-level design projects. </p>
+        <ul class="lab-equip">
+          <li>Xilinx FPGA Boards</li>
+          <li>Cadence / Modelsim</li>
+          <li>High-end Workstations</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= LAB 4 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/microprocessor-lab.jpg" alt="Microprocessor and Microcontroller Lab"> -->
+        <img src="images/Mpmc_lab.jpeg" alt="Microprocessor & Microcontroller Lab">
+        <div class="lab-tag">Embedded Core</div>
+      </div>
+      <div class="lab-body">
+        <h3>Microprocessor &amp; Microcontroller Lab</h3>
+        <div class="lab-room">Embedded Systems • ARM Kits • Robotics Integration</div>
+        <p class="lab-desc">The Microprocessor and Microcontroller Laboratory provides hands-on experience with programming and interfacing of microprocessors and microcontrollers. Students work with kits such as 8085/8086 and modern controllers like ARM and PIC to develop embedded applications. The lab focuses on real-time problem-solving, hardware interfacing, and system design.</p>
+        <ul class="lab-equip">
+          <li>8085 / 8086 Kits</li>
+          <li>ARM &amp; PIC Trainers</li>
+          <li>Interfacing Modules</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= LAB 5 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/electron-devices-lab.jpg" alt="Electronic Devices and Circuits Lab"> -->
+        <img src="images/Electronic_Devices_lab.jpeg" alt="Electronic Devices & Circuits Lab">
+        <div class="lab-tag">Devices &amp; Circuits</div>
+      </div>
+      <div class="lab-body">
+        <h3>Electronic Devices &amp; Circuits Lab</h3>
+        <div class="lab-room">Smart Workbenches • Circuit Simulation • Practical Innovation Space</div>
+        <p class="lab-desc">The Electronic Devices and Circuits Laboratory introduces students to the fundamentals of electronic components and circuit behavior. Through practical experiments, students study the characteristics of diodes, transistors, and amplifiers. The lab emphasizes hands-on learning using modern workbenches and simulation tools. </p>
+        <ul class="lab-equip">
+          <li>Regulated Power Supplies</li>
+          <li>Breadboard Stations</li>
+          <li>Component Kits</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= LAB 6 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/analog-digital-lab.jpg" alt="Analog and Digital Electronics Lab"> -->
+       <img src="images/ADC_lab.jpeg" alt="Analog & Digital Electronics Lab">
+        <div class="lab-tag">Analog / Digital</div>
+      </div>
+      <div class="lab-body">
+        <h3>Analog &amp; Digital Electronics Lab</h3>
+        <div class="lab-room">Logic Design • PCB Prototyping • Mixed Signal Testing</div>
+        <p class="lab-desc">The Analog and Digital Electronics Laboratory focuses on the design and analysis of both analog and digital circuits. Students perform experiments on logic gates, combinational and sequential circuits, and analog systems. The lab is equipped with trainer kits and testing instruments that enable practical learning. </p>
+        <ul class="lab-equip">
+          <li>Logic Gate Trainers</li>
+          <li>ADC / DAC Kits</li>
+          <li>Digital IC Trainers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= LAB 7 ================= -->
+    <div class="lab-card">
+      <div class="lab-photo">
+        <!-- Replace the placeholder-mark block below with:
+             <img src="lab/iot-embedded-lab.jpg" alt="IoT and Embedded Systems Lab"> -->
+         <img src="images/I&E_lab.jpeg" alt="IoT & Embedded Systems Lab">
+        <div class="lab-tag">IoT &amp; Embedded</div>
+      </div>
+      <div class="lab-body">
+        <h3>IoT &amp; Embedded Systems Lab</h3>
+        <div class="lab-room">IoT Devices • Cloud Integration • Smart Automation Projects</div>
+        <p class="lab-desc">The IoT and Embedded Systems Laboratory is a modern innovation space where students design and develop smart devices using microcontrollers, sensors, and cloud platforms. The lab focuses on real-time data acquisition, automation, and connectivity.</p>
+        <ul class="lab-equip">
+          <li>Raspberry Pi &amp; Arduino</li>
+          <li>Sensor Node Kits</li>
+          <li>Wi-Fi / IoT Modules</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-card">
+    Copyright © 2025 <a href="https://vcet.ac.in/">Velammal College of Engineering and Technology, Madurai</a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
